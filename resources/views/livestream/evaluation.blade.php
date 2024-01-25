@@ -48,7 +48,7 @@
                                         <select name="webinar_id" class="form-control" required>
                                             <option value="">Select Webinar</option>
                                             @foreach($webinar as $web)
-                                                <option value="{{ $web->webinar_id }}" >{{ $web->webinar->related }}</option>
+                                                <option value="{{ $web->stream_id }}" >{{ $web->livestream->related }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -252,7 +252,7 @@
                                                         <td>{{$live->date }}</td>
                                                         <td>{{ ($live->user == null) ? "" : $live->user->name }} <br/> {{ ($live->user == null) ? "" : $live->user->email }}</td>
                                                         <td>{{ ($live->user->role == null)? "" : $live->user->role->name }}</td>
-                                                        <td><a href="{{ route('webinar.evolution_show',$live->id) }}"> <img src="{{ asset('assets/img/icons/eye.svg') }}" alt="img"> </a></td>
+                                                        <td><a href="{{ route('livestream.evolution_show',$live->id) }}"> <img src="{{ asset('assets/img/icons/eye.svg') }}" alt="img"> </a></td>
                                                     </tr>
 
                                                 @endforeach

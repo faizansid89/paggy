@@ -28,7 +28,13 @@ class WebinarController extends Controller
     {
         checkPermission('index-webinar');
         $section = $this->section;
-        $web=Webinar::get();
+
+        if(\Auth::user()->role_id == 0){
+            $web=Webinar::get();
+        }else{
+            $web=Webinar::where('status', 1)->get();
+        }
+
         return view($section->folder.'.index',compact('section','web'));
 
 
@@ -217,6 +223,24 @@ class WebinarController extends Controller
 
     }
 
+    public function evaluation_form(Request $request)
+    {
+        checkPermission('create-webinar');
+        $section=$this->section;
+        $web = [];
+
+        if(\Auth::user()->role_id == 0){
+            $webinar=Payment::with('webinar','user', 'user.role')->where('webinar_id','>','0')->get();
+
+        }else{
+            $webinar=Payment::with('webinar','user', 'user.role')->where('user_id',\Auth::user()->id)->where('webinar_id','>','0')->get();
+        }
+
+        $section->route=$section->slug.".evaluation_create";
+        $section->method="post";
+        return view($section->folder.'.evaluation_form',compact('web','section', 'webinar'));
+    }
+
     public function evaluation_create(Request $request){
         $section=$this->section;
         Evaluation::create($request->all());
@@ -228,20 +252,13 @@ class WebinarController extends Controller
     public function evolution_show($id){
         checkPermission('evaluation-webinar');
 
-        if(\Auth::user()->role_id == 0){
-            $record = Evaluation::with('user')->where('webinar_id','>','0')->where('id',$id)->first();
-            $webinar=Payment::with('webinar','user')->where('webinar_id','>','0')->get();
+        $record = Evaluation::with('user')->where('id',$id)->first();
 
-        }else{
-            $record = Evaluation::where('user_id',\Auth::user()->id)->where('webinar_id','>','0')->where('id',$id)->first();
-            $webinar=Payment::with('webinar')->where('user_id',Auth::user()->id)->where('webinar_id','>','0')->get();
-        }
-
-    dd($record->toArray());
         $section=$this->section;
-        $section->heading="Evaluation Webinar";
-        return view($section->folder.'.evaluation',compact('section','record','webinar'));
-
+        $section->heading="View Evaluation Webinar";
+        $section->title="View Evaluation Webinar";
+        
+        return view($section->folder.'.evaluation_view',compact('section','record'));
     }
 
 

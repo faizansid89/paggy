@@ -72,8 +72,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     
     
     
-    Route::get('test',[LiveStreamController::class,'test'])->name('livestream.test');
-    Route::get('certificate',[LiveStreamController::class,'certificate'])->name('livestream.certificate');
+    
+    // Route::get('certificate',[LiveStreamController::class,'certificate'])->name('livestream.certificate');
     Route::get('buy/{id}',[LiveStreamController::class,'buy'])->name('livestream.buy');
     
 
@@ -86,9 +86,17 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
 
         Route::group(['prefix' => 'evolution'], function () {
             Route::get('/',[LiveStreamController::class,'evolution'])->name('livestream.evolution');
+            Route::get('form',[LiveStreamController::class,'evaluation_form'])->name('livestream.evaluation_form');
             Route::post('create',[LiveStreamController::class,'evaluation_create'])->name('livestream.evaluation_create');
             Route::get('/{id}',[LiveStreamController::class,'evolution_show'])->name('livestream.evolution_show');
         });
+
+        Route::get('assessment',[LiveStreamController::class,'assessment'])->name('livestream.assessment');
+        Route::get('certificate',[CertificateController::class,'index'])->name('livestream.certificate');
+        Route::get('certificate/create',[CertificateController::class,'create'])->name('livestream.certificate.create');
+        Route::get('certificate/store',[CertificateController::class,'store'])->name('livestream.certificate.store');
+
+        Route::post('buy',[LiveStreamController::class,'buy'])->name('livestream.buy');
     });
     Route::resource('livestream',LiveStreamController::class);
 
@@ -102,6 +110,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
 
         Route::group(['prefix' => 'evolution'], function () {
             Route::get('/',[WebinarController::class,'evolution'])->name('webinar.evolution');
+            Route::get('form',[WebinarController::class,'evaluation_form'])->name('webinar.evaluation_form');
             Route::post('create',[WebinarController::class,'evaluation_create'])->name('webinar.evaluation_create');
             Route::get('/{id}',[WebinarController::class,'evolution_show'])->name('webinar.evolution_show');
         });
