@@ -1,0 +1,2 @@
+[06-Jun-2023 14:21:33 UTC] PHP Fatal error:  Allowed memory size of 2147483648 bytes exhausted (tried to allocate 262144 bytes) in /home/wecare564678/portal.wecare.pk/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 843
+[06-Jun-2023 14:22:27 UTC] PHP Fatal error:  Allowed memory size of 2147483648 bytes exhausted (tried to allocate 262144 bytes) in /home/wecare564678/portal.wecare.pk/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 843
