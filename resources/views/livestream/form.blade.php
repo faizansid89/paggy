@@ -58,14 +58,14 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>General Public Price </label>
-                                            {!! Form::number ('g_pub_price', null, ['class' => 'form-control', 'placeholder' => 'General Public Price', 'required' => 'required']) !!}
+                                            {!! Form::text('g_pub_price', null, ['class' => 'form-control', 'placeholder' => 'General Public Price', 'required' => 'required', "onkeypress" => "return isNumber(event)"]) !!}
                                         </div>
 
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Professional Education Price</label>
-                                            {!! Form::number('pro_price', null, ['class' => 'form-control', 'placeholder' => 'Professional Education Price', 'required' => 'required']) !!}
+                                            {!! Form::text('pro_price', null, ['class' => 'form-control', 'placeholder' => 'Professional Education Price', 'required' => 'required', "onkeypress" => "return isNumber(event)"]) !!}
                                         </div>
 
                                     </div>

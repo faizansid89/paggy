@@ -26,7 +26,7 @@ class WebinarController extends Controller
     }
     public function index()
     {
-        checkPermission('index-webinar');
+        checkPermission('read-webinar');
         $section = $this->section;
 
         if(\Auth::user()->role_id == 0){
@@ -64,16 +64,24 @@ class WebinarController extends Controller
      */
     public function store(Request $request)
     {
+
+        // $attachment = $request->pdf;
+        // $attachment->getMimeType();
+        // dd($request->toArray(), $attachment->getMimeType());
         $section=$this->section;
 
+        checkPermission('create-webinar');
+
+        
         if ($request->hasFile('pdf')) {
             $image = $request->file('pdf');
             $imageName = time().'.'.$image->getClientOriginalExtension();
             $image->move(public_path('files'), $imageName);
 
             // Save the image file path or perform any other operations
+            $request->request->add([ 'file' => $imageName]);
         }
-        $request->request->add([ 'file' => $imageName]);
+        
 
         Webinar::create($request->all());
         $request->session()->flash('alert-success', 'Record has been added successfully.');
@@ -99,6 +107,7 @@ class WebinarController extends Controller
      */
     public function edit(Webinar $webinar)
     {
+        checkPermission('update-webinar');
         $web = $webinar;
         $section = $this->section;
         $section->title = 'Edit Webinar';
@@ -116,6 +125,7 @@ class WebinarController extends Controller
      */
     public function update(Request $request, Webinar $webinar)
     {
+        checkPermission('update-webinar');
         $section = $this->section;
 
         $validationMessages = [
@@ -159,39 +169,22 @@ class WebinarController extends Controller
     }
 
 
-    public function buy($id){
-        checkPermission('buy-webinar');
-        $live=Webinar::where('id',$id)->first();
-    //    dd($live->toArray());
-        if(\Auth::user()->role_id == 2){
-            $amount = $live->pro_price;
-        }elseif(\Auth::user()->role_id == 3){
-            $amount = $live->g_pub_price;
-        }
-        else {
-            $amount = $live->g_pub_price;
-        }
-
-        //yahan payment lagy giu
-
-        $payment=[
-            'webinar_id'=>$id,
-            'amount'=>$amount,
-            'user_id'=>\Auth::user()->id,
-            'txn_id'=>1111,
-            'user_type'=>\Auth::user()->role_id,
-        ];
-
+    public function buy(Request $request){
+        checkPermission('purchase-webinar');
+       
+        $stripeFunction = new LiveStreamController();
+        $stripeFunction->generatePayment($request);
+        
         $section=$this->section;
-        Payment::create($payment);
-        \session()->flash('alert-success', 'Stream Appointment has been booked successfully.');
-        return redirect()->route($section->slug.'.index');
+
+        \session()->flash('alert-success', 'Webinar has been booked successfully.');
+        return redirect()->back();
     }
 
 
 
     public function booked(){
-        checkPermission('booked-webinar');
+        checkPermission('read-booked-webinar');
         if(\Auth::user()->role_id == 0){
             $record = Payment::with('webinar','user','role')->where('webinar_id','>','0')->get();
         }else{
@@ -205,7 +198,7 @@ class WebinarController extends Controller
 
 
     public function evolution(){
-        checkPermission('evaluation-webinar');
+        checkPermission('read-evaluation-webinar');
 
         if(\Auth::user()->role_id == 0){
             $record = Evaluation::with('user', 'user.role')->where('webinar_id','>','0')->where('webinar_type', 'webinar')->get();
@@ -225,7 +218,7 @@ class WebinarController extends Controller
 
     public function evaluation_form(Request $request)
     {
-        checkPermission('create-webinar');
+        checkPermission('create-evaluation-webinar');
         $section=$this->section;
         $web = [];
 
@@ -242,6 +235,7 @@ class WebinarController extends Controller
     }
 
     public function evaluation_create(Request $request){
+        checkPermission('create-evaluation-webinar');
         $section=$this->section;
         Evaluation::create($request->all());
         $request->session()->flash('alert-success', 'Record has been added successfully.');
@@ -250,9 +244,9 @@ class WebinarController extends Controller
     }
 
     public function evolution_show($id){
-        checkPermission('evaluation-webinar');
+        checkPermission('read-evaluation-webinar');
 
-        $record = Evaluation::with('user')->where('id',$id)->first();
+        $record = Evaluation::with(['user', 'user.role', 'webinar'])->where('id',$id)->first();
 
         $section=$this->section;
         $section->heading="View Evaluation Webinar";
@@ -266,7 +260,7 @@ class WebinarController extends Controller
 
 
     public function general(){
-        checkPermission('booked-webinar');
+        checkPermission('read-booked-webinar');
         if(\Auth::user()->role_id == 0){
             $record = Payment::with('webinar','user','role')->where('user_type',3)->where('webinar_id','>','0')->get();
         }
@@ -277,7 +271,7 @@ class WebinarController extends Controller
     }
 
     public function professional(){
-        checkPermission('booked-webinar');
+        checkPermission('read-booked-webinar');
         if(\Auth::user()->role_id == 0){
             $record = Payment::with('webinar','user','role')->where('user_type',2)->where('webinar_id','>','0')->get();
         }
@@ -289,7 +283,7 @@ class WebinarController extends Controller
 
 
     public function general_wE(){
-        checkPermission('booked-webinar');
+        checkPermission('read-booked-webinar');
         
         
         if(\Auth::user()->role_id == 0){
@@ -311,7 +305,7 @@ class WebinarController extends Controller
     }
 
     public function professional_wE(){
-        checkPermission('booked-webinar');
+        checkPermission('read-booked-webinar');
         
         
         if(\Auth::user()->role_id == 0){
@@ -331,6 +325,7 @@ class WebinarController extends Controller
     public function assessment(Request $request){
         $section = $this->section;
         dd('Assessment Work TODO');
+        checkPermission('read-assessment-webinar');
 
         Evaluation::create($request->all());
         $request->session()->flash('alert-success', 'Record has been added successfully.');
@@ -340,7 +335,8 @@ class WebinarController extends Controller
 
 
     public function certificate(){
-        // checkPermission('evaluation-webinar');
+        dd('Certificate Work TODO');
+        checkPermission('read-certificate-webinar');
 
         if(\Auth::user()->role_id == 0){
             $record = Evaluation::with('user', 'user.role')->where('webinar_id','>','0')->get();

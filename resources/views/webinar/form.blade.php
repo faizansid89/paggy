@@ -45,14 +45,14 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>General Public Price </label>
-                                            {!! Form::number ('g_pub_price', null, ['class' => 'form-control', 'placeholder' => 'General Public Price', 'required' => 'required']) !!}
+                                            {!! Form::text('g_pub_price', null, ['class' => 'form-control', 'placeholder' => 'General Public Price', 'required' => 'required', "onkeypress" => "return isNumber(event)" ]) !!}
                                         </div>
 
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Professional Education Price</label>
-                                            {!! Form::number('pro_price', null, ['class' => 'form-control', 'placeholder' => 'Professional Education Price', 'required' => 'required']) !!}
+                                            {!! Form::text('pro_price', null, ['class' => 'form-control', 'placeholder' => 'Professional Education Price', 'required' => 'required', "onkeypress" => "return isNumber(event)" ]) !!}
                                         </div>
 
                                     </div>
@@ -61,13 +61,6 @@
                                             <label>Stream Link</label>
                                             {!! Form::file('pdf', null, ['class' => 'form-control', 'placeholder' => 'Enter Name', 'required' => 'required']) !!}
                                         </div>
-
-
-                                        @if($section->method == 'PUT' && ($web->file != null))
-                                            <a target="_blank" href="{{ asset("/files") }}/{{ $web->file }}">Files</a>
-                                            <input type="hidden" value="{{$web->file}}" name="pdf_old" id="pdf_old" />
-                                        @endif
-
                                     </div>
 
 
@@ -76,6 +69,15 @@
                                             <label>Status</label>
                                             {!! Form::select('status', array(1 => 'Active', 0 => 'Block'), null, ['class' => 'form-control select', 'placeholder' => 'Select a option', 'required' => 'required']); !!}
                                         </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        @if($section->method == 'PUT' && ($web->file != null))
+                                            <a target="_blank" href="{{ asset("/files") }}/{{ $web->file }}">
+                                                <img src="{{ asset('assets/img/file_icon.jpg') }} " alt="" width="100">
+                                            </a>
+                                            <input type="hidden" value="{{$web->file}}" name="pdf_old" id="pdf_old" />
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="text-end">

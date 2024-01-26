@@ -68,19 +68,19 @@
                                             <td>{{$users->role->name ?? ""}}</td>
                                             <td>{!!($users->status == 0) ? '<span class="badges bg-lightred">Inactive</span>' : '<span class="badges bg-lightgreen">Active</span>'!!}</td>
                                             <td>
-                                                @if((in_array('update-user', getUserPermissions())))
-                                                <a class="me-3" href="{{ route("user.edit", $users->id) }}">
-                                                    <img src="{{ asset('assets/img/icons/edit.svg') }}" alt="img">
-                                                </a>
-                                                @endif
+                                                <div class="btn-group">
+                                                    @if((in_array('update-user', getUserPermissions())))
+                                                    <a  type="button" class="btn btn-danger" href="{{ route("user.edit", $users->id) }}" style="color: #ffffff;">Edit</a>
+                                                    @endif
 
-                                                @if(auth()->user()->role_id == 0)
-                                                    @canImpersonate($guard = null)
-                                                        <a href="{{ route('impersonate', $users->id) }}">
-                                                            <span class="badges bg-lightgreen"><img src="{{ asset('assets/img/icons/users1.svg') }}" alt="img"></span>
-                                                        </a>
-                                                    @endCanImpersonate
-                                                @endif
+                                                    @if(auth()->user()->role_id == 0)
+                                                        @canImpersonate($guard = null)
+                                                            <a href="{{ route('impersonate', $users->id) }}" class="btn btn-success">
+                                                                <i class="fa fa-street-view"  style="color: #ffffff;"></i>
+                                                            </a>
+                                                        @endCanImpersonate
+                                                    @endif
+                                                </div>
                                             </td>
                                         </tr>
                                         @endif

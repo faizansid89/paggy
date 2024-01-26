@@ -47,7 +47,6 @@
                                         <table class="table datanew">
                                             <thead>
                                             <tr>
-                                                <th>ID</th>
                                                 <th>Stream Link</th>
                                                 <th>Date</th>
                                                 <th>Related To</th>
@@ -60,8 +59,7 @@
                                                 @foreach( $record as $live )
 
                                                     <tr>
-                                                        <td>{{$live->id }}</td>
-                                                        <td>{{ ($live->livestream) ? $live->livestream->link : "" }}</td>
+                                                        <td><a href="{{ ($live->livestream) ? $live->livestream->link : "" }}" target="_blank" class="btn btn-success" style="color: #ffffff;"><i class="fa fa-link"></i> Stream Link</a></td>
                                                         <td>{{ ($live->livestream)? $live->livestream->date : "" }}</td>
                                                         <td>{{($live->livestream)? $live->livestream->related : "" }}</td>
                                                         <td>{{ ($live->user == null) ? "" : $live->user->name }} - {{ ($live->role == null) ? "" : $live->role->name }}</td>

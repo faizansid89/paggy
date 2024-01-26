@@ -57,12 +57,11 @@
                                             @if( isset($record) )
                                                 @foreach( $record as $live )
                                                     <tr>
-                                                        <td><a target="_blank" href="{{ asset('files/'.$live->webinar->file) }}">Download File</a> </td>
+                                                        <td><a href="{{ asset('files/'.$live->webinar->file) }}" target="_blank" class="btn btn-success" style="color: #ffffff;"><i class="fa fa-download"></i> Download File</a></td>
                                                         <td>{{$live->webinar->related }}</td>
                                                         <td>{{ ($live->user == null) ? "" : $live->user->name }} - {{ ($live->role == null) ? "" : $live->role->name }}</td>
                                                         <td>{{ env('CURRENCY_SAMBOL') }}{{$live->amount }}</td>
                                                     </tr>
-
                                                 @endforeach
                                             @endif
                                             </tbody>

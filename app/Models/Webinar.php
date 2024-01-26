@@ -14,4 +14,8 @@ class Webinar extends Model
     public function user(){
         return $this->belongsTo(User::class)->with('role');
     }
+
+    public function evaluation(){
+        return $this->belongsTo(Evaluation::class);
+    }
 }

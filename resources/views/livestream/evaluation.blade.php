@@ -22,9 +22,11 @@
                     </div> --}}
                 @endif
 
-                <button type="button" class="btn btn-added" data-toggle="modal" data-target="#bd-example-modal-lg">
-                    Form Evaluation
-                </button>
+                @if((in_array('create-evaluation-livestream', getUserPermissions())))
+                    <button type="button" class="btn btn-added" data-toggle="modal" data-target="#bd-example-modal-lg">
+                        Form Evaluation
+                    </button>
+                @endif
                 <style>
                     .row.innerform {
                         padding-left: 20px;

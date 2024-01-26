@@ -13,4 +13,12 @@ class Evaluation extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function webinar(){
+        return $this->hasone(Webinar::class,'id','webinar_id');
+    }
+
+    public function liststream(){
+        return $this->hasone(Livestream::class,'id','webinar_id');
+    }
+
 }

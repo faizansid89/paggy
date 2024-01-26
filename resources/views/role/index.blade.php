@@ -77,9 +77,7 @@
                                             <td>{!!($roles->status == 0) ? '<span class="badges bg-lightred">Inactive</span>' : '<span class="badges bg-lightgreen">Active</span>'!!}</td>
                                             <td>
                                                 @if((in_array('update-role', getUserPermissions())))
-                                                <a class="me-3" href="{{ route("role.edit", $roles->id) }}">
-                                                    <img src="{{ asset('assets/img/icons/edit.svg') }}" alt="img">
-                                                </a>
+                                                <a  type="button" class="btn btn-danger" href="{{ route("role.edit", $roles->id) }}" style="color: #ffffff;">Edit</a>
                                                 @endif
                                             </td>
                                         </tr>

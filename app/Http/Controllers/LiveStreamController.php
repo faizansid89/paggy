@@ -32,7 +32,7 @@ class LiveStreamController extends Controller
     }
     public function index()
     {
-        checkPermission('index-livestream');
+        checkPermission('read-livestream');
         $section = $this->section;
 
         if(\Auth::user()->role_id == 0){
@@ -74,7 +74,7 @@ class LiveStreamController extends Controller
 
     public function store(Request $request)
     {
-
+        checkPermission('create-livestream');
         $section=$this->section;
         Livestream::create($request->all());
         $request->session()->flash('alert-success', 'Record has been added successfully.');
@@ -102,6 +102,7 @@ class LiveStreamController extends Controller
      */
     public function edit(Livestream $livestream)
     {
+        checkPermission('update-livestream');
         $section = $this->section;
         $section->title = 'Edit Live Streaming';
         $section->method = 'PUT';
@@ -118,6 +119,7 @@ class LiveStreamController extends Controller
      */
     public function update(Request $request, Livestream $livestream)
     {
+        checkPermission('update-livestream');
         $section = $this->section;
 
         $validationMessages = [
@@ -151,7 +153,7 @@ class LiveStreamController extends Controller
     }
 
     public function booked(){
-        checkPermission('booked-livestream');
+        checkPermission('read-booked-livestream');
         if(\Auth::user()->role_id == 0){
             $record = Payment::with('livestream','user','role')->where('stream_id','>','0')->get();
         }else{
@@ -164,16 +166,10 @@ class LiveStreamController extends Controller
     }
 
     public function evolution(){
-        checkPermission('evaluation-webinar');
+        checkPermission('read-evaluation-livestream');
 
-        if(\Auth::user()->role_id == 0){
-            $record = Evaluation::with('user', 'user.role')->where('webinar_id','>','0')->where('webinar_type', 'livestream')->get();
-            $webinar=Payment::with('livestream','user', 'user.role')->where('stream_id','>','0')->get();
-
-        }else{
-            $record = Evaluation::with('user', 'user.role')->where('user_id',\Auth::user()->id)->where('webinar_id','>','0')->where('webinar_type', 'livestream')->get();
-            $webinar=Payment::with('livestream','user', 'user.role')->where('user_id',\Auth::user()->id)->where('stream_id','>','0')->get();
-        }
+        $record = Evaluation::with(['user', 'user.role', 'liststream'])->where('webinar_id','>','0')->where('webinar_type', 'livestream')->get();
+        $webinar=Payment::with('livestream','user', 'user.role')->where('stream_id','>','0')->get();
 
         // dd($record->toArray(), $webinar->toArray());
         $section=$this->section;
@@ -186,57 +182,55 @@ class LiveStreamController extends Controller
 
     public function evaluation_form(Request $request)
     {
-        checkPermission('create-webinar');
+        checkPermission('create-evaluation-livestream');
         $section=$this->section;
         $web = [];
 
         if(\Auth::user()->role_id == 0){
-            $webinar=Payment::with('livestream','user', 'user.role')->where('stream_id','>','0')->get();
+            $webinar=Payment::with('livestream','user', 'user.role')->where('stream_id','!=', null)->get();
 
         }else{
             $webinar=Payment::with('livestream','user', 'user.role')->where('user_id',\Auth::user()->id)->where('stream_id','>','0')->get();
         }
 
+        // dd($webinar->toArray());
         $section->route=$section->slug.".evaluation_create";
         $section->method="post";
         return view($section->folder.'.evaluation_form',compact('web','section', 'webinar'));
     }
 
     public function evaluation_create(Request $request){
+        checkPermission('create-evaluation-livestream');
         $section=$this->section;
         Evaluation::create($request->all());
         $request->session()->flash('alert-success', 'Record has been added successfully.');
         return redirect()->route('livestream.evolution');
-
     }
 
     public function evolution_show($id){
-        checkPermission('evaluation-webinar');
+        checkPermission('read-evaluation-livestream');
 
-        $record = Evaluation::with('user')->where('id',$id)->first();
+        $record = Evaluation::with(['user', 'liststream'])->where('id',$id)->first();
 
         $section=$this->section;
         $section->heading="View Evaluation LiveStream";
         
+        // dd($record->toArray());
+
         return view($section->folder.'.evaluation_view',compact('section','record'));
     }
 
     public function buy(Request $request){
-
-        // dd($request->toArray());
-        checkPermission('buy-livestream');
-
+        checkPermission('purchase-livestream');
         $this->generatePayment($request);
-
         $section=$this->section;
-
         \session()->flash('alert-success', 'Stream Appointment has been booked successfully.');
         return redirect()->back();
     }
 
 
     public function general(){
-        checkPermission('booked-livestream');
+        checkPermission('read-booked-livestream');
         if(\Auth::user()->role_id == 0){
             $record = Payment::with('livestream','user','role')->where('user_type',3)->where('stream_id','>','0')->get();
         }
@@ -247,7 +241,7 @@ class LiveStreamController extends Controller
     }
 
     public function professional(){
-        checkPermission('booked-livestream');
+        checkPermission('read-booked-livestream');
         if(\Auth::user()->role_id == 0){
             $record = Payment::with('livestream','user','role')->where('user_type',2)->where('stream_id','>','0')->get();
         }
@@ -261,6 +255,7 @@ class LiveStreamController extends Controller
     public function assessment(Request $request){
         $section = $this->section;
         dd('Assessment Work TODO');
+        checkPermission('read-assessment-livestream');
 
         Evaluation::create($request->all());
         $request->session()->flash('alert-success', 'Record has been added successfully.');
@@ -269,7 +264,7 @@ class LiveStreamController extends Controller
     }
 
     public function certificate(){
-        // checkPermission('evaluation-webinar');
+        checkPermission('read-certificate-livestream');
 
         if(\Auth::user()->role_id == 0){
             $record = Evaluation::with('user', 'user.role')->where('webinar_id','>','0')->get();
@@ -313,7 +308,7 @@ class LiveStreamController extends Controller
             $description = 'Purchase Live Stream From '. env('APP_NAME') .' | Name: ' . $data->related . ' | dated : ' . Carbon::parse(Carbon::now())->format('d M Y');
         }
         else {
-            $data = Webinar::where('chapter_name', $request->id)->where('chapter_type', $request->type)->first();
+            $data = Webinar::where('id', $request->id)->first();
             if(\Auth::user()->role_id == 2){
                 $amount = $data->pro_price;
             }elseif(\Auth::user()->role_id == 3){

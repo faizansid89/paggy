@@ -13,114 +13,6 @@ class PermissionTableSeeder extends Seeder
     public function run()
     {
         $permissions = [
-//            [
-//                'name' => 'create-category',
-//                'display_name' => 'Create Category',
-//                'group' => 'Category Management'
-//            ],
-//            [
-//                'name' => 'read-category',
-//                'display_name' => 'Read Category',
-//                'group' => 'Category Management'
-//            ],
-//            [
-//                'name' => 'update-category',
-//                'display_name' => 'Update Category',
-//                'group' => 'Category Management'
-//            ],
-//
-//            [
-//                'name' => 'create-subcategory',
-//                'display_name' => 'Create Subcategory',
-//                'group' => 'Subcategory Management'
-//            ],
-//            [
-//                'name' => 'read-subcategory',
-//                'display_name' => 'Read Subcategory',
-//                'group' => 'Subcategory Management'
-//            ],
-//            [
-//                'name' => 'update-subcategory',
-//                'display_name' => 'Update Subcategory',
-//                'group' => 'Subcategory Management'
-//            ],
-//            [
-//                'name' => 'create-product',
-//                'display_name' => 'Create Product',
-//                'group' => 'Product Management'
-//            ],
-//            [
-//                'name' => 'read-product',
-//                'display_name' => 'Read Product',
-//                'group' => 'Product Management'
-//            ],
-//            [
-//                'name' => 'update-product',
-//                'display_name' => 'Update Product',
-//                'group' => 'Product Management'
-//            ],
-//            [
-//                'name' => 'create-brand',
-//                'display_name' => 'Create Brand',
-//                'group' => 'Brand Management'
-//            ],
-//            [
-//                'name' => 'read-brand',
-//                'display_name' => 'Read Brand',
-//                'group' => 'Brand Management'
-//            ],
-//            [
-//                'name' => 'update-brand',
-//                'display_name' => 'Update Brand',
-//                'group' => 'Brand Management'
-//            ],
-//
-//            [
-//                'name' => 'create-customer',
-//                'display_name' => 'Create Customer ',
-//                'group' => 'Customer Management'
-//            ],
-//            [
-//                'name' => 'read-customer',
-//                'display_name' => 'Read Customer ',
-//                'group' => 'Customer Management'
-//            ],
-//            [
-//                'name' => 'update-customer',
-//                'display_name' => 'Update Customer ',
-//                'group' => 'Customer Management'
-//            ],
-//
-//             [
-//                'name' => 'create-supplier',
-//                'display_name' => 'Create Supplier ',
-//                'group' => 'Supplier Management'
-//            ],
-//            [
-//                'name' => 'read-supplier',
-//                'display_name' => 'Read Supplier ',
-//                'group' => 'Supplier Management'
-//            ],
-//            [
-//                'name' => 'update-supplier',
-//                'display_name' => 'Update Supplier ',
-//                'group' => 'Supplier Management'
-//            ],
-//            [
-//                'name' => 'create-branch',
-//                'display_name' => 'Create Branch ',
-//                'group' => 'Branch Management'
-//            ],
-//            [
-//                'name' => 'read-branch',
-//                'display_name' => 'Read Branch ',
-//                'group' => 'Branch Management'
-//            ],
-//            [
-//                'name' => 'update-branch',
-//                'display_name' => 'Update Branch ',
-//                'group' => 'Branch Management'
-//            ],
             [
                 'name' => 'create-role',
                 'display_name' => 'Create Role ',
@@ -151,110 +43,113 @@ class PermissionTableSeeder extends Seeder
                 'display_name' => 'Update User ',
                 'group' => 'User Management'
             ],
-//            [
-//                'name' => 'create-purchase',
-//                'display_name' => 'Create Purchase ',
-//                'group' => 'Purchase Management'
-//            ],
-//            [
-//                'name' => 'read-purchase',
-//                'display_name' => 'Read Purchase ',
-//                'group' => 'Purchase Management'
-//            ],
-//            [
-//                'name' => 'update-advertisement',
-//                'display_name' => 'Update Advertisement ',
-//                'group' => 'Advertisement Management'
-//            ],
-//            [
-//                'name' => 'create-advertisement',
-//                'display_name' => 'Create Advertisement ',
-//                'group' => 'Advertisement Management'
-//            ],
-//            [
-//                'name' => 'read-advertisement',
-//                'display_name' => 'Read Advertisement ',
-//                'group' => 'Advertisement Management'
-//            ],
-//            [
-//                'name' => 'update-purchase',
-//                'display_name' => 'Update Purchase ',
-//                'group' => 'Purchase Management'
-//            ],
-//            [
-//                'name' => 'create-productunit',
-//                'display_name' => 'Create Product Unit',
-//                'group' => 'Product Unit Management'
-//            ],
-//            [
-//                'name' => 'read-productunit',
-//                'display_name' => 'Read Product Unit',
-//                'group' => 'Product Unit Management'
-//            ],
-//            [
-//                'name' => 'update-productunit',
-//                'display_name' => 'Update Product Unit',
-//                'group' => 'Product Unit Management'
-//            ],
-//            [
-//                'name' => 'read-reports',
-//                'display_name' => 'Read Reports',
-//                'group' => 'Reports Management'
-//            ],
-//            [
-//                'name' => 'create-sales',
-//                'display_name' => 'Create Sales',
-//                'group' => 'Sales Management'
-//            ],
-//            [
-//                'name' => 'read-sales',
-//                'display_name' => 'Read Sales',
-//                'group' => 'Sales Management'
-//            ],
-//            [
-//                'name' => 'update-sales',
-//                'display_name' => 'Update Sales',
-//                'group' => 'Sales Management'
-//            ],
-//            [
-//                'name' => 'read-sync-system',
-//                'display_name' => 'Sync System',
-//                'group' => 'Branch Wise Access'
-//            ],
-//            [
-//                'name' => 'label-printing',
-//                'display_name' => 'Label Printing',
-//                'group' => 'Branch Wise Access'
-//            ],
-//            [
-//                'name' => 'pos',
-//                'display_name' => 'POS',
-//                'group' => 'Branch Wise Access'
-//            ],
-//            [
-//                'name' => 'miss_sale',
-//                'display_name' => 'Miss Sale',
-//                'group' => 'Miss Sale Access'
-//            ],
-//            [
-//                'name' => 'sync_logs',
-//                'display_name' => 'Sync Logs',
-//                'group' => 'Sync Logs Access'
-//            ],
-//            [
-//                'name' => 'cities',
-//                'display_name' => 'Cities',
-//                'group' => 'Cities Access'
-//            ],
-//            [
-//                'name' => 'areas',
-//                'display_name' => 'Areas',
-//                'group' => 'Areas Access'
-//            ],
+
             [
-                'name' => 'read-sync-system',
-                'display_name' => 'Sync System',
-                'group' => 'Sync System'
+                'name' => 'professional-user',
+                'display_name' => 'Professional User ',
+                'group' => 'User Base Permission'
+            ],
+            [
+                'name' => 'general-user',
+                'display_name' => 'General User ',
+                'group' => 'User Base Permission'
+            ],
+
+
+            [
+                'name' => 'create-livestream',
+                'display_name' => 'Create Live Stream',
+                'group' => 'Livestream Management'
+            ],
+            [
+                'name' => 'read-livestream',
+                'display_name' => 'Read Live Stream',
+                'group' => 'Livestream Management'
+            ],
+            [
+                'name' => 'update-livestream',
+                'display_name' => 'Update Live Stream',
+                'group' => 'Livestream Management'
+            ],
+            [
+                'name' => 'purchase-livestream',
+                'display_name' => 'Purchase Live Stream',
+                'group' => 'Livestream Management'
+            ],
+
+            [
+                'name' => 'read-booked-livestream',
+                'display_name' => 'Read Booked Livestream',
+                'group' => 'Livestream Booked Management'
+            ],
+            [
+                'name' => 'create-evaluation-livestream',
+                'display_name' => 'Create Evaluation Livestream',
+                'group' => 'Livestream Evaluation Management'
+            ],
+            [
+                'name' => 'read-evaluation-livestream',
+                'display_name' => 'Read Evaluation Livestream',
+                'group' => 'Livestream Evaluation Management'
+            ],
+            [
+                'name' => 'read-assessment-livestream',
+                'display_name' => 'Read Assessment Livestream',
+                'group' => 'Livestream Assessment Management'
+            ],
+            [
+                'name' => 'read-certificate-livestream',
+                'display_name' => 'Read Certificate Livestream',
+                'group' => 'Livestream Certificate Management'
+            ],
+
+
+
+            [
+                'name' => 'create-webinar',
+                'display_name' => 'Create Webinar',
+                'group' => 'Webinar Management'
+            ],
+            [
+                'name' => 'read-webinar',
+                'display_name' => 'Read Webinar',
+                'group' => 'Webinar Management'
+            ],
+            [
+                'name' => 'update-webinar',
+                'display_name' => 'Update Webinar',
+                'group' => 'Webinar Management'
+            ],
+            [
+                'name' => 'purchase-webinar',
+                'display_name' => 'Purchase Webinar',
+                'group' => 'Webinar Management'
+            ],
+
+            [
+                'name' => 'read-booked-webinar',
+                'display_name' => 'Read Booked Webinar',
+                'group' => 'Webinar Booked Management'
+            ],
+            [
+                'name' => 'create-evaluation-webinar',
+                'display_name' => 'Create Evaluation Webinar',
+                'group' => 'Webinar Evaluation Management'
+            ],
+            [
+                'name' => 'read-evaluation-webinar',
+                'display_name' => 'Read Evaluation Webinar',
+                'group' => 'Webinar Evaluation Management'
+            ],
+            [
+                'name' => 'read-assessment-webinar',
+                'display_name' => 'Read Assessment Webinar',
+                'group' => 'Webinar Assessment Management'
+            ],
+            [
+                'name' => 'read-certificate-webinar',
+                'display_name' => 'Read Certificate Webinar',
+                'group' => 'Webinar Certificate Management'
             ],
 
         ];

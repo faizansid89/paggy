@@ -11,5 +11,8 @@ class Livestream extends Model
 
     protected $guarded = [];
 
+    public function evaluation(){
+        return $this->belongsTo(Evaluation::class);
+    }
 
 }

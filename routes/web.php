@@ -74,7 +74,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     
     
     // Route::get('certificate',[LiveStreamController::class,'certificate'])->name('livestream.certificate');
-    Route::get('buy/{id}',[LiveStreamController::class,'buy'])->name('livestream.buy');
+    // Route::get('buy/{id}',[LiveStreamController::class,'buy'])->name('livestream.buy');
     
 
     Route::group(['prefix' => 'livestream'], function () {
@@ -118,6 +118,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
         Route::get('certificate',[CertificateController::class,'index'])->name('webinar.certificate');
         Route::get('certificate/create',[CertificateController::class,'create'])->name('webinar.certificate.create');
         Route::get('certificate/store',[CertificateController::class,'store'])->name('webinar.certificate.store');
+
+        Route::post('buy',[WebinarController::class,'buy'])->name('webinar.buy');
     });
     Route::resource('webinar',WebinarController::class);
     
@@ -126,7 +128,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     
     
     
-    Route::get('buyw/{id}',[WebinarController::class,'buy'])->name('webinar.buy');
+    // Route::get('buyw/{id}',[WebinarController::class,'buy'])->name('webinar.buy');
     // Route::get('generalw',[WebinarController::class,'general'])->name('webinar.generalw');
     // Route::get('professionalw',[WebinarController::class,'professional'])->name('webinar.professionalw');
     

@@ -1555,5 +1555,13 @@ if (!function_exists('getMenu')) {
             return count($checkPurchase);
         }
     }
+
+    if (!function_exists('checkWebinarPurchase')) {
+        function checkWebinarPurchase($webinarId)
+        {
+            $checkPurchase = \App\Models\Payment::where('webinar_id', $webinarId)->where('user_id', auth()->user()->id)->get();
+            return count($checkPurchase);
+        }
+    }
 }
 

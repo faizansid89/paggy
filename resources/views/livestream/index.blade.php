@@ -48,15 +48,17 @@
                                     <th>ID</th>
                                     <th>Stream Link</th>
                                     <th>Date</th>
-                                    @if((in_array('generalPrice-livestream', getUserPermissions())))
+                                    @if((in_array('general-user', getUserPermissions())))
                                     <th>General Price</th>
                                     @endif
-                                    @if((in_array('proPrice-livestream', getUserPermissions())))
+                                    @if((in_array('professional-user', getUserPermissions())))
                                     <th>Professional Price</th>
                                     @endif
                                     <th>Related To</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
+                                    @if((in_array('update-livestream', getUserPermissions())))
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    @endif
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -65,36 +67,43 @@
 
                                             <tr>
                                                 <td>{{$live->id }}</td>
-                                                <td>{{$live->link}}</td>
+                                                <td>
+                                                    @php
+                                                        if(in_array('general-user', getUserPermissions())){
+                                                            $amount = $live->g_pub_price;
+                                                        }
+                                                        else {
+                                                            $amount = $live->pro_price;
+                                                        }
+                                                    @endphp
+
+                                                    @if((in_array('purchase-livestream', getUserPermissions())))
+                                                        @if(checkStreamPurchase($live->id) < 1)
+                                                            <button type="button" class="btn btn-primary buyNowBtn" data-bs-toggle="modal" data-bs-target="#myModal"  data-id="{{ $live->id }}" data-name="{{ $live->related }}" data-price="{{ $amount }}" >Buy Now - {{ env('CURRENCY_SAMBOL')}}{!! $amount !!}</button>
+                                                        @else
+                                                            <a href="{{$live->link}}" target="_blank" class="btn btn-success" style="color: #ffffff;"><i class="fa fa-link"></i> Stream Link</a>
+                                                        @endif
+                                                    @endif
+                                                </td>
                                                 <td>{{$live->date }}</td>
-                                                @if((in_array('generalPrice-livestream', getUserPermissions())))
+                                                @if((in_array('general-user', getUserPermissions())))
                                                 <td>${{ $live->g_pub_price  }}</td>
                                                 @endif
-                                                @if((in_array('proPrice-livestream', getUserPermissions())))
+                                                @if((in_array('professional-user', getUserPermissions())))
                                                     <td>{{ env('CURRENCY_SAMBOL')}}{{ $live->pro_price  }}</td>
                                                 @endif
                                                 <td>{{$live->related }}</td>
 
+                                                @if((in_array('update-livestream', getUserPermissions())))
                                                 <td>{!!($live->status == 0) ? '<span class="badges bg-lightred">Inactive</span>' : '<span class="badges bg-lightgreen">Active</span>'!!}</td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        @if((in_array('edit-livestream', getUserPermissions())))
-                                                            <a  type="button" class="btn btn-danger" href="{{ route("livestream.edit", $live->id) }}" style="color: #ffffff;">
-                                                                Edit
-                                                            </a>
-                                                        @endif
-                                                        @if((in_array('buy-livestream', getUserPermissions())))
-                                                            {{-- <a class="btn btn-searchset" href="{{ route("livestream.buy", $live->id) }}" >
-                                                                Buy
-                                                            </a> --}}
-                                                            @if(checkStreamPurchase($live->id) < 1)
-                                                                <button type="button" class="btn btn-primary buyNowBtn" data-bs-toggle="modal" data-bs-target="#myModal"  data-id="{{ $live->id }}" data-name="{{ $live->related }}" data-price="{{ $live->pro_price }}" >Buy Now <br/> {{ env('CURRENCY_SAMBOL')}}{!! $live->pro_price !!}</button>
-                                                            @else
-                                                                <button type="button" class="btn btn-success buyNowBtn">Already Purchased</button>
-                                                            @endif
+                                                        @if((in_array('update-livestream', getUserPermissions())))
+                                                            <a  type="button" class="btn btn-danger" href="{{ route("livestream.edit", $live->id) }}" style="color: #ffffff;">Edit</a>
                                                         @endif
                                                     </div>
                                                 </td>
+                                                @endif
                                             </tr>
                                         @endforeach
                                     @endif
