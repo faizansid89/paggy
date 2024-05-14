@@ -5,7 +5,7 @@
         <div class="login-logo logo-normal">
             <img src="{{ asset('assets/img/logo.png') }}" alt="img" style="max-width: 400px;">
         </div>
-        <a href="index.html" class="login-logo logo-white">
+        <a href="{{ route('login')}}" class="login-logo logo-white">
             <img src="{{ asset('assets/img/logo-white.png') }}" alt="" style="max-width: 400px;">
         </a>
         <form method="POST" action="{{ route('login') }}">

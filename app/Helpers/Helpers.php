@@ -168,7 +168,7 @@ if (!function_exists('getAmountFormat')) {
     function getAmountFormat($value)
     {
         if ($value) {
-            return '<span class="currenct currency-usd">Rs. </span>' . number_format("$value", 2);
+            return '<span class="currenct currency-usd">'.env("CURRENCY_SAMBOL").' </span>' . number_format("$value", 2);
         }
     }
 }
