@@ -6,6 +6,7 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\MissSaleController;
 use App\Http\Controllers\SaleReturnController;
 use App\Http\Controllers\SalesController;
+use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\SyncController;
 use App\Http\Controllers\SyncLogController;
 use Illuminate\Support\Facades\DB;
@@ -158,6 +159,13 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
 
 
     Route::resource('rolepermission', RolePermissionController::class);
+
+    Route::get('services/form_one', [ServicesController::class, 'form_one'])->name('services.form_one');
+    Route::get('services/form_two', [ServicesController::class, 'form_two'])->name('services.form_two');
+    Route::get('services/form_three', [ServicesController::class, 'form_three'])->name('services.form_three');
+    Route::get('services/form_four', [ServicesController::class, 'form_four'])->name('services.form_four');
+    Route::resource('services',ServicesController::class);
+    
   
     Route::impersonate();
 
