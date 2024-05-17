@@ -58,6 +58,13 @@
             <div class="form-login">
                 <button type="submit" class="btn btn-login">Login</button>
             </div>
+            <div class="form-login" style="text-align: center;">
+                @if (Route::has('register'))
+                    <div class="alreadyuser">
+                        <h4><a href="{{ route('register') }}" class="hover-a">Create a new account</a></h4>
+                    </div>
+                @endif
+            </div>
         </form>
     </div>
 @endsection
