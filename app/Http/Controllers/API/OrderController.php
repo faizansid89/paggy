@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <?php
 
 namespace App\Http\Controllers\API;
@@ -99,4 +97,3 @@ class OrderController extends Controller
     }
 
 }
->>>>>>> cadbf20e819f42c88b6ae80ab2013f9840a44660

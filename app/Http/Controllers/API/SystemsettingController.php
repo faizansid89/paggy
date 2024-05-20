@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <?php
 
 namespace App\Http\Controllers\API;
@@ -116,4 +114,3 @@ foreach ($groupedData as $date => $times) {
         }
 
 }
->>>>>>> cadbf20e819f42c88b6ae80ab2013f9840a44660

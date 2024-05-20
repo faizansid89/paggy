@@ -69,7 +69,7 @@ Route::post('customer', [SyncController::class, 'customer']);
 Route::post('user', [SyncController::class, 'user']);
 //////////////////////////////////////////////////////
 
-Route::get('categories','App\Http\Controllers\API\CategoryController@allcategories');
+// Route::get('categories','App\Http\Controllers\API\CategoryController@allcategories');
 
 Route::get('store/{id}','App\Http\Controllers\API\ProductController@shop_branch');
 Route::get('nearby_store/{id}','App\Http\Controllers\API\ProductController@nearby_store');

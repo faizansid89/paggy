@@ -6,7 +6,9 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\MissSaleController;
 use App\Http\Controllers\SaleReturnController;
 use App\Http\Controllers\SalesController;
+use App\Http\Controllers\ServicesAssessmentsController;
 use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\ServicesDownloadFileController;
 use App\Http\Controllers\SyncController;
 use App\Http\Controllers\SyncLogController;
 use Illuminate\Support\Facades\DB;
@@ -137,8 +139,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     Route::get('professional_wE',[WebinarController::class,'professional_wE'])->name('webinar.professional_wE');
 
 
-    Route::resource('text', TextTypeController::class);
-    Route::get('get/{id}', [TextTypeController::class, 'get']);
+    // Route::resource('text', TextTypeController::class);
+    // Route::get('get/{id}', [TextTypeController::class, 'get']);
 
 
 
@@ -146,16 +148,16 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     Route::post('image/delete',[UploadController::class, 'fileDestroy']);
 
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('categories', CategoriesController::class);
-    Route::post('uploadcate',[CategoriesController::class,'uploadcate'])->name('uploadcate');
+    // Route::resource('categories', CategoriesController::class);
+    // Route::post('uploadcate',[CategoriesController::class,'uploadcate'])->name('uploadcate');
 
     Route::resource('role', RoleController::class);
 
     Route::resource('user', UserController::class);
     Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
 
-    Route::resource('supplier', SupplierController::class);
-    Route::post('uploadsupplair',[SupplierController::class,'uploadsupplair'])->name('uploadsupplair');
+    // Route::resource('supplier', SupplierController::class);
+    // Route::post('uploadsupplair',[SupplierController::class,'uploadsupplair'])->name('uploadsupplair');
 
 
     Route::resource('rolepermission', RolePermissionController::class);
@@ -165,6 +167,10 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     Route::get('services/form_three', [ServicesController::class, 'form_three'])->name('services.form_three');
     Route::get('services/form_four', [ServicesController::class, 'form_four'])->name('services.form_four');
     Route::resource('services',ServicesController::class);
+    Route::group(['prefix' => 'services/{id}'], function () {
+        Route::resource('services_assessments', ServicesAssessmentsController::class);
+        Route::resource('services_download_file', ServicesDownloadFileController::class);
+    });
     
   
     Route::impersonate();
