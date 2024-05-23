@@ -33,7 +33,122 @@
                         <div class="card-body">
                             {!! Form::model($service, ['route' => $section->route, 'class' => 'form-validate', 'files' => true, 'enctype' => 'multipart/form-data', 'autocomplete' => 'off']) !!}
                             @method($section->method)
-                                <div class="row">
+
+                                 <div class="form-row row">
+                                    <div class="col-md-12 mb-3">
+                                       <label class="form-label" for="validationCustom01">First name</label>
+                                       <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="" required="">
+                                       <div class="valid-feedback">
+                                          Looks good!
+                                       </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                       <label class="form-label" for="validationCustom02">Last name</label>
+                                       <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="" required="">
+                                       <div class="valid-feedback">
+                                          Looks good!
+                                       </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                       <label class="form-label">Email</label>
+                                       <input type="email" class="form-control" placeholder="Email">
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                       <label class="form-label">Contact Number</label>
+                                       <input type="number" class="form-control" placeholder="Phone Number">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="form-group">
+                                            <label>Your Role</label>
+                                            <div class="form-check"> 
+                                                <input class="form-check-input" type="radio" name="radioYourRole" id="Prosecutor">
+                                                <label class="form-check-label" for="Prosecutor">Prosecutor</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="radioYourRole" id="DefenseAttorney" checked="">
+                                                <label class="form-check-label" for="DefenseAttorney">Defense Attorney</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="radioYourRole" id="PlaintiffAttorney" checked="">
+                                                <label class="form-check-label" for="PlaintiffAttorney">Plaintiff Attorney</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="radioYourRole" id="RespondentAttorney" checked="">
+                                                <label class="form-check-label" for="RespondentAttorney">Respondent Attorney</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="radioYourRole" id="Client" checked="">
+                                                <label class="form-check-label" for="Client">Client</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="form-group">
+                                            <label>Type of Case</label>
+                                            <div class="form-check"> 
+                                                <input class="form-check-input" type="radio" name="radioTypeofCase" id="Divorce/Custody">
+                                                <label class="form-check-label" for="Divorce/Custody">Divorce/Custody</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="radioTypeofCase" id="ProtectiveOrder" checked="">
+                                                <label class="form-check-label" for="ProtectiveOrder">Protective Order</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="radioTypeofCase" id="Criminal" checked="">
+                                                <label class="form-check-label" for="Criminal">Criminal</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="radioTypeofCase" id="Other" checked="">
+                                                <label class="form-check-label" for="Other">Other</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 </div>
+                                 <div class="form-row row">
+                                     <div class="col-md-12">
+                                         <h3 class="mb-3">Court Date:</h3>
+                                     </div>
+                                 </div>
+                                 <div class="form-row row">
+                                     <div class="col-md-4 mb-3">
+                                         <div class="form-group">
+                                            <label>Select Date</label>
+                                            <input class="form-control" placeholder="Enter Title" required="required" name="title" type="date">
+                                         </div>
+                                     </div>
+                                     <div class="col-md-4 mb-3">
+                                         <div class="form-group col-md-6">
+                                           <label for="time">Time</label>
+                                           <input class="form-control" type="text" id="consultationDateTime">
+                                         </div>
+                                     </div>
+                                     <div class="col-md-12 mb-3">
+                                        <label for="inputBriefOverviewofCase" class="form-label">Brief Overview of Case</label>
+                                        <textarea class="form-control" placeholder="Please Describe" required="required" name="inputBriefOverviewofCase" cols="50" rows="5" spellcheck="false"></textarea>
+                                     </div>
+                                     <div class="col-md-12 mb-3">
+                                         <div class="custom-file-container" data-upload-id="mySecondImage">
+                                            <label>Please Upload all files here (Allow Multiple) <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">x</a></label>
+                                            <label class="custom-file-container__custom-file">
+                                            <input type="file" class="custom-file-container__custom-file__custom-file-input" multiple="">
+                                            <input type="hidden" name="MAX_FILE_SIZE" value="10485760">
+                                            <span class="custom-file-container__custom-file__custom-file-control">Choose file...<span class="custom-file-container__custom-file__custom-file-control__button"> Browse </span></span>
+                                            </label>
+                                         </div>
+                                     </div>
+                                     <div class="col-md-12 mb-3">
+                                         <aside class="product-order-list">
+                                            <div class="head d-flex align-items-center justify-content-between w-100">
+                                               <div class>
+                                                  <h5>Consultation Payment</h5>
+                                                  <span>$20.00</span>
+                                               </div>
+                                            </div>
+                                         </aside>
+                                     </div>
+                                 </div>
+
+                                <!-- <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Date</label>
@@ -102,7 +217,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="text-end">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
@@ -116,6 +231,11 @@
 
 @endsection
 @section('scripts')
+     <script>
+        $('#consultationDateTime').datetimepicker({
+            format: 'hh:mm:ss a'
+        });
+    </script>
     <link rel="stylesheet" href="{{ asset('assets/css/richtext.min.css') }}">
     <script src="{{ asset('assets/js/jquery.richtext.js') }}"></script>
     <script>
