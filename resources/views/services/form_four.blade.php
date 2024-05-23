@@ -54,7 +54,7 @@
                                    </div>
                                    <div class="col-md-12 mb-3">
                                       <label class="form-label">Contact Number</label>
-                                      <input type="number" class="form-control" placeholder="Phone Number">
+                                      <input type="text" class="form-control" placeholder="Phone Number" onkeypress="return isNumber(event)">
                                    </div>
                                    <div class="col-md-12 mb-3">
                                        <div class="form-group">
@@ -145,14 +145,20 @@
                                        <textarea class="form-control" placeholder="Please Describe" required="required" name="inputBriefOverviewofCase" cols="50" rows="5" spellcheck="false"></textarea>
                                     </div>
                                     <div class="col-md-12 mb-3">
-                                        <div class="custom-file-container" data-upload-id="mySecondImage">
+                                        <div class="form-control-wrap">
+                                            <div class="custom-file">
+                                                <div class="dropzone" data-test="start_job_upload_photos" id="dropzone"></div>
+                                                <div class="form-note">Max. files: 5.</div>
+                                            </div>
+                                        </div>
+                                        {{-- <div class="custom-file-container" data-upload-id="mySecondImage">
                                            <label>Please Upload all files here (Allow Multiple) <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">x</a></label>
                                            <label class="custom-file-container__custom-file">
                                            <input type="file" class="custom-file-container__custom-file__custom-file-input" multiple="">
                                            <input type="hidden" name="MAX_FILE_SIZE" value="10485760">
                                            <span class="custom-file-container__custom-file__custom-file-control">Choose file...<span class="custom-file-container__custom-file__custom-file-control__button"> Browse </span></span>
                                            </label>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <div class="col-md-12 mb-3">
                                         <aside class="product-order-list">

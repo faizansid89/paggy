@@ -56,20 +56,26 @@
                                 
                                 <div class="col-md-12 mb-3">
                                    <label class="form-label">Contact Number</label>
-                                   <input type="number" class="form-control" placeholder="Phone Number">
+                                   <input type="text" class="form-control" placeholder="Phone Number" onkeypress="return isNumber(event)">
                                 </div>
                             </div>
 
                             <div class="form-row row">
                                 <div class="col-md-12 mb-3">
-                                    <div class="custom-file-container" data-upload-id="mySecondImage">
+                                    <div class="form-control-wrap">
+                                        <div class="custom-file">
+                                            <div class="dropzone" data-test="start_job_upload_photos" id="dropzone"></div>
+                                            <div class="form-note">Max. files: 5.</div>
+                                        </div>
+                                    </div>
+                                    {{-- <div class="custom-file-container" data-upload-id="mySecondImage">
                                        <label>Please Upload all files here (Allow Multiple) <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">x</a></label>
                                        <label class="custom-file-container__custom-file">
                                        <input type="file" class="custom-file-container__custom-file__custom-file-input" multiple="">
                                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760">
                                        <span class="custom-file-container__custom-file__custom-file-control">Choose file...<span class="custom-file-container__custom-file__custom-file-control__button"> Browse </span></span>
                                        </label>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="col-md-12">
                                    <div class="form-group">
@@ -107,81 +113,9 @@
                                     </aside>
                                 </div>
                             </div>
-
-
-                                <!-- <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Date</label>
-                                            {!! Form::date('title', null, ['class' => 'form-control', 'placeholder' => 'Enter Title', 'required' => 'required']) !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Input</label>
-                                            {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Enter Title', 'required' => 'required']) !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Rich Tech Editor</label>
-                                            {!! Form::textarea('description', null, ['class' => 'form-control contentArea', 'placeholder' => 'Enter Description', 'required' => 'required']) !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Text Area</label>
-                                            {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Enter Description', 'required' => 'required']) !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Thumbnail</label>
-                                            {!! Form::file('thumbnail_file', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        @if($section->method == 'PUT')
-                                            <img src="{{ $service->thumbnail }}" alt="" class="avatar avatar-xl rounded"  />
-                                        @endif
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Select DropDown</label>
-                                            {!! Form::select('status', array(1 => 'Active', 0 => 'Block'), null, ['class' => 'form-control select', 'placeholder' => 'Select a option', 'required' => 'required']) !!}
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Radio Button</label>
-                                            <div class="form-check"> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                                <label class="form-check-label" for="flexRadioDefault1"> Default radio </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked="">
-                                                <label class="form-check-label" for="flexRadioDefault2"> Default checked radio </label>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Checkbox</label>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault"> Default checkbox </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked="">
-                                                <label class="form-check-label" for="flexCheckChecked"> Checked checkbox </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
-                                <div class="text-end">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
+                            <div class="text-end">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
                             {!! Form::close() !!}
                         </div>
                     </div>

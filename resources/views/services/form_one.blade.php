@@ -942,7 +942,7 @@
                                         <input type="text" class="form-control" name="inputThreePrimaryGoals3" id="inputThreePrimaryGoals3" placeholder="" value="" required="">
                                     </div>
                                 </div>
-                                <div class="col-md-12 mb-3">
+                                {{-- <div class="col-md-12 mb-3">
                                     <div class="custom-file-container" data-upload-id="mySecondImage">
                                        <label>Upload (Allow Multiple) <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">x</a></label>
                                        <label class="custom-file-container__custom-file">
@@ -951,7 +951,7 @@
                                        <span class="custom-file-container__custom-file__custom-file-control">Choose file...<span class="custom-file-container__custom-file__custom-file-control__button"> Browse </span></span>
                                        </label>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-12 mb-3">
                                     <div class="form-control-wrap">
                                         <div class="custom-file">
