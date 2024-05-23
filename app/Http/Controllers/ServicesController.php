@@ -176,7 +176,7 @@ class ServicesController extends Controller
         // checkPermission('create-user');
         $service = [];
         $section = $this->section;
-        $section->title = 'Add Form One';
+        $section->title = 'Therapy';
         $section->method = 'POST';
         $section->route = $section->slug.'.store';
        
@@ -188,7 +188,7 @@ class ServicesController extends Controller
         // checkPermission('create-user');
         $service = [];
         $section = $this->section;
-        $section->title = 'Add Form Two';
+        $section->title = 'Clinical Supervision';
         $section->method = 'POST';
         $section->route = $section->slug.'.store';
        
@@ -200,7 +200,7 @@ class ServicesController extends Controller
         // checkPermission('create-user');
         $service = [];
         $section = $this->section;
-        $section->title = 'Add Form Four';
+        $section->title = 'Expert Testimony';
         $section->method = 'POST';
         $section->route = $section->slug.'.store';
        
@@ -212,7 +212,7 @@ class ServicesController extends Controller
         // checkPermission('create-user');
         $service = [];
         $section = $this->section;
-        $section->title = 'Add Form Three';
+        $section->title = 'Consultation';
         $section->method = 'POST';
         $section->route = $section->slug.'.store';
        

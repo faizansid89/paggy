@@ -56,10 +56,10 @@
                 </li>
                 <li><a href="{{ route('services.index') }}"><img src="{{ asset('assets/img/icons/settings.svg') }}" alt="img"><span> Services</span></a></li>
 
-                <li><a href="{{ route('services.form_one') }}"><img src="{{ asset('assets/img/icons/settings.svg') }}" alt="img"><span> Form One</span></a></li>
-                <li><a href="{{ route('services.form_two') }}"><img src="{{ asset('assets/img/icons/settings.svg') }}" alt="img"><span> Form Two</span></a></li>
-                <li><a href="{{ route('services.form_three') }}"><img src="{{ asset('assets/img/icons/settings.svg') }}" alt="img"><span> Form Three</span></a></li>
-                <li><a href="{{ route('services.form_four') }}"><img src="{{ asset('assets/img/icons/settings.svg') }}" alt="img"><span> Form Four</span></a></li>
+                <li><a href="{{ route('services.form_one') }}"><img src="{{ asset('assets/img/icons/settings.svg') }}" alt="img"><span> Therapy</span></a></li>
+                <li><a href="{{ route('services.form_two') }}"><img src="{{ asset('assets/img/icons/settings.svg') }}" alt="img"><span> Clinical Supervision</span></a></li>
+                <li><a href="{{ route('services.form_three') }}"><img src="{{ asset('assets/img/icons/settings.svg') }}" alt="img"><span> Consultation</span></a></li>
+                <li><a href="{{ route('services.form_four') }}"><img src="{{ asset('assets/img/icons/settings.svg') }}" alt="img"><span> Expert Testimony</span></a></li>
 
                 @if((in_array('read-user', getUserPermissions())))
                 <li class="submenu">
