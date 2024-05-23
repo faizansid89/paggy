@@ -56,7 +56,7 @@
                                
                                <div class="col-md-4 mb-3">
                                   <label class="form-label">Contact Number</label>
-                                  <input type="number" class="form-control" placeholder="Phone Number">
+                                  <input type="text" class="form-control" placeholder="Phone Number" onkeypress="return isNumber(event)">
                                </div>
 
                                <div class="col-md-4 mb-3">
@@ -66,7 +66,7 @@
 
                                <div class="col-md-4 mb-3">
                                   <label class="form-label">Age</label>
-                                  <input type="number" class="form-control" placeholder="Age">
+                                  <input type="text" class="form-control" placeholder="Age" onkeypress="return isNumber(event)">
                                </div>
 
                                <div class="col-md-4 mb-3">
@@ -377,7 +377,7 @@
 
                                <div class="col-md-2 mb-3">
                                   <label for="inputZip" class="form-label">Zip</label>
-                                  <input type="text" class="form-control" id="inputZip">
+                                  <input type="text" class="form-control" id="inputZip" onkeypress="return isNumber(event)">
                                </div>
 
                                 <div class="col-md-4 mb-3">
@@ -514,7 +514,7 @@
 
                                <div class="col-md-3 mb-3">
                                   <label for="SignificantAge" class="form-label">Age</label>
-                                  <input type="text" class="form-control" id="SignificantAge">
+                                  <input type="text" class="form-control" id="SignificantAge"  onkeypress="return isNumber(event)">
                                </div>
 
                                <div class="col-md-3 mb-3">
@@ -524,7 +524,7 @@
 
                                <div class="col-md-3 mb-3">
                                   <label for="SignificantYearsMarried" class="form-label">Years Married</label>
-                                  <input type="number" class="form-control" id="SignificantYearsMarried">
+                                  <input type="text" class="form-control" id="SignificantYearsMarried"  onkeypress="return isNumber(event)">
                                </div>
 
                                <div class="col-md-4 mb-3">
@@ -546,11 +546,11 @@
                             <div class="form-row row PreviousMarriageFields">
                                 <div class="col-md-4 mb-3">
                                   <label for="yearsmarried" class="form-label"># of years married</label>
-                                  <input type="number" class="form-control" id="yearsmarried">
+                                  <input type="text" class="form-control" id="yearsmarried"  onkeypress="return isNumber(event)">
                                </div>
                                <div class="col-md-4 mb-3">
                                   <label for="yearsdivorce" class="form-label">years of divorce</label>
-                                  <input type="number" class="form-control" id="yearsdivorce">
+                                  <input type="text" class="form-control" id="yearsdivorce"  onkeypress="return isNumber(event)">
                                </div>
                                <div class="col-md-4 mb-3">
                                   <label for="reasonfordivorce" class="form-label">reason for divorce</label>
@@ -583,12 +583,12 @@
 
                                 <div class="col-md-4 mb-3">
                                   <label for="HouseHoldAge" class="form-label">Age</label>
-                                  <input type="number" class="form-control" id="HouseHoldAge">
+                                  <input type="text" class="form-control" id="HouseHoldAge"  onkeypress="return isNumber(event)">
                                </div>
 
                                <div class="col-md-4 mb-3">
                                   <label for="HouseHoldRelationship" class="form-label">Relationship</label>
-                                  <input type="number" class="form-control" id="HouseHoldRelationship">
+                                  <input type="text" class="form-control" id="HouseHoldRelationship">
                                </div>
                             </div>
                             <!-- HouseHoldFields END -->
@@ -895,7 +895,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                    <label for="inputSymptomContact" class="form-label">Phone Number</label>
-                                   <input type="number" name="inputSymptomContact" id="inputSymptomContact" class="form-control" placeholder="Phone Number">
+                                   <input type="text" name="inputSymptomContact" id="inputSymptomContact" class="form-control" placeholder="Phone Number"  onkeypress="return isNumber(event)">
                                 </div>
                                 <div class="col-md-3 mb-3">
                                    <label for="inputSymptomAddress" class="form-label">Physical Address</label>
@@ -925,16 +925,22 @@
                             </div>
                             <div class="form-row row">
                                 <div class="col-md-4 mb-3">
-                                   <label class="form-label" for="inputThreePrimaryGoals1">1.</label>
-                                   <input type="text" class="form-control" name="inputThreePrimaryGoals1" id="inputThreePrimaryGoals1" placeholder="" value="" required="">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">1</span>
+                                        <input type="text" class="form-control" name="inputThreePrimaryGoals1" id="inputThreePrimaryGoals1" placeholder="" value="" required="">
+                                    </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                   <label class="form-label" for="inputThreePrimaryGoals2">2.</label>
-                                   <input type="text" class="form-control" name="inputThreePrimaryGoals2" id="inputThreePrimaryGoals2" placeholder="" value="" required="">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">2</span>
+                                        <input type="text" class="form-control" name="inputThreePrimaryGoals2" id="inputThreePrimaryGoals2" placeholder="" value="" required="">
+                                    </div>                                   
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                   <label class="form-label" for="inputThreePrimaryGoals3">3.</label>
-                                   <input type="text" class="form-control" name="inputThreePrimaryGoals3" id="inputThreePrimaryGoals3" placeholder="" value="" required="">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">3</span>
+                                        <input type="text" class="form-control" name="inputThreePrimaryGoals3" id="inputThreePrimaryGoals3" placeholder="" value="" required="">
+                                    </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <div class="custom-file-container" data-upload-id="mySecondImage">
@@ -946,6 +952,15 @@
                                        </label>
                                     </div>
                                 </div>
+                                <div class="col-md-12 mb-3">
+                                    <div class="form-control-wrap">
+                                        <div class="custom-file">
+                                            <div class="dropzone" data-test="start_job_upload_photos" id="dropzone"></div>
+                                            <div class="form-note">Max. file size: 15 GB, Max. files: 5.</div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="col-md-3 mb-3">
                                     <div class="form-group">
                                        <label>Select Date</label>
