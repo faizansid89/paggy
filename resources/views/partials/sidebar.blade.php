@@ -54,13 +54,14 @@
                         @endif
                     </ul>
                 </li>
-                <li><a href="{{ route('services.index') }}"><img src="{{ asset('assets/img/icons/settings.svg') }}" alt="img"><span> Services</span></a></li>
-
-                <li><a href="{{ route('services.form_one') }}"><img src="{{ asset('assets/img/icons/settings.svg') }}" alt="img"><span> Therapy</span></a></li>
-                <li><a href="{{ route('services.form_two') }}"><img src="{{ asset('assets/img/icons/settings.svg') }}" alt="img"><span> Clinical Supervision</span></a></li>
-                <li><a href="{{ route('services.form_three') }}"><img src="{{ asset('assets/img/icons/settings.svg') }}" alt="img"><span> Consultation</span></a></li>
-                <li><a href="{{ route('services.form_four') }}"><img src="{{ asset('assets/img/icons/settings.svg') }}" alt="img"><span> Expert Testimony</span></a></li>
-
+                
+                @if((auth()->user()->id == 3) || (auth()->user()->id == 1))
+                    <li><a href="{{ route('services.index') }}"><img src="{{ asset('assets/img/icons/settings.svg') }}" alt="img"><span> Services</span></a></li>
+                    <li><a href="{{ route('services.form_one') }}"><img src="{{ asset('assets/img/icons/settings.svg') }}" alt="img"><span> Therapy</span></a></li>
+                    <li><a href="{{ route('services.form_two') }}"><img src="{{ asset('assets/img/icons/settings.svg') }}" alt="img"><span> Clinical Supervision</span></a></li>
+                    <li><a href="{{ route('services.form_three') }}"><img src="{{ asset('assets/img/icons/settings.svg') }}" alt="img"><span> Consultation</span></a></li>
+                    <li><a href="{{ route('services.form_four') }}"><img src="{{ asset('assets/img/icons/settings.svg') }}" alt="img"><span> Expert Testimony</span></a></li>
+                @endif
                 @if((in_array('read-user', getUserPermissions())))
                 <li class="submenu">
                     <a href="javascript:void(0);"><img src="{{ asset('assets/img/icons/users1.svg') }}" alt="img"><span> People</span>
