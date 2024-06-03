@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AreaController;
+use App\Http\Controllers\AttachmentController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\MissSaleController;
@@ -142,10 +143,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     // Route::resource('text', TextTypeController::class);
     // Route::get('get/{id}', [TextTypeController::class, 'get']);
 
-
-
-    Route::post('image/upload/store',[UploadController::class, 'fileStore']);
-    Route::post('image/delete',[UploadController::class, 'fileDestroy']);
+    Route::post('image/upload/store',[AttachmentController::class, 'fileStore']);
+    Route::post('image/delete',[AttachmentController::class, 'fileDestroy']);
 
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     // Route::resource('categories', CategoriesController::class);
@@ -162,7 +161,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
 
     Route::resource('rolepermission', RolePermissionController::class);
 
-    Route::get('services/form_one', [ServicesController::class, 'form_one'])->name('services.form_one');
+    Route::post('services/therapy_form', [ServicesController::class, 'therapySubmit'])->name('services.therapySubmit');
+    Route::get('services/therapy_form', [ServicesController::class, 'form_one'])->name('services.form_one');
     Route::get('services/form_two', [ServicesController::class, 'form_two'])->name('services.form_two');
     Route::get('services/form_three', [ServicesController::class, 'form_three'])->name('services.form_three');
     Route::get('services/form_four', [ServicesController::class, 'form_four'])->name('services.form_four');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Services;
+use App\Models\TherapyForm;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
@@ -178,10 +179,30 @@ class ServicesController extends Controller
         $section = $this->section;
         $section->title = 'Therapy';
         $section->method = 'POST';
-        $section->route = $section->slug.'.store';
+        $section->route = $section->slug.'.therapySubmit';
        
         return view($section->folder.'.form_one',compact('section', 'service'));
     }
+
+    public function therapySubmit(Request $request)
+    {
+        // checkPermission('create-user');
+        $service = [];
+        $section = $this->section;
+        $section->title = 'Therapy';
+        $section->method = 'POST';
+        $section->route = $section->slug.'.store';
+
+        $request->request->add(['user_id' => auth()->user()->id]);
+
+        dd('therapySubmit', $request->toArray());
+        TherapyForm::create($request->all());
+
+        $request->session()->flash('alert-success', 'Record has been added successfully.');
+        return redirect()->route($section->slug.'.index');
+    }
+
+    
 
     public function form_two(Request $request)
     {

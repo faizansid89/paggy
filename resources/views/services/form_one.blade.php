@@ -37,46 +37,46 @@
                             <div class="form-row row">
                                <div class="col-md-4 mb-3">
                                   <label class="form-label" for="validationCustom01">First name</label>
-                                  <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="" required="">
+                                  <input type="text" class="form-control" id="validationCustom01" name="first_name" placeholder="First name" value="{{ auth()->user()->name }}" required="">
                                   <div class="valid-feedback">
                                      Looks good!
                                   </div>
                                </div>
                                <div class="col-md-4 mb-3">
                                   <label class="form-label" for="validationCustom02">Last name</label>
-                                  <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="" required="">
+                                  <input type="text" class="form-control" id="validationCustom02" name="last_name" placeholder="Last name" value="" required="">
                                   <div class="valid-feedback">
                                      Looks good!
                                   </div>
                                </div>
                                <div class="col-md-4 mb-3">
                                   <label class="form-label">Email</label>
-                                  <input type="email" class="form-control" placeholder="Email">
+                                  <input type="email" class="form-control" placeholder="Email" name="email" value="{{ auth()->user()->email }}">
                                </div>
                                
                                <div class="col-md-4 mb-3">
                                   <label class="form-label">Contact Number</label>
-                                  <input type="text" class="form-control" placeholder="Phone Number" onkeypress="return isNumber(event)">
+                                  <input type="text" class="form-control" placeholder="Phone Number" name="phone" value="{{ auth()->user()->phone }}" onkeypress="return isNumber(event)">
                                </div>
 
                                <div class="col-md-4 mb-3">
                                   <label class="form-label">DOB</label>
-                                  <input type="date" class="form-control">
+                                  <input type="date" class="form-control" name="dob">
                                </div>
 
                                <div class="col-md-4 mb-3">
                                   <label class="form-label">Age</label>
-                                  <input type="text" class="form-control" placeholder="Age" onkeypress="return isNumber(event)">
+                                  <input type="text" class="form-control" name="age" placeholder="Age" onkeypress="return isNumber(event)">
                                </div>
 
                                <div class="col-md-4 mb-3">
                                    <div class="form-group">
                                        <label>Is it OK to leave a message at this number?</label>
-                                       <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                       <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="ok_to_number" id="flexRadioDefault1">
                                            <label class="form-check-label" for="flexRadioDefault1"> Yes </label>
                                        </div>
                                        <div class="form-check form-check-inline">
-                                           <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked="">
+                                           <input class="form-check-input" type="radio" name="ok_to_number" id="flexRadioDefault2" checked="">
                                            <label class="form-check-label" for="flexRadioDefault2"> No </label>
                                        </div>
                                    </div>
@@ -85,11 +85,11 @@
                                <div class="col-md-4 mb-3">
                                    <div class="form-group">
                                        <label>Is it OK to send you an email?</label>
-                                       <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="emailSend" id="emailSendYes">
+                                       <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="ok_to_email" id="emailSendYes">
                                            <label class="form-check-label" for="emailSendYes"> Yes </label>
                                        </div>
                                        <div class="form-check form-check-inline">
-                                           <input class="form-check-input" type="radio" name="emailSend" id="emailSendNo" checked="">
+                                           <input class="form-check-input" type="radio" name="ok_to_email" id="emailSendNo" checked="">
                                            <label class="form-check-label" for="emailSendNo"> No </label>
                                        </div>
                                    </div>
@@ -99,17 +99,17 @@
 
                                <div class="col-md-4 mb-3">
                                   <label for="inputAddress" class="form-label">Address</label>
-                                  <input type="text" class="form-control" id="inputAddress">
+                                  <input type="text" class="form-control" id="inputAddress" name="address1">
                                </div>
 
                                <div class="col-md-4 mb-3">
                                   <label for="inputAddress2" class="form-label">Address 2</label>
-                                  <input type="text" class="form-control" id="inputAddress2">
+                                  <input type="text" class="form-control" id="inputAddress2" name="address2">
                                </div>
 
-                               <div class="col-md-2 mb-3">
+                               <div class="col-md-4 mb-3">
                                   <label for="inputCountry" class="form-label">Country</label>
-                                  <select id="inputCountry" class="form-select">
+                                  <select id="inputCountry" class="form-select" name="country">
                                     <option value="Afghanistan">Afghanistan</option>
                                     <option value="Albania">Albania</option>
                                     <option value="Algeria">Algeria</option>
@@ -362,58 +362,58 @@
                                   </select>
                                </div>
 
-                               <div class="col-md-2 mb-3">
+                               {{-- <div class="col-md-2 mb-3">
                                   <label for="inputState" class="form-label">State</label>
                                   <select id="inputState" class="form-select">
                                      <option selected="">Choose...</option>
                                      <option>...</option>
                                   </select>
-                               </div>
+                               </div> --}}
 
                                <div class="col-md-2 mb-3">
                                   <label for="inputCity" class="form-label">City</label>
-                                  <input type="text" class="form-control" id="inputCity">
+                                  <input type="text" class="form-control" id="inputCity" name="city">
                                </div>
 
                                <div class="col-md-2 mb-3">
                                   <label for="inputZip" class="form-label">Zip</label>
-                                  <input type="text" class="form-control" id="inputZip" onkeypress="return isNumber(event)">
+                                  <input type="text" class="form-control" id="inputZip" name="zip_code" onkeypress="return isNumber(event)">
                                </div>
 
                                 <div class="col-md-4 mb-3">
                                   <label for="inputEmployer" class="form-label">Employer</label>
-                                  <input type="text" class="form-control" id="inputEmployer">
+                                  <input type="text" class="form-control" id="inputEmployer" name="employer">
                                </div>
 
                                <div class="col-md-4 mb-3">
                                   <label for="inputSchool" class="form-label">School</label>
-                                  <input type="text" class="form-control" id="inputSchool">
+                                  <input type="text" class="form-control" id="inputSchool" name="school">
                                </div>
 
                                <div class="col-md-4 mb-3">
                                   <div class="form-group">
                                      <label>Sex/Gender</label>
-                                     <div class="form-check"> <input class="form-check-input" type="radio" name="radioSex/Gender" id="Male">
+                                     <div class="form-check"> <input class="form-check-input" type="radio" value="Male" name="gender" id="Male">
                                         <label class="form-check-label" for="Male">Male</label>
                                      </div>
                                      <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="radioSex/Gender" id="Female" checked="">
+                                        <input class="form-check-input" type="radio" name="gender" value="Female" id="Female" checked="">
                                         <label class="form-check-label" for="Female">Female</label>
                                      </div>
                                      <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="radioSex/Gender" id="TransgenderMale" checked="">
+                                        <input class="form-check-input" type="radio" name="gender" value="Transgender Male" id="TransgenderMale" checked="">
                                         <label class="form-check-label" for="TransgenderMale">Transgender Male</label>
                                      </div>
                                      <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="radioSex/Gender" id="TransgenderFemale" checked="">
+                                        <input class="form-check-input" type="radio" name="gender" value="Transgender Female" id="TransgenderFemale" checked="">
                                         <label class="form-check-label" for="TransgenderFemale">Transgender Female</label>
                                      </div>
                                      <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="radioSex/Gender" id="Genderqueer" checked="">
+                                        <input class="form-check-input" type="radio" name="gender" value="Genderqueer" id="Genderqueer" checked="">
                                         <label class="form-check-label" for="Genderqueer">Genderqueer</label>
                                      </div>
                                      <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="radioSex/Gender" id="Choosenottodisclose" checked="">
+                                        <input class="form-check-input" type="radio" name="gender" value="Choose not to disclose" id="Choosenottodisclose" checked="">
                                         <label class="form-check-label" for="Choosenottodisclose">Choose not to disclose</label>
                                      </div>
                                   </div>
@@ -422,31 +422,31 @@
                                <div class="col-md-4 mb-3">
                                   <div class="form-group">
                                      <label>Current relationship status (please “X” one)</label>
-                                     <div class="form-check"> <input class="form-check-input" type="radio" name="radioRelationshipStatus" id="Single">
+                                     <div class="form-check"> <input class="form-check-input" type="radio" name="relationship_status" value="Single" id="Single">
                                         <label class="form-check-label" for="Single">Single</label>
                                      </div>
                                      <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="radioRelationshipStatus" id="Married" checked="">
+                                        <input class="form-check-input" type="radio" name="relationship_status" value="Married" id="Married" checked="">
                                         <label class="form-check-label" for="Married">Married</label>
                                      </div>
                                      <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="radioRelationshipStatus" id="Partnered/CommittedRelationship" checked="">
+                                        <input class="form-check-input" type="radio" name="relationship_status" value="Partnered/Committed Relationship" id="Partnered/CommittedRelationship" checked="">
                                         <label class="form-check-label" for="Partnered/CommittedRelationship">Partnered/Committed Relationship</label>
                                      </div>
                                      <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="radioRelationshipStatus" id="Separated" checked="">
+                                        <input class="form-check-input" type="radio" name="relationship_status" value="Separated" id="Separated" checked="">
                                         <label class="form-check-label" for="Separated">Separated</label>
                                      </div>
                                      <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="radioRelationshipStatus" id="Divorced" checked="">
+                                        <input class="form-check-input" type="radio" name="relationship_status" value="Divorced" id="Divorced" checked="">
                                         <label class="form-check-label" for="Divorced">Divorced</label>
                                      </div>
                                      <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="radioRelationshipStatus" id="Remarried" checked="">
+                                        <input class="form-check-input" type="radio" name="relationship_status" value="Remarried" id="Remarried" checked="">
                                         <label class="form-check-label" for="Remarried">Remarried</label>
                                      </div>
                                      <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="radioRelationshipStatus" id="Widowed" checked="">
+                                        <input class="form-check-input" type="radio" name="relationship_status" value="Widowed" id="Widowed" checked="">
                                         <label class="form-check-label" for="Widowed">Widowed</label>
                                      </div>
                                   </div>
@@ -455,31 +455,31 @@
                                <div class="col-md-4 mb-3">
                                   <div class="form-group">
                                      <label>Sexual Orientation</label>
-                                     <div class="form-check "> <input class="form-check-input" type="radio" name="SexualOrientation" id="Straight/heterosexual">
+                                     <div class="form-check "> <input class="form-check-input" type="radio" name="sexual_orientation" value="Straight/heterosexual" id="Straight/heterosexual">
                                         <label class="form-check-label" for="Straight/heterosexual">Straight/heterosexual</label>
                                      </div>
                                      <div class="form-check ">
-                                        <input class="form-check-input" type="radio" name="SexualOrientation" id="Lesbian/homosexual" checked="">
+                                        <input class="form-check-input" type="radio" name="sexual_orientation" value="Lesbian/homosexual" id="Lesbian/homosexual" checked="">
                                         <label class="form-check-label" for="Lesbian/homosexual">Lesbian/homosexual</label>
                                      </div>
                                      <div class="form-check ">
-                                        <input class="form-check-input" type="radio" name="SexualOrientation" id="Gay/Homosexual" checked="">
+                                        <input class="form-check-input" type="radio" name="sexual_orientation" value="Gay/Homosexual" id="Gay/Homosexual" checked="">
                                         <label class="form-check-label" for="Gay/Homosexual">Gay/Homosexual</label>
                                      </div>
                                      <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="SexualOrientation" id="Bisexual" checked="">
+                                        <input class="form-check-input" type="radio" name="sexual_orientation" value="Bisexual" id="Bisexual" checked="">
                                         <label class="form-check-label" for="Bisexual">Bisexual</label>
                                      </div>
                                      <div class="form-check ">
-                                        <input class="form-check-input" type="radio" name="SexualOrientation" id="Somethingelse" checked="">
+                                        <input class="form-check-input" type="radio" name="sexual_orientation" value="Something else" id="Somethingelse" checked="">
                                         <label class="form-check-label" for="Somethingelse">Something else</label>
                                      </div>
                                      <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="SexualOrientation" id="Don’tknow" checked="">
+                                        <input class="form-check-input" type="radio" name="sexual_orientation" value="Don’t know" id="Don’tknow" checked="">
                                         <label class="form-check-label" for="Don’tknow">Don’t know</label>
                                      </div>
                                      <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="SexualOrientation" id="Choosenottodisclose" checked="">
+                                        <input class="form-check-input" type="radio" name="sexual_orientation" value="Choose not to disclose" id="Choosenottodisclose" checked="">
                                         <label class="form-check-label" for="Choosenottodisclose">Choose not to disclose</label>
                                      </div>
                                   </div>
@@ -489,19 +489,19 @@
                                   <div class="form-group">
                                      <label>Pronouns</label>
                                      <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="Pronouns" id="PronounsHe/him" checked="">
+                                        <input class="form-check-input" type="radio" name="pronouns" value="He/him" id="PronounsHe/him" checked="">
                                         <label class="form-check-label" for="PronounsHe/him">He/him</label>
                                      </div>
                                      <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="Pronouns" id="PronounsShe/her" checked="">
+                                        <input class="form-check-input" type="radio" name="pronouns" value="She/her" id="PronounsShe/her" checked="">
                                         <label class="form-check-label" for="PronounsShe/her">She/her</label>
                                      </div>
                                      <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="Pronouns" id="PronounsThey/them" checked="">
+                                        <input class="form-check-input" type="radio" name="pronouns" value="They/them" id="PronounsThey/them" checked="">
                                         <label class="form-check-label" for="PronounsThey/them">They/them</label>
                                      </div>
                                      <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="Pronouns" id="PronounsOther" checked="">
+                                        <input class="form-check-input" type="radio" name="pronouns" value="Other" id="PronounsOther" checked="">
                                         <label class="form-check-label" for="PronounsOther">Other</label>
                                      </div>
                                   </div>
@@ -509,47 +509,47 @@
 
                                <div class="col-md-3 mb-3">
                                   <label for="NameofSignificant" class="form-label">Name of Significant other</label>
-                                  <input type="text" class="form-control" id="NameofSignificant">
+                                  <input type="text" class="form-control" id="NameofSignificant" name="name_of_significant" >
                                </div>
 
                                <div class="col-md-2 mb-3">
                                   <label for="SignificantAge" class="form-label">Age</label>
-                                  <input type="text" class="form-control" id="SignificantAge"  onkeypress="return isNumber(event)">
+                                  <input type="text" class="form-control" id="SignificantAge" name="age_of_significant"  onkeypress="return isNumber(event)">
                                </div>
 
                                <div class="col-md-3 mb-3">
                                   <label for="SignificantOccupation" class="form-label">Occupation</label>
-                                  <input type="text" class="form-control" id="SignificantOccupation">
+                                  <input type="text" class="form-control" name="occupation_of_significant" id="SignificantOccupation">
                                </div>
 
                                <div class="col-md-2 mb-3">
                                   <label for="SignificantYearsMarried" class="form-label">Years Married</label>
-                                  <input type="text" class="form-control" id="SignificantYearsMarried"  onkeypress="return isNumber(event)">
+                                  <input type="text" class="form-control" name="year_married_of_significant" id="SignificantYearsMarried"  onkeypress="return isNumber(event)">
                                </div>
 
                                <div class="col-md-3 mb-3">
                                    <div class="form-group">
                                        <label>Previous marriages</label>
-                                       <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="radioPreviousmarriages" value="yes" id="PreviousmarriagesYes">
+                                       <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="previous_marriages" value="yes" id="PreviousmarriagesYes">
                                            <label class="form-check-label" for="PreviousmarriagesYes"> Yes </label>
                                        </div>
                                        <div class="form-check form-check-inline">
-                                           <input class="form-check-input" type="radio" name="radioPreviousmarriages" value="no" id="PreviousmarriagesNo" checked="">
+                                           <input class="form-check-input" type="radio" name="previous_marriages" value="no" id="PreviousmarriagesNo" checked="">
                                            <label class="form-check-label" for="PreviousmarriagesNo"> No </label>
                                        </div>
                                    </div>
                                </div>
                                 <div class="col-md-3 mb-3 PreviousMarriageFields hidden">
                                   <label for="yearsmarried" class="form-label"># of years married</label>
-                                  <input type="text" class="form-control" id="yearsmarried"  onkeypress="return isNumber(event)">
+                                  <input type="text" class="form-control" id="yearsmarried" name="year_previous_marriages" onkeypress="return isNumber(event)">
                                </div>
                                <div class="col-md-3 mb-3 PreviousMarriageFields hidden">
                                   <label for="yearsdivorce" class="form-label">years of divorce</label>
-                                  <input type="text" class="form-control" id="yearsdivorce"  onkeypress="return isNumber(event)">
+                                  <input type="text" class="form-control" id="yearsdivorce" name="divorce_previous_marriages"  onkeypress="return isNumber(event)">
                                </div>
                                <div class="col-md-3 mb-3 PreviousMarriageFields hidden">
                                   <label for="reasonfordivorce" class="form-label">reason for divorce</label>
-                                  <input type="text" class="form-control" id="reasonfordivorce">
+                                  <input type="text" class="form-control" name="reason_previous_marriages" id="reasonfordivorce">
                                </div>
 
                             </div>
@@ -567,11 +567,11 @@
                                 <div class="col-md-4 mb-3">
                                     <div class="form-group">
                                         <label>Sex/Gender</label>
-                                        <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="radioHouseHoldGender" id="HouseHoldMale">
+                                        <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="household_gender" value="male" id="HouseHoldMale">
                                             <label class="form-check-label" for="HouseHoldMale">Male</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="radioHouseHoldGender" id="HouseHoldFemale" checked="">
+                                            <input class="form-check-input" type="radio" name="household_gender" value="female" id="HouseHoldFemale" checked="">
                                             <label class="form-check-label" for="HouseHoldFemale">Female</label>
                                         </div>
                                     </div>
@@ -579,12 +579,12 @@
 
                                 <div class="col-md-4 mb-3">
                                   <label for="HouseHoldAge" class="form-label">Age</label>
-                                  <input type="text" class="form-control" id="HouseHoldAge"  onkeypress="return isNumber(event)">
+                                  <input type="text" class="form-control" id="HouseHoldAge" name="household_age"  onkeypress="return isNumber(event)">
                                </div>
 
                                <div class="col-md-4 mb-3">
                                   <label for="HouseHoldRelationship" class="form-label">Relationship</label>
-                                  <input type="text" class="form-control" id="HouseHoldRelationship">
+                                  <input type="text" class="form-control" id="HouseHoldRelationship" name="household_relation">
                                </div>
                             </div>
                             <!-- HouseHoldFields END -->
@@ -601,11 +601,11 @@
                                     <div class="form-group">
                                         <label>Are you currently in an abusive relationship?</label>
                                         <div class="form-check form-check-inline"> 
-                                            <input class="form-check-input" type="radio" name="radioabusiveRelationship" id="abusiveRelationshipYes" value="yes">
+                                            <input class="form-check-input" type="radio" name="abusive_relationship" id="abusiveRelationshipYes" value="yes">
                                             <label class="form-check-label" for="abusiveRelationshipYes"> Yes </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="radioabusiveRelationship" id="abusiveRelationshipNo" checked="" value="no">
+                                            <input class="form-check-input" type="radio" name="abusive_relationship" id="abusiveRelationshipNo" checked="" value="no">
                                             <label class="form-check-label" for="abusiveRelationshipNo"> No </label>
                                         </div>
                                     </div>
@@ -615,27 +615,27 @@
                                     <div class="form-group">
                                         <label>If “Yes”, check the types of abuse that apply to this relationship</label>
                                         <div class="form-check"> 
-                                            <input class="form-check-input" value="Emotional" type="radio" name="radioRelationshipApply" id="abusiveRelationshipEmotional">
+                                            <input class="form-check-input" value="Emotional" type="radio" name="abusive_relationship_apply" id="abusiveRelationshipEmotional">
                                             <label class="form-check-label" for="abusiveRelationshipEmotional">Emotional</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" value="Sexual" type="radio" name="radioRelationshipApply" id="abusiveRelationshipSexual" checked="">
+                                            <input class="form-check-input" value="Sexual" type="radio" name="abusive_relationship_apply" id="abusiveRelationshipSexual" checked="">
                                             <label class="form-check-label" for="abusiveRelationshipSexual">Sexual</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" value="Financial" type="radio" name="radioRelationshipApply" id="abusiveRelationshipFinancial" checked="">
+                                            <input class="form-check-input" value="Financial" type="radio" name="abusive_relationship_apply" id="abusiveRelationshipFinancial" checked="">
                                             <label class="form-check-label" for="abusiveRelationshipFinancial">Financial</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" value="Spiritual" type="radio" name="radioRelationshipApply" id="abusiveRelationshipSpiritual" checked="">
+                                            <input class="form-check-input" value="Spiritual" type="radio" name="abusive_relationship_apply" id="abusiveRelationshipSpiritual" checked="">
                                             <label class="form-check-label" for="abusiveRelationshipSpiritual">Spiritual</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" value="Verbal" type="radio" name="radioRelationshipApply" id="abusiveRelationshipVerbal" checked="">
+                                            <input class="form-check-input" value="Verbal" type="radio" name="abusive_relationship_apply" id="abusiveRelationshipVerbal" checked="">
                                             <label class="form-check-label" for="abusiveRelationshipVerbal">Verbal</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" value="Physical" type="radio" name="radioRelationshipApply" id="abusiveRelationshipPhysical" checked="">
+                                            <input class="form-check-input" value="Physical" type="radio" name="abusive_relationship_apply" id="abusiveRelationshipPhysical" checked="">
                                             <label class="form-check-label" for="abusiveRelationshipPhysical">Physical</label>
                                         </div>
                                     </div>
@@ -647,15 +647,15 @@
                                     <div class="form-group">
                                         <label>How often does this occur?</label>
                                         <div class="form-check"> 
-                                            <input class="form-check-input" value="Daily" type="radio" name="radioOccur" id="OccurDaily" checked="">
+                                            <input class="form-check-input" value="Daily" type="radio" name="abusive_relationship_occur" id="OccurDaily" checked="">
                                             <label class="form-check-label" for="OccurDaily">Daily</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" value="Weekly" type="radio" name="radioOccur" id="OccurWeekly">
+                                            <input class="form-check-input" value="Weekly" type="radio" name="abusive_relationship_occur" id="OccurWeekly">
                                             <label class="form-check-label" for="OccurWeekly">Weekly</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" value="Other" type="radio" name="radioOccur" id="OccurOther" >
+                                            <input class="form-check-input" value="Other" type="radio" name="abusive_relationship_occur" id="OccurOther" >
                                             <label class="form-check-label" for="OccurOther">Other</label>
                                         </div>
                                     </div>
@@ -663,7 +663,7 @@
 
                                 <div class="col-md-3 mb-3 OccurOthersFields hidden">
                                   <label for="OccurOthers" class="form-label">Others</label>
-                                  <input type="text" name="OccurOthers" class="form-control" id="OccurOthers">
+                                  <input type="text" name="abusive_relationship_others" class="form-control" id="OccurOthers">
                                </div>
                             </div>
 
@@ -672,18 +672,18 @@
                                 <div class="col-md-4 mb-3">
                                      <div class="form-group">
                                          <label>Have you had past relationships that were abusive?</label>
-                                         <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="relationshipsAbusive" value="yes" id="relationshipsAbusiveYes">
+                                         <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="past_relationships_abusive" value="yes" id="relationshipsAbusiveYes">
                                              <label class="form-check-label" for="relationshipsAbusiveYes">Yes</label>
                                          </div>
                                          <div class="form-check form-check-inline">
-                                             <input class="form-check-input" value="no" type="radio" name="relationshipsAbusive" id="relationshipsAbusiveNo" checked="">
+                                             <input class="form-check-input" value="no" type="radio" name="past_relationships_abusive" id="relationshipsAbusiveNo" checked="">
                                              <label class="form-check-label" for="relationshipsAbusiveNo">No</label>
                                          </div>
                                      </div>
                                  </div>
                                  <div class="col-md-8 mb-3 relationshipsAbusiveFields hidden">
                                   <label for="Abusivedescribe" class="form-label">If “Yes”, please describe</label>
-                                  <input type="text" class="form-control" id="Abusivedescribe">
+                                  <input type="text" class="form-control" name="past_relationships_abusive_describe" id="Abusivedescribe">
                                </div>
                             </div>
                             <!-- relationshipAbusiveCustom end -->
@@ -693,26 +693,26 @@
                                     <div class="col-md-3 mb-3">
                                          <div class="form-group">
                                              <label>Were you ever sexually violated/assaulted as a child (0-18 years)?</label>
-                                             <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="SexuallyViolatedAssaulted" value="yes" id="SexuallyViolatedAssaultedYes">
+                                             <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="sexually_violated_assaulted" value="yes" id="SexuallyViolatedAssaultedYes">
                                                  <label class="form-check-label" for="SexuallyViolatedAssaultedYes">Yes</label>
                                              </div>
                                              <div class="form-check form-check-inline">
-                                                 <input class="form-check-input" value="no" type="radio" name="SexuallyViolatedAssaulted" id="SexuallyViolatedAssaultedNo" checked="">
+                                                 <input class="form-check-input" value="no" type="radio" name="sexually_violated_assaulted" id="SexuallyViolatedAssaultedNo" checked="">
                                                  <label class="form-check-label" for="SexuallyViolatedAssaultedNo">No</label>
                                              </div>
                                          </div>
                                      </div>
                                      <div class="col-md-3 mb-3 SexuallyViolatedAssaultedFields hidden">
                                         <label for="SexuallyOldWere" class="form-label">If “Yes”, how old were you?</label>
-                                        <input type="number" class="form-control" id="SexuallyOldWere">
+                                        <input type="number" class="form-control" name="sexually_violated_assaulted_year" id="SexuallyOldWere">
                                      </div>
                                      <div class="col-md-3 mb-3 SexuallyViolatedAssaultedFields hidden">
                                         <label for="SexuallyBywhom" class="form-label">by whom?</label>
-                                        <input type="text" class="form-control" id="SexuallyBywhom">
+                                        <input type="text" class="form-control" name="sexually_violated_assaulted_by_whom" id="SexuallyBywhom">
                                      </div>
                                      <div class="col-md-3 mb-3 SexuallyViolatedAssaultedFields hidden">
                                         <label for="SexuallyRelationship" class="form-label">Relationship</label>
-                                        <input type="text" class="form-control" id="SexuallyRelationship">
+                                        <input type="text" class="form-control" name="sexually_violated_assaulted_relationship" id="SexuallyRelationship">
                                      </div>
                                 </div>
                             <!-- sexually/violated/assaulted End -->
@@ -723,26 +723,26 @@
                                          <div class="form-group">
                                              <label>Have you ever been sexually assaulted or raped as an adult?</label>
                                              <div class="form-check form-check-inline"> 
-                                                <input class="form-check-input" value="yes" type="radio" name="CustomAdultRaped" id="CustomAdultRapedYes">
+                                                <input class="form-check-input" value="yes" type="radio" name="sexually_assaulted_raped" id="CustomAdultRapedYes">
                                                  <label class="form-check-label" for="CustomAdultRapedYes">Yes</label>
                                              </div>
                                              <div class="form-check form-check-inline">
-                                                 <input class="form-check-input" value="no" type="radio" name="CustomAdultRaped" id="CustomAdultRapedNo" checked="">
+                                                 <input class="form-check-input" value="no" type="radio" name="sexually_assaulted_raped" id="CustomAdultRapedNo" checked="">
                                                  <label class="form-check-label" for="CustomAdultRapedNo">No</label>
                                              </div>
                                          </div>
                                      </div>
                                      <div class="col-md-3 mb-3 CustomAdultRapedFields hidden">
                                         <label for="RapeYesWhen" class="form-label">“Yes”, when?</label>
-                                        <input type="number" class="form-control" id="RapeYesWhen">
+                                        <input type="number" class="form-control" name="sexually_assaulted_raped_when" id="RapeYesWhen">
                                      </div>
                                      <div class="col-md-3 mb-3 CustomAdultRapedFields hidden">
                                         <label for="RapeBywhom" class="form-label">by whom?</label>
-                                        <input type="text" class="form-control" id="RapeBywhom">
+                                        <input type="text" class="form-control" id="RapeBywhom" name="sexually_assaulted_raped_whom">
                                      </div>
                                      <div class="col-md-3 mb-3 CustomAdultRapedFields hidden">
                                         <label for="RapeRelationship" class="form-label">Relationship</label>
-                                        <input type="text" class="form-control" id="RapeRelationship">
+                                        <input type="text" class="form-control" id="RapeRelationship" name="sexually_assaulted_raped_relation">
                                      </div>
                                 </div>
                             <!-- CustomAdultRaped End -->
@@ -758,11 +758,11 @@
                                 <div class="col-md-3 mb-3">
                                      <div class="form-group">
                                          <label>Are you currently receiving therapy with anyone?</label>
-                                         <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="CustomReceivingTherapy" id="CustomReceivingTherapyYes">
+                                         <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" value="yes" name="receiving_therapy_any_one" id="CustomReceivingTherapyYes">
                                              <label class="form-check-label" for="CustomReceivingTherapyYes">Yes</label>
                                          </div>
                                          <div class="form-check form-check-inline">
-                                             <input class="form-check-input" type="radio" name="CustomReceivingTherapy" id="CustomReceivingTherapyNo" checked="">
+                                             <input class="form-check-input" type="radio" name="receiving_therapy_any_one" value="no" id="CustomReceivingTherapyNo" checked="">
                                              <label class="form-check-label" for="CustomReceivingTherapyNo">No</label>
                                          </div>
                                      </div>
@@ -774,26 +774,26 @@
                                 <div class="col-md-3 mb-3">
                                      <div class="form-group">
                                          <label>Have you ever received any type of counseling services before today?</label>
-                                         <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="CounselingServices" value="yes" id="CounselingServicesYes">
+                                         <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="counseling_services" value="yes" id="CounselingServicesYes">
                                              <label class="form-check-label" for="CounselingServicesYes">Yes</label>
                                          </div>
                                          <div class="form-check form-check-inline">
-                                             <input class="form-check-input" value="no" type="radio" name="CounselingServices" id="CounselingServicesNo" checked="">
+                                             <input class="form-check-input" value="no" type="radio" name="counseling_services" id="CounselingServicesNo" checked="">
                                              <label class="form-check-label" for="CounselingServicesNo">No</label>
                                          </div>
                                      </div>
                                  </div>
                                  <div class="col-md-3 mb-3 CounselingServicesFields hidden">
                                     <label for="CounselingServicesWhen" class="form-label">When?</label>
-                                    <input type="text" class="form-control" id="CounselingServicesWhen">
+                                    <input type="text" class="form-control" id="CounselingServicesWhen" name="counseling_services_when">
                                  </div>
                                  <div class="col-md-3 mb-3 CounselingServicesFields hidden">
                                     <label for="CounselingServicesFromwhom" class="form-label">Form whom?</label>
-                                    <input type="text" class="form-control" id="CounselingServicesFromwhom">
+                                    <input type="text" class="form-control" id="CounselingServicesFromwhom" name="counseling_services_whom">
                                  </div>
                                  <div class="col-md-3 mb-3 CounselingServicesFields hidden">
                                     <label for="CounselingServicesForWhat" class="form-label">For what?</label>
-                                    <input type="text" class="form-control" id="CounselingServicesForWhat">
+                                    <input type="text" class="form-control" id="CounselingServicesForWhat" name="counseling_services_what">
                                  </div>
                             </div>
                             <!-- CustomCounselingServices END -->
@@ -806,43 +806,43 @@
                                 </div>
                                  <div class="col-md-12 mb-3">
                                    <label for="inputCurrentMedical" class="form-label">Do you have any current medical conditions (particularly seizures, diabetes, and sickle cell)?</label>
-                                   <textarea class="form-control" placeholder="Please Describe" required="required" name="inputCurrentMedical" cols="50" rows="5" spellcheck="false"></textarea>
+                                   <textarea class="form-control" placeholder="Please Describe" required="required" name="current_medical" cols="50" rows="5" spellcheck="false"></textarea>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                    <label for="inputMentalHealthDiagnoses" class="form-label">Please list any mental health diagnoses received from a mental health or medical professional</label>
-                                   <textarea class="form-control" placeholder="Please Describe" required="required" name="inputMentalHealthDiagnoses" cols="50" rows="5" spellcheck="false"></textarea>
+                                   <textarea class="form-control" placeholder="Please Describe" required="required" name="mental_health_diagnoses" cols="50" rows="5" spellcheck="false"></textarea>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                    <label for="inputWhatTreatments" class="form-label">What treatments have you tried for these medical and mental health diagnoses?</label>
-                                   <textarea class="form-control" placeholder="Please Describe" required="required" name="inputWhatTreatments" cols="50" rows="5" spellcheck="false"></textarea>
+                                   <textarea class="form-control" placeholder="Please Describe" required="required" name="what_treatments" cols="50" rows="5" spellcheck="false"></textarea>
                                 </div>
 
                                 <div class="col-md-4 mb-3">
                                      <div class="form-group">
                                          <label>Have you ever been hospitalized for medical reasons other than childbirth?</label>
                                          <div class="form-check form-check-inline"> 
-                                            <input class="form-check-input" type="radio" value="yes" name="radioChildBirth" id="ChildBirthYes">
+                                            <input class="form-check-input" type="radio" value="yes" name="hospitalized_child_birth" id="ChildBirthYes">
                                              <label class="form-check-label" for="ChildBirthYes">Yes</label>
                                          </div>
                                          <div class="form-check form-check-inline">
-                                             <input class="form-check-input" type="radio" value="no" name="radioChildBirth" id="ChildBirthNo" checked="">
+                                             <input class="form-check-input" type="radio" value="no" name="hospitalized_child_birth" id="ChildBirthNo" checked="">
                                              <label class="form-check-label" for="ChildBirthNo">No</label>
                                          </div>
                                      </div>
                                  </div>
                                  <div class="col-md-8 mb-3 radioChildBirthFields hidden">
                                      <label for="inputWhatReasons" class="form-label">for what reasons?</label>
-                                     <input type="text" class="form-control" name="inputWhatReasons" id="inputWhatReasons">
+                                     <input type="text" class="form-control" name="hospitalized_child_birth_reason" id="inputWhatReasons">
                                  </div>
 
                                  <div class="col-md-12 mb-3">
                                      <div class="form-group">
                                          <label>Have you ever been hospitalized for mental health reasons?</label>
-                                         <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="radioHospitalized" id="HospitalizedYes">
+                                         <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" value="yes" name="hospitalized_mental_health" id="HospitalizedYes">
                                              <label class="form-check-label" for="HospitalizedYes">Yes</label>
                                          </div>
                                          <div class="form-check form-check-inline">
-                                             <input class="form-check-input" type="radio" name="radioHospitalized" id="HospitalizedNo" checked="">
+                                             <input class="form-check-input" type="radio" name="hospitalized_mental_health" value="no" id="HospitalizedNo" checked="">
                                              <label class="form-check-label" for="HospitalizedNo">No</label>
                                          </div>
                                      </div>
@@ -852,11 +852,11 @@
                                      <div class="form-group">
                                          <label>Is there a history of drug or alcohol usage?</label>
                                          <div class="form-check form-check-inline"> 
-                                            <input class="form-check-input" value="yes" type="radio" name="radioAlcoholUsaged" id="radioAlcoholUsagedYes">
+                                            <input class="form-check-input" value="yes" type="radio" name="alcohol_usaged" id="radioAlcoholUsagedYes">
                                              <label class="form-check-label" for="radioAlcoholUsagedYes">Yes</label>
                                          </div>
                                          <div class="form-check form-check-inline">
-                                             <input class="form-check-input" value="no" type="radio" name="radioAlcoholUsaged" id="radioAlcoholUsagedNo" checked="">
+                                             <input class="form-check-input" value="no" type="radio" name="alcohol_usaged" id="radioAlcoholUsagedNo" checked="">
                                              <label class="form-check-label" for="radioAlcoholUsagedNo">No</label>
                                          </div>
                                      </div>
@@ -864,12 +864,12 @@
 
                                  <div class="col-md-4 mb-3 radioAlcoholUsagedFields hidden">
                                      <label for="inputDrugAlcoholType" class="form-label">Drug/Alcohol Type</label>
-                                     <input type="text" class="form-control" name="inputDrugAlcoholType" id="inputDrugAlcoholType">
+                                     <input type="text" class="form-control" name="alcohol_usaged_type" id="inputDrugAlcoholType">
                                  </div>
 
                                  <div class="col-md-4 mb-3 radioAlcoholUsagedFields hidden">
-                                     <label for="inputDrugFrequency" class="form-label">Drug/Alcohol Type</label>
-                                     <input type="text" class="form-control" name="inputDrugFrequency" id="inputDrugFrequency">
+                                     <label for="inputDrugFrequency" class="form-label">Drug/Alcohol Frequency</label>
+                                     <input type="text" class="form-control" name="alcohol_usaged_frequency" id="inputDrugFrequency">
                                  </div>
 
                              </div>
@@ -879,11 +879,11 @@
                                      <div class="form-group">
                                          <label>Is there a family history of drug or alcohol usage?</label>
                                          <div class="form-check form-check-inline"> 
-                                            <input class="form-check-input" value="yes" type="radio" name="radioFamilyAlcoholUsaged" id="radioFamilyAlcoholUsagedYes">
+                                            <input class="form-check-input" value="yes" type="radio" name="family_alcohol_usaged" id="radioFamilyAlcoholUsagedYes">
                                              <label class="form-check-label" for="radioFamilyAlcoholUsagedYes">Yes</label>
                                          </div>
                                          <div class="form-check form-check-inline">
-                                             <input class="form-check-input" value="no" type="radio" name="radioFamilyAlcoholUsaged" id="radioFamilyAlcoholUsagedNo" checked="">
+                                             <input class="form-check-input" value="no" type="radio" name="family_alcohol_usaged" id="radioFamilyAlcoholUsagedNo" checked="">
                                              <label class="form-check-label" for="radioFamilyAlcoholUsagedNo">No</label>
                                          </div>
                                      </div>
@@ -891,12 +891,12 @@
 
                                  <div class="col-md-4 mb-3 radioFamilyAlcoholUsagedFields hidden">
                                      <label for="inputRelationshipAlcoholType" class="form-label">Relationship</label>
-                                     <input type="text" class="form-control" name="inputRelationshipAlcoholType" id="inputRelationshipAlcoholType">
+                                     <input type="text" class="form-control" name="family_alcohol_usaged_relationship" id="inputRelationshipAlcoholType">
                                  </div>
 
                                  <div class="col-md-4 mb-3 radioFamilyAlcoholUsagedFields hidden">
                                      <label for="inputDescribeAlcoholType" class="form-label">Describe</label>
-                                     <input type="text" class="form-control" name="inputDescribeAlcoholType" id="inputDescribeAlcoholType">
+                                     <input type="text" class="form-control" name="family_alcohol_usaged_describe" id="inputDescribeAlcoholType">
                                  </div>
                              </div>
 
@@ -906,11 +906,11 @@
                                      <div class="form-group">
                                          <label>Are you currently taking any prescription medications? Over the counter medications?</label>
                                          <div class="form-check form-check-inline"> 
-                                            <input class="form-check-input" value="yes" type="radio" name="radioPrescriptionMedications" id="radioPrescriptionMedicationsYes">
+                                            <input class="form-check-input" value="yes" type="radio" name="prescription_medications" id="radioPrescriptionMedicationsYes">
                                              <label class="form-check-label" for="radioPrescriptionMedicationsYes">Yes</label>
                                          </div>
                                          <div class="form-check form-check-inline">
-                                             <input class="form-check-input" value="no" type="radio" name="radioPrescriptionMedications" id="radioPrescriptionMedicationsNo" checked="">
+                                             <input class="form-check-input" value="no" type="radio" name="prescription_medications" id="radioPrescriptionMedicationsNo" checked="">
                                              <label class="form-check-label" for="radioPrescriptionMedicationsNo">No</label>
                                          </div>
                                      </div>
@@ -918,25 +918,25 @@
 
                                 <div class="col-md-3 mb-3 radioPrescriptionMedicationsFields hidden">
                                     <label for="inputMedication" class="form-label">Medication</label>
-                                    <input type="text" class="form-control" id="inputMedication">
+                                    <input type="text" class="form-control" name="prescription_medications_name" id="inputMedication">
                                 </div>
                                 <div class="col-md-3 mb-3 radioPrescriptionMedicationsFields hidden">
                                     <label for="inputDosage" class="form-label">Dosage</label>
-                                    <input type="text" class="form-control" id="inputDosage">
+                                    <input type="text" class="form-control" name="prescription_medications_dosage" id="inputDosage">
                                 </div>
                                 <div class="col-md-3 mb-3 radioPrescriptionMedicationsFields hidden">
                                     <label for="inputPrescribingDoctor" class="form-label">Prescribing Doctor</label>
-                                    <input type="text" class="form-control" id="inputPrescribingDoctor">
+                                    <input type="text" class="form-control" name="prescription_medications_doctor" id="inputPrescribingDoctor">
                                 </div>
 
                                 <div class="col-md-12 mb-3">
                                    <label for="inputHeadInjury" class="form-label">Have you ever suffered a head injury? (Car accidents, sports, violence, etc.)</label>
-                                   <textarea class="form-control" placeholder="Please Describe" required="required" name="inputHeadInjury" cols="50" rows="5" spellcheck="false"></textarea>
+                                   <textarea class="form-control" placeholder="Please Describe" required="required" name="head_injury" cols="50" rows="5" spellcheck="false"></textarea>
                                 </div>
 
                                 <div class="col-md-12 mb-3">
                                    <label for="inputConsciousnessHallucinations" class="form-label">Have you ever experienced any unusual states of consciousness like hallucinations, loss of time, long periods of confusion, out of body, etc.?</label>
-                                   <textarea class="form-control" placeholder="Please Describe" required="required" name="inputConsciousnessHallucinations" cols="50" rows="5" spellcheck="false"></textarea>
+                                   <textarea class="form-control" placeholder="Please Describe" required="required" name="consciousness_hallucinations" cols="50" rows="5" spellcheck="false"></textarea>
                                 </div>
 
                             </div>
@@ -951,31 +951,31 @@
                             <div class="form-row row">
                                 <div class="col-md-3 mb-3">
                                    <label class="form-label" for="inputSymptomName">Name</label>
-                                   <input type="text" class="form-control" name="inputSymptomName" id="inputSymptomName" placeholder="Name" value="" required="">
+                                   <input type="text" class="form-control" name="symptom_name" id="inputSymptomName" placeholder="Name" value="" required="">
                                 </div>
                                 <div class="col-md-3 mb-3">
                                    <label for="inputSymptomContact" class="form-label">Phone Number</label>
-                                   <input type="text" name="inputSymptomContact" id="inputSymptomContact" class="form-control" placeholder="Phone Number"  onkeypress="return isNumber(event)">
+                                   <input type="text" name="symptom_contact" id="inputSymptomContact" class="form-control" placeholder="Phone Number"  onkeypress="return isNumber(event)">
                                 </div>
                                 <div class="col-md-3 mb-3">
                                    <label for="inputSymptomAddress" class="form-label">Physical Address</label>
-                                   <input type="text" name="inputSymptomAddress" id="inputSymptomAddress" class="form-control" placeholder="Physical Address">
+                                   <input type="text" name="symptom_address" id="inputSymptomAddress" class="form-control" placeholder="Physical Address">
                                 </div>
                                 <div class="col-md-3 mb-3">
                                    <label for="inputSymptomEmail" class="form-label">Email</label>
-                                   <input type="email" name="inputSymptomEmail" id="inputSymptomEmail" class="form-control" placeholder="Email">
+                                   <input type="email" name="symptom_email" id="inputSymptomEmail" class="form-control" placeholder="Email">
                                 </div>
                                 <div class="col-md-12 mb-3">
                                    <label for="textareaSymptomProblems" class="form-label">What symptoms/problems are you hoping to improve?</label>
-                                   <textarea class="form-control" placeholder="Please Describe" required="required" name="textareaSymptomProblems" id="textareaSymptomProblems" cols="50" rows="5" spellcheck="false"></textarea>
+                                   <textarea class="form-control" placeholder="Please Describe" required="required" name="symptom_problems" id="textareaSymptomProblems" cols="50" rows="5" spellcheck="false"></textarea>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                    <label for="textareaSymptomProblems" class="form-label">When did these symptoms/problems first become noticeable?</label>
-                                   <textarea class="form-control" placeholder="Please Describe" required="required" name="textareaSymptomNoticeable" id="textareaSymptomNoticeable" cols="50" rows="5" spellcheck="false"></textarea>
+                                   <textarea class="form-control" placeholder="Please Describe" required="required" name="symptom_noticeable" id="textareaSymptomNoticeable" cols="50" rows="5" spellcheck="false"></textarea>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                    <label for="textareaSymptomProblems" class="form-label">What have been the major negative consequences of these symptoms/problems?</label>
-                                   <textarea class="form-control" placeholder="Please Describe" required="required" name="textareaSymptomNegative" id="textareaSymptomNegative" cols="50" rows="5" spellcheck="false"></textarea>
+                                   <textarea class="form-control" placeholder="Please Describe" required="required" name="symptom_negative" id="textareaSymptomNegative" cols="50" rows="5" spellcheck="false"></textarea>
                                 </div>
                             </div>
                             <div class="form-row row">
@@ -987,19 +987,19 @@
                                 <div class="col-md-4 mb-3">
                                     <div class="input-group mb-3">
                                         <span class="input-group-text">1</span>
-                                        <input type="text" class="form-control" name="inputThreePrimaryGoals1" id="inputThreePrimaryGoals1" placeholder="" value="" required="">
+                                        <input type="text" class="form-control" name="primary_goal_one" id="inputThreePrimaryGoals1" placeholder="" value="" required="">
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <div class="input-group mb-3">
                                         <span class="input-group-text">2</span>
-                                        <input type="text" class="form-control" name="inputThreePrimaryGoals2" id="inputThreePrimaryGoals2" placeholder="" value="" required="">
+                                        <input type="text" class="form-control" name="primary_goal_two" id="inputThreePrimaryGoals2" placeholder="" value="" required="">
                                     </div>                                   
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <div class="input-group mb-3">
                                         <span class="input-group-text">3</span>
-                                        <input type="text" class="form-control" name="inputThreePrimaryGoals3" id="inputThreePrimaryGoals3" placeholder="" value="" required="">
+                                        <input type="text" class="form-control" name="primary_goal_three" id="inputThreePrimaryGoals3" placeholder="" value="" required="">
                                     </div>
                                 </div>
                                 {{-- <div class="col-md-12 mb-3">
@@ -1016,22 +1016,23 @@
                                     <div class="form-control-wrap">
                                         <label for="dropzone" class="form-label">Upload Files</label>
                                         <div class="custom-file">
-                                            <div class="dropzone" data-test="start_job_upload_photos" id="dropzone"></div>
+                                            <div class="dropzone" data-test="photos" id="dropzone"></div>
                                             <div class="form-note">Max. file size: 15 GB, Max. files: 5.</div>
                                         </div>
                                     </div>
+                                    <input type="text" class="form-control" name="photos" id="photos" />
                                 </div>
 
                                 <div class="col-md-3 mb-3">
                                     <div class="form-group">
                                        <label>Select Date</label>
-                                       <input class="form-control" placeholder="Enter Title" required="required" name="title" type="date">
+                                       <input class="form-control" placeholder="Enter Title" required="required" name="appoinment_date" type="date">
                                     </div>
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <div class="form-group col-md-6">
                                       <label for="time">Time</label>
-                                      <input class="form-control" type="text" id="datetime">
+                                      <input class="form-control" type="text" name="appoinment_time" id="datetime">
                                     </div>
                                 </div>
                                 
@@ -1130,7 +1131,7 @@
     
     $(document).ready(function() {
         // previous marriage section;
-        $('input[name="radioPreviousmarriages"]').on('change', function() {
+        $('input[name="previous_marriages"]').on('change', function() {
             if ($(this).val() === 'yes') {
                 $('.PreviousMarriageFields').removeClass('hidden');
             } else {
@@ -1139,7 +1140,7 @@
         });
 
         // abusive relationship section;
-        $('input[name="radioabusiveRelationship"]').on('change', function() {
+        $('input[name="abusive_relationship"]').on('change', function() {
             if ($(this).val() === 'yes') {
                 $('.relationshipAbuseFeilds').removeClass('hidden');
             } else {
@@ -1148,7 +1149,7 @@
         });
 
         // occur Offer section;
-        $('input[name="radioOccur"]').on('change', function() {
+        $('input[name="abusive_relationship_occur"]').on('change', function() {
             if ($(this).val() === 'Other') {
                 $('.OccurOthersFields').removeClass('hidden');
             } else {
@@ -1157,7 +1158,7 @@
         });
         
          // relationshipsAbusive section;
-        $('input[name="relationshipsAbusive"]').on('change', function() {
+        $('input[name="past_relationships_abusive"]').on('change', function() {
             if ($(this).val() === 'yes') {
                 $('.relationshipsAbusiveFields').removeClass('hidden');
             } else {
@@ -1166,7 +1167,7 @@
         });
 
         // SexuallyViolatedAssaulted section;
-        $('input[name="SexuallyViolatedAssaulted"]').on('change', function() {
+        $('input[name="sexually_violated_assaulted"]').on('change', function() {
             if ($(this).val() === 'yes') {
                 $('.SexuallyViolatedAssaultedFields').removeClass('hidden');
             } else {
@@ -1175,7 +1176,7 @@
         });
 
         // CustomAdultRaped section;
-        $('input[name="CustomAdultRaped"]').on('change', function() {
+        $('input[name="sexually_assaulted_raped"]').on('change', function() {
             if ($(this).val() === 'yes') {
                 $('.CustomAdultRapedFields').removeClass('hidden');
             } else {
@@ -1184,7 +1185,7 @@
         });
         
         // CounselingServices section;
-        $('input[name="CounselingServices"]').on('change', function() {
+        $('input[name="counseling_services"]').on('change', function() {
             if ($(this).val() === 'yes') {
                 $('.CounselingServicesFields').removeClass('hidden');
             } else {
@@ -1193,7 +1194,7 @@
         });
 
         // radioChildBirth section;
-        $('input[name="radioChildBirth"]').on('change', function() {
+        $('input[name="hospitalized_child_birth"]').on('change', function() {
             if ($(this).val() === 'yes') {
                 $('.radioChildBirthFields').removeClass('hidden');
             } else {
@@ -1202,7 +1203,7 @@
         });
         
         // radioAlcoholUsaged section;
-        $('input[name="radioAlcoholUsaged"]').on('change', function() {
+        $('input[name="alcohol_usaged"]').on('change', function() {
             if ($(this).val() === 'yes') {
                 $('.radioAlcoholUsagedFields').removeClass('hidden');
             } else {
@@ -1211,7 +1212,7 @@
         });
         
         // radioFamilyAlcoholUsaged section;
-        $('input[name="radioFamilyAlcoholUsaged"]').on('change', function() {
+        $('input[name="family_alcohol_usaged"]').on('change', function() {
             if ($(this).val() === 'yes') {
                 $('.radioFamilyAlcoholUsagedFields').removeClass('hidden');
             } else {
@@ -1220,7 +1221,7 @@
         });
         
         // radioPrescriptionMedications section;
-        $('input[name="radioPrescriptionMedications"]').on('change', function() {
+        $('input[name="prescription_medications"]').on('change', function() {
             if ($(this).val() === 'yes') {
                 $('.radioPrescriptionMedicationsFields').removeClass('hidden');
             } else {
@@ -1243,6 +1244,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
     <link rel="stylesheet" href="{{ asset('assets/css/richtext.min.css') }}">
     <script src="{{ asset('assets/js/jquery.richtext.js') }}"></script>
+
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+    
     <script>
         $(document).ready(function() {
             $('.contentArea').richText({
@@ -1305,5 +1310,85 @@
             });
 
         });
+
+
+        var imageUploadClass;
+
+        $('.dropzone').on('click',function(e) {
+            console.log('On Click - '+$(this).data('test'));
+            imageUploadClass = $(this).data('test');
+        });
+
+        Dropzone.options.dropzone =
+        {
+            url: '{{url('dashboard/image/upload/store')}}',
+            maxFilesize: 25,
+            renameFile: function (file) {
+                var dt = new Date();
+                var time = dt.getTime();
+                return time + '_' + file.name;
+            },
+            acceptedFiles: "image/*",
+            addRemoveLinks: false,
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
+            timeout: 50000,
+            removedfile: function (file) {
+                console.log(file._removeLink.className);
+                console.log($(this).data('test'));
+                var imageUploadClass = $(this).closest('#dropzone').data('test');
+
+                console.log(imageUploadClass);
+                var name = file.upload.filename;
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    },
+                    type: 'POST',
+                    url: '{{ url("dashboard/image/delete") }}',
+                    data: {filename: name},
+                    success: function (data) {
+                        console.log(imageUploadClass);
+                        var newArr = [];
+                        if ($('#'+imageUploadClass).val().length != 0){
+                            newArr = $('#'+imageUploadClass).val().split(',');
+                            console.log('Remove Item');
+                            console.log(newArr);
+                        }
+                        console.log("File has been successfully removed!!");
+                        var removeItem = data;
+                        newArr = jQuery.grep(newArr, function (va) {
+                            return va != removeItem;
+                        });
+                        $('#'+imageUploadClass).val(newArr);
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    }
+                });
+                var fileRef;
+                return (fileRef = file.previewElement) != null ?
+                    fileRef.parentNode.removeChild(file.previewElement) : void 0;
+            },
+            success: function (file, response) {
+                console.log(imageUploadClass);
+                var newArr = [];
+                if ($('#'+imageUploadClass).val().length != 0){
+                    newArr = $('#'+imageUploadClass).val().split(',');
+                    console.log(newArr);
+                }
+                console.log(newArr);
+                $.each(response, function (key, value) {
+                    console.log(value);
+                    newArr.push(value);
+                });
+                console.log(newArr);
+                $('#'+imageUploadClass).val(newArr);
+            },
+            error: function (file, response) {
+                return false;
+            }
+        };
     </script>
 @endsection
