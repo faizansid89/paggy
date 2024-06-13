@@ -57,51 +57,66 @@
                                        <label class="form-label">Contact Number</label>
                                        <input type="text" class="form-control" placeholder="Phone Number" onkeypress="return isNumber(event)">
                                     </div>
-                                    <div class="col-md-6 mb-3">
+                                    <div class="col-md-12 mb-3">
+                                       <div class="form-group">
+                                          <label class="form-label">Select a Service</label>
+                                             <select class="select" name="ConsultationServices" id="ConsultationServices">
+                                                <option value="Consultation 45 min" selected="selected">Consultation 45 min</option>
+                                                <option value="Consultation 60 min">Consultation 60 min</option>
+                                                <option value="Consultation 90 min">Consultation 90 min</option>
+                                                <option value="Consultation 120 min">Consultation 120 min</option>
+                                             </select>
+                                       </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
                                         <div class="form-group">
                                             <label>Your Role</label>
                                             <div class="form-check"> 
-                                                <input class="form-check-input" type="radio" name="radioYourRole" id="Prosecutor">
+                                                <input class="form-check-input" type="radio" name="radioYourRole" id="Prosecutor" checked="">
                                                 <label class="form-check-label" for="Prosecutor">Prosecutor</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="radioYourRole" id="DefenseAttorney" checked="">
+                                                <input class="form-check-input" type="radio" name="radioYourRole" id="DefenseAttorney">
                                                 <label class="form-check-label" for="DefenseAttorney">Defense Attorney</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="radioYourRole" id="PlaintiffAttorney" checked="">
+                                                <input class="form-check-input" type="radio" name="radioYourRole" id="PlaintiffAttorney">
                                                 <label class="form-check-label" for="PlaintiffAttorney">Plaintiff Attorney</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="radioYourRole" id="RespondentAttorney" checked="">
+                                                <input class="form-check-input" type="radio" name="radioYourRole" id="RespondentAttorney">
                                                 <label class="form-check-label" for="RespondentAttorney">Respondent Attorney</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="radioYourRole" id="Client" checked="">
+                                                <input class="form-check-input" type="radio" name="radioYourRole" id="Client">
                                                 <label class="form-check-label" for="Client">Client</label>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 mb-3">
+                                    <div class="col-md-4 mb-3">
                                         <div class="form-group">
                                             <label>Type of Case</label>
                                             <div class="form-check"> 
-                                                <input class="form-check-input" type="radio" name="radioTypeofCase" id="Divorce/Custody">
+                                                <input class="form-check-input" type="radio" name="radioTypeofCase" id="Divorce/Custody" checked="">
                                                 <label class="form-check-label" for="Divorce/Custody">Divorce/Custody</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="radioTypeofCase" id="ProtectiveOrder" checked="">
+                                                <input class="form-check-input" type="radio" name="radioTypeofCase" id="ProtectiveOrder">
                                                 <label class="form-check-label" for="ProtectiveOrder">Protective Order</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="radioTypeofCase" id="Criminal" checked="">
+                                                <input class="form-check-input" type="radio" name="radioTypeofCase" id="Criminal">
                                                 <label class="form-check-label" for="Criminal">Criminal</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="radioTypeofCase" id="Other" checked="">
+                                                <input class="form-check-input" value="other" type="radio" name="radioTypeofCase" id="Other" >
                                                 <label class="form-check-label" for="Other">Other</label>
                                             </div>
                                         </div>
+                                    </div>
+                                     <div class="col-md-4 mb-3 TypeofCaseFields hidden">
+                                       <label for="TypeofCase" class="form-label">Other</label>
+                                       <input type="text" name="TypeofCase_others" class="form-control" id="TypeofCase">
                                     </div>
                                  </div>
                                  <div class="form-row row">
@@ -113,7 +128,7 @@
                                      <div class="col-md-4 mb-3">
                                          <div class="form-group">
                                             <label>Select Date</label>
-                                            <input class="form-control" placeholder="Enter Title" required="required" name="title" type="date">
+                                            <input class="form-control" placeholder="Enter Title" name="title" type="date">
                                          </div>
                                      </div>
                                      <div class="col-md-4 mb-3">
@@ -142,7 +157,7 @@
                                             </label>
                                          </div> --}}
                                      </div>
-                                     <div class="col-md-12 mb-3">
+                                     <!-- <div class="col-md-12 mb-3">
                                          <aside class="product-order-list">
                                             <div class="head d-flex align-items-center justify-content-between w-100">
                                                <div class>
@@ -151,7 +166,7 @@
                                                </div>
                                             </div>
                                          </aside>
-                                     </div>
+                                     </div> -->
                                  </div>
                                 <div class="text-end">
                                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -167,6 +182,17 @@
 @endsection
 @section('scripts')
      <script>
+        $(document).ready(function() {
+            // TypeOfCase section;
+            $('input[name="radioTypeofCase"]').on('change', function() {
+                if ($(this).val() === 'other') {
+                    $('.TypeofCaseFields').removeClass('hidden');
+                } else {
+                    $('.TypeofCaseFields').addClass('hidden');
+                }
+            });
+
+        });
         $('#consultationDateTime').datetimepicker({
             format: 'hh:mm:ss a'
         });

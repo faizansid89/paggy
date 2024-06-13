@@ -60,29 +60,18 @@
                                        <div class="form-group">
                                           <label class="form-label">Select a Service</label>
                                              <select class="select" name="ExpertTestimony" id="ExpertTestimony">
-                                                <option value="Therapy 120 min">Therapy 120 min</option>
-                                                <option value="Therapy 60 min" selected="selected">Therapy 60 min</option>
-                                                <option value="Free 15-minute consultation">Free 15-minute consultation</option>
-                                                <option value="Expert Testimony full day">Expert Testimony full day</option>
-                                                <option value="Expert Testimony half day">Expert Testimony half day</option>
-                                                <option value="Consultation 120 min">Consultation 120 min</option>
-                                                <option value="Consultation 90 min">Consultation 90 min</option>
-                                                <option value="Consultation 60 min">Consultation 60 min</option>
-                                                <option value="Expert Testimony 120 min">Expert Testimony 120 min</option>
-                                                <option value="Expert Testimony 90 min">Expert Testimony 90 min</option>
+                                                <option value="Expert Testimony 45 min" selected="selected">Expert Testimony 45 min</option>
                                                 <option value="Expert Testimony 60 min">Expert Testimony 60 min</option>
-                                                <option value="Clinical Supervision 120 min">Clinical Supervision 120 min</option>
-                                                <option value="Clinical Supervision 90 min">Clinical Supervision 90 min</option>
-                                                <option value="Clinical Supervision 60 min">Clinical Supervision 60 min</option>
-                                                <option value="Expert Testimony 45 min">Expert Testimony 45 min</option>
-                                                <option value="Therapy 45 min">Therapy 45 min</option>
-                                                <option value="Consultation 45 min">Consultation 45 min</option>
+                                                <option value="Expert Testimony 90 min">Expert Testimony 90 min</option>
+                                                <option value="Expert Testimony 120 min">Expert Testimony 120 min</option>
+                                                <option value="Expert Testimony half day">Expert Testimony Half Day</option>
+                                                <option value="Expert Testimony full day">Expert Testimony Full Day</option>
                                              </select>
                                        </div>
                                    </div>
                                 </div>
                                 <div class="form-row row">
-                                    <div class="col-md-6 mb-3">
+                                    <div class="col-md-4 mb-3">
                                         <div class="form-group">
                                             <label>Your Role</label>
                                             <div class="form-check"> 
@@ -107,68 +96,76 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 mb-3">
+                                    <div class="col-md-4 mb-3">
                                         <div class="form-group">
                                             <label>Type of Case</label>
                                             <div class="form-check"> 
-                                                <input class="form-check-input" type="radio" name="radioTypeofCase" id="Divorce/Custody">
+                                                <input class="form-check-input" type="radio" name="radioTypeofCase" id="Divorce/Custody" checked="">
                                                 <label class="form-check-label" for="Divorce/Custody">Divorce/Custody</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="radioTypeofCase" id="ProtectiveOrder" checked="">
+                                                <input class="form-check-input" type="radio" name="radioTypeofCase" id="ProtectiveOrder">
                                                 <label class="form-check-label" for="ProtectiveOrder">Protective Order</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="radioTypeofCase" id="Criminal" checked="">
+                                                <input class="form-check-input" type="radio" name="radioTypeofCase" id="Criminal">
                                                 <label class="form-check-label" for="Criminal">Criminal</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="radioTypeofCase" id="Other" checked="">
+                                                <input class="form-check-input" value="other" type="radio" name="radioTypeofCase" id="Other">
                                                 <label class="form-check-label" for="Other">Other</label>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 mb-3">
-                                        <div class="form-group">
-                                           <label>Select Date</label>
-                                           <input class="form-control" placeholder="Enter Title" required="required" name="title" type="date">
-                                        </div>
+                                    <div class="col-md-4 mb-3 TypeofCaseFields hidden">
+                                       <label for="TypeofCase" class="form-label">Other</label>
+                                       <input type="text" name="TypeofCase_others" class="form-control" id="TypeofCase">
                                     </div>
-                                    <div class="col-md-4 mb-3">
-                                        <div class="form-group col-md-6">
-                                          <label for="time">Time</label>
-                                          <input class="form-control" type="text" id="ExpertTestimonyDateTime">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                       <label for="inputBriefOverviewofCase" class="form-label">Brief Overview of Case</label>
-                                       <textarea class="form-control" placeholder="Please Describe" required="required" name="inputBriefOverviewofCase" cols="50" rows="5" spellcheck="false"></textarea>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <div class="form-control-wrap">
-                                            <div class="custom-file">
-                                                <div class="dropzone" data-test="start_job_upload_photos" id="dropzone"></div>
-                                                <div class="form-note">Max. files: 5.</div>
+                                    <div class="form-row row">
+                                        <div class="col-md-3 mb-3">
+                                            <div class="form-group">
+                                               <label>Select Date</label>
+                                               <input class="form-control" placeholder="Enter Title" required="required" name="title" type="date">
                                             </div>
                                         </div>
-                                        {{-- <div class="custom-file-container" data-upload-id="mySecondImage">
-                                           <label>Please Upload all files here (Allow Multiple) <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">x</a></label>
-                                           <label class="custom-file-container__custom-file">
-                                           <input type="file" class="custom-file-container__custom-file__custom-file-input" multiple="">
-                                           <input type="hidden" name="MAX_FILE_SIZE" value="10485760">
-                                           <span class="custom-file-container__custom-file__custom-file-control">Choose file...<span class="custom-file-container__custom-file__custom-file-control__button"> Browse </span></span>
-                                           </label>
-                                        </div> --}}
+                                        <div class="col-md-2 mb-3">
+                                            <div class="form-group">
+                                              <label for="time">Time</label>
+                                              <input class="form-control" type="text" id="ExpertTestimonyDateTime">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-12 mb-3">
-                                        <aside class="product-order-list">
-                                           <div class="head d-flex align-items-center justify-content-between w-100">
-                                              <div class>
-                                                 <h5>Expert Testimony Payment</h5>
-                                                 <span>$35.00</span>
-                                              </div>
-                                           </div>
-                                        </aside>
+                                    <div class="form-row row">
+                                        <div class="col-md-12 mb-3">
+                                           <label for="inputBriefOverviewofCase" class="form-label">Brief Overview of Case</label>
+                                           <textarea class="form-control" placeholder="Please Describe" required="required" name="inputBriefOverviewofCase" cols="50" rows="5" spellcheck="false"></textarea>
+                                        </div>
+                                        <div class="col-md-12 mb-3">
+                                            <div class="form-control-wrap">
+                                                <div class="custom-file">
+                                                    <div class="dropzone" data-test="start_job_upload_photos" id="dropzone"></div>
+                                                    <div class="form-note">Max. files: 5.</div>
+                                                </div>
+                                            </div>
+                                            {{-- <div class="custom-file-container" data-upload-id="mySecondImage">
+                                               <label>Please Upload all files here (Allow Multiple) <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">x</a></label>
+                                               <label class="custom-file-container__custom-file">
+                                               <input type="file" class="custom-file-container__custom-file__custom-file-input" multiple="">
+                                               <input type="hidden" name="MAX_FILE_SIZE" value="10485760">
+                                               <span class="custom-file-container__custom-file__custom-file-control">Choose file...<span class="custom-file-container__custom-file__custom-file-control__button"> Browse </span></span>
+                                               </label>
+                                            </div> --}}
+                                        </div>
+                                        <!-- <div class="col-md-12 mb-3">
+                                            <aside class="product-order-list">
+                                               <div class="head d-flex align-items-center justify-content-between w-100">
+                                                  <div class>
+                                                     <h5>Expert Testimony Payment</h5>
+                                                     <span>$35.00</span>
+                                                  </div>
+                                               </div>
+                                            </aside>
+                                        </div> -->
                                     </div>
                                     
                                 </div>
@@ -256,6 +253,17 @@
 @endsection
 @section('scripts')
      <script>
+        $(document).ready(function() {
+            // TypeOfCase section;
+            $('input[name="radioTypeofCase"]').on('change', function() {
+                if ($(this).val() === 'other') {
+                    $('.TypeofCaseFields').removeClass('hidden');
+                } else {
+                    $('.TypeofCaseFields').addClass('hidden');
+                }
+            });
+
+        });
         $('#ExpertTestimonyDateTime').datetimepicker({
             format: 'hh:mm:ss a'
         });

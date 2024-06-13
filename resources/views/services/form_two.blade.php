@@ -62,6 +62,19 @@
 
                             <div class="form-row row">
                                 <div class="col-md-12 mb-3">
+                                   <div class="form-group">
+                                      <label class="form-label">Select a Service</label>
+                                         <select class="select" name="ClinicalSupervision" id="ClinicalSupervision">
+                                            <option value="Clinical Supervision 60 min" selected="selected">Clinical Supervision 60 min</option>
+                                            <option value="Clinical Supervision 90 min">Clinical Supervision 90 min</option>
+                                            <option value="Clinical Supervision 120 min">Clinical Supervision 120 min</option>
+                                         </select>
+                                   </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row row">
+                                <div class="col-md-12 mb-3">
                                     <div class="form-control-wrap">
                                         <div class="custom-file">
                                             <div class="dropzone" data-test="start_job_upload_photos" id="dropzone"></div>
@@ -88,6 +101,10 @@
                                          <input class="form-check-input" type="radio" name="radioClinicialSchedule" id="Supervision1hr" checked="">
                                          <label class="form-check-label" for="Supervision1hr">Supervision (1 hr)</label>
                                       </div>
+                                      <div class="form-check">
+                                         <input class="form-check-input" type="radio" name="radioClinicialSchedule" id="Supervision2hr" checked="">
+                                         <label class="form-check-label" for="Supervision2hr">Supervision (2 hrs)</label>
+                                      </div>
                                    </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
@@ -102,7 +119,7 @@
                                       <input class="form-control" type="text" id="clinicialdatetime">
                                     </div>
                                 </div>
-                                <div class="col-md-12 mb-3">
+                                <!-- <div class="col-md-12 mb-3">
                                     <aside class="product-order-list">
                                        <div class="head d-flex align-items-center justify-content-between w-100">
                                           <div class>
@@ -111,7 +128,7 @@
                                           </div>
                                        </div>
                                     </aside>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="text-end">
                                 <button type="submit" class="btn btn-primary">Submit</button>

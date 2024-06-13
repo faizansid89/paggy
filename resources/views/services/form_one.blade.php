@@ -390,6 +390,17 @@
                                   <input type="text" class="form-control" id="inputSchool" name="school">
                                </div>
 
+                               <div class="col-md-12 mb-3">
+                                  <div class="form-group">
+                                     <label class="form-label">Select a Service</label>
+                                        <select class="select" name="TherapyServices" id="TherapyServices">
+                                           <option value="Therapy 45 min" selected="selected">Therapy 45 min</option>
+                                           <option value="Therapy 60 min">Therapy 60 min</option>
+                                           <option value="Therapy 120 min">Therapy 120 min</option>
+                                        </select>
+                                  </div>
+                               </div>
+
                                <div class="col-md-4 mb-3">
                                   <div class="form-group">
                                      <label>Sex/Gender</label>
@@ -541,15 +552,15 @@
                                </div>
                                 <div class="col-md-3 mb-3 PreviousMarriageFields hidden">
                                   <label for="yearsmarried" class="form-label"># of years married</label>
-                                  <input type="text" class="form-control" id="yearsmarried" name="year_previous_marriages" onkeypress="return isNumber(event)">
+                                  <textarea class="form-control" placeholder="Please Describe" required="required" id="yearsmarried" name="year_previous_marriages" onkeypress="return isNumber(event)" cols="50" rows="1" spellcheck="true"></textarea>
                                </div>
                                <div class="col-md-3 mb-3 PreviousMarriageFields hidden">
                                   <label for="yearsdivorce" class="form-label">years of divorce</label>
-                                  <input type="text" class="form-control" id="yearsdivorce" name="divorce_previous_marriages"  onkeypress="return isNumber(event)">
+                                  <textarea class="form-control" placeholder="Please Describe" required="required" id="yearsdivorce" name="divorce_previous_marriages" onkeypress="return isNumber(event)" cols="50" rows="1" spellcheck="true"></textarea>
                                </div>
                                <div class="col-md-3 mb-3 PreviousMarriageFields hidden">
                                   <label for="reasonfordivorce" class="form-label">reason for divorce</label>
-                                  <input type="text" class="form-control" name="reason_previous_marriages" id="reasonfordivorce">
+                                  <textarea class="form-control" placeholder="Please Describe" required="required" name="reason_previous_marriages" id="reasonfordivorce" cols="50" rows="1" spellcheck="true"></textarea>
                                </div>
 
                             </div>
@@ -640,10 +651,7 @@
                                         </div>
                                     </div>
                                 </div>
-
-
-
-                                <div class="col-md-3 mb-3">
+                                <div class="col-md-3 mb-3 relationshipAbuseFeilds hidden">
                                     <div class="form-group">
                                         <label>How often does this occur?</label>
                                         <div class="form-check"> 
@@ -661,10 +669,11 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-3 mb-3 OccurOthersFields hidden">
-                                  <label for="OccurOthers" class="form-label">Others</label>
+                                <div class="col-md-3 mb-3 OccurOthersFields hidden relationshipAbuseNoFeilds hide">
+                                  <label for="OccurOthers" class="form-label">Other</label>
                                   <input type="text" name="abusive_relationship_others" class="form-control" id="OccurOthers">
                                </div>
+
                             </div>
 
                             <!-- relationshipAbusiveCustom start -->
@@ -683,14 +692,14 @@
                                  </div>
                                  <div class="col-md-8 mb-3 relationshipsAbusiveFields hidden">
                                   <label for="Abusivedescribe" class="form-label">If “Yes”, please describe</label>
-                                  <input type="text" class="form-control" name="past_relationships_abusive_describe" id="Abusivedescribe">
+                                  <textarea class="form-control" placeholder="Please Describe" required="required" name="past_relationships_abusive_describe" cols="50" rows="1" spellcheck="true"></textarea>
                                </div>
                             </div>
                             <!-- relationshipAbusiveCustom end -->
 
                             <!-- sexually/violated/assaulted Start -->
                                 <div class="form-row row CustomSexuallyViolatedAssaulted">
-                                    <div class="col-md-3 mb-3">
+                                    <div class="col-md-4 mb-3">
                                          <div class="form-group">
                                              <label>Were you ever sexually violated/assaulted as a child (0-18 years)?</label>
                                              <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="sexually_violated_assaulted" value="yes" id="SexuallyViolatedAssaultedYes">
@@ -702,24 +711,20 @@
                                              </div>
                                          </div>
                                      </div>
-                                     <div class="col-md-3 mb-3 SexuallyViolatedAssaultedFields hidden">
+                                     <div class="col-md-4 mb-3 SexuallyViolatedAssaultedFields hidden">
                                         <label for="SexuallyOldWere" class="form-label">If “Yes”, how old were you?</label>
-                                        <input type="number" class="form-control" name="sexually_violated_assaulted_year" id="SexuallyOldWere">
+                                        <textarea class="form-control" placeholder="Please Describe" required="required" id="SexuallyOldWere" name="sexually_violated_assaulted_year" cols="50" rows="1" spellcheck="true"></textarea>
                                      </div>
-                                     <div class="col-md-3 mb-3 SexuallyViolatedAssaultedFields hidden">
-                                        <label for="SexuallyBywhom" class="form-label">by whom?</label>
-                                        <input type="text" class="form-control" name="sexually_violated_assaulted_by_whom" id="SexuallyBywhom">
-                                     </div>
-                                     <div class="col-md-3 mb-3 SexuallyViolatedAssaultedFields hidden">
+                                     <div class="col-md-4 mb-3 SexuallyViolatedAssaultedFields hidden">
                                         <label for="SexuallyRelationship" class="form-label">Relationship</label>
-                                        <input type="text" class="form-control" name="sexually_violated_assaulted_relationship" id="SexuallyRelationship">
+                                        <textarea class="form-control" placeholder="Please Describe" required="required" name="sexually_violated_assaulted_relationship" id="SexuallyRelationship" cols="50" rows="1" spellcheck="true"></textarea>
                                      </div>
                                 </div>
                             <!-- sexually/violated/assaulted End -->
 
                             <!-- CustomAdultRaped Start -->
                                 <div class="form-row row">
-                                    <div class="col-md-3 mb-3">
+                                    <div class="col-md-4 mb-3">
                                          <div class="form-group">
                                              <label>Have you ever been sexually assaulted or raped as an adult?</label>
                                              <div class="form-check form-check-inline"> 
@@ -732,17 +737,13 @@
                                              </div>
                                          </div>
                                      </div>
-                                     <div class="col-md-3 mb-3 CustomAdultRapedFields hidden">
+                                     <div class="col-md-4 mb-3 CustomAdultRapedFields hidden">
                                         <label for="RapeYesWhen" class="form-label">“Yes”, when?</label>
-                                        <input type="number" class="form-control" name="sexually_assaulted_raped_when" id="RapeYesWhen">
+                                        <textarea class="form-control" placeholder="Please Describe" required="required" name="sexually_assaulted_raped_when" id="RapeYesWhen" cols="50" rows="1" spellcheck="true"></textarea>
                                      </div>
-                                     <div class="col-md-3 mb-3 CustomAdultRapedFields hidden">
-                                        <label for="RapeBywhom" class="form-label">by whom?</label>
-                                        <input type="text" class="form-control" id="RapeBywhom" name="sexually_assaulted_raped_whom">
-                                     </div>
-                                     <div class="col-md-3 mb-3 CustomAdultRapedFields hidden">
+                                     <div class="col-md-4 mb-3 CustomAdultRapedFields hidden">
                                         <label for="RapeRelationship" class="form-label">Relationship</label>
-                                        <input type="text" class="form-control" id="RapeRelationship" name="sexually_assaulted_raped_relation">
+                                        <textarea class="form-control" placeholder="Please Describe" required="required" id="RapeRelationship" name="sexually_assaulted_raped_relation" id="RapeYesWhen" cols="50" rows="1" spellcheck="true"></textarea>
                                      </div>
                                 </div>
                             <!-- CustomAdultRaped End -->
@@ -767,6 +768,18 @@
                                          </div>
                                      </div>
                                  </div>
+                                 <div class="col-md-3 mb-3 ReceivingTherapyFields hidden">
+                                    <label for="ReceivingTherapyFromWhen" class="form-label">Form whom?</label>
+                                    <textarea class="form-control" placeholder="Please Describe" required="required" id="ReceivingTherapyFromWhen" name="ReceivingTherapyFromWhen" cols="50" rows="1" spellcheck="true"></textarea>
+                                 </div>
+                                 <div class="col-md-3 mb-3 ReceivingTherapyFields hidden">
+                                    <label for="ReceivingTherapyPhone" class="form-label">Phone</label>
+                                    <input type="number" class="form-control" placeholder="Phone Number" name="ReceivingTherapyPhone" value="" onkeypress="return isNumber(event)">
+                                 </div>
+                                 <div class="col-md-3 mb-3 ReceivingTherapyFields hidden">
+                                    <label for="ReceivingTherapyEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" placeholder="Email Address" name="ReceivingTherapyEmail">
+                                 </div>
                             </div>
 
                             <!-- CustomCounselingServices Start -->
@@ -785,15 +798,16 @@
                                  </div>
                                  <div class="col-md-3 mb-3 CounselingServicesFields hidden">
                                     <label for="CounselingServicesWhen" class="form-label">When?</label>
-                                    <input type="text" class="form-control" id="CounselingServicesWhen" name="counseling_services_when">
+                                    <textarea class="form-control" placeholder="Please Describe" required="required" id="CounselingServicesWhen" name="counseling_services_when" cols="50" rows="1" spellcheck="true"></textarea>
                                  </div>
                                  <div class="col-md-3 mb-3 CounselingServicesFields hidden">
                                     <label for="CounselingServicesFromwhom" class="form-label">Form whom?</label>
-                                    <input type="text" class="form-control" id="CounselingServicesFromwhom" name="counseling_services_whom">
+                                    <textarea class="form-control" placeholder="Please Describe" required="required" id="CounselingServicesFromwhom" name="counseling_services_whom" cols="50" rows="1" spellcheck="true"></textarea>
                                  </div>
                                  <div class="col-md-3 mb-3 CounselingServicesFields hidden">
                                     <label for="CounselingServicesForWhat" class="form-label">For what?</label>
-                                    <input type="text" class="form-control" id="CounselingServicesForWhat" name="counseling_services_what">
+                                    <textarea class="form-control" placeholder="Please Describe" required="required" id="CounselingServicesForWhat" name="counseling_services_what" cols="50" rows="1" spellcheck="true"></textarea>
+
                                  </div>
                             </div>
                             <!-- CustomCounselingServices END -->
@@ -801,11 +815,8 @@
 
                             <!-- MedicalHistory Start -->
                             <div class="form-row row">
-                                <div class="col-md-12">
-                                    <h3 class="mb-3">Therapy History:</h3>
-                                </div>
                                  <div class="col-md-12 mb-3">
-                                   <label for="inputCurrentMedical" class="form-label">Do you have any current medical conditions (particularly seizures, diabetes, and sickle cell)?</label>
+                                   <label for="inputCurrentMedical" class="form-label">Do you have any current medical conditions?</label>
                                    <textarea class="form-control" placeholder="Please Describe" required="required" name="current_medical" cols="50" rows="5" spellcheck="false"></textarea>
                                 </div>
                                 <div class="col-md-12 mb-3">
@@ -949,22 +960,6 @@
                                 </div>
                             </div>
                             <div class="form-row row">
-                                <div class="col-md-3 mb-3">
-                                   <label class="form-label" for="inputSymptomName">Name</label>
-                                   <input type="text" class="form-control" name="symptom_name" id="inputSymptomName" placeholder="Name" value="" required="">
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                   <label for="inputSymptomContact" class="form-label">Phone Number</label>
-                                   <input type="text" name="symptom_contact" id="inputSymptomContact" class="form-control" placeholder="Phone Number"  onkeypress="return isNumber(event)">
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                   <label for="inputSymptomAddress" class="form-label">Physical Address</label>
-                                   <input type="text" name="symptom_address" id="inputSymptomAddress" class="form-control" placeholder="Physical Address">
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                   <label for="inputSymptomEmail" class="form-label">Email</label>
-                                   <input type="email" name="symptom_email" id="inputSymptomEmail" class="form-control" placeholder="Email">
-                                </div>
                                 <div class="col-md-12 mb-3">
                                    <label for="textareaSymptomProblems" class="form-label">What symptoms/problems are you hoping to improve?</label>
                                    <textarea class="form-control" placeholder="Please Describe" required="required" name="symptom_problems" id="textareaSymptomProblems" cols="50" rows="5" spellcheck="false"></textarea>
@@ -1142,18 +1137,26 @@
         // abusive relationship section;
         $('input[name="abusive_relationship"]').on('change', function() {
             if ($(this).val() === 'yes') {
-                $('.relationshipAbuseFeilds').removeClass('hidden');
+                $('.relationshipAbuseFeilds').removeClass('hidden').alert("abusive_relationship");
             } else {
                 $('.relationshipAbuseFeilds').addClass('hidden');
+            }
+        });
+
+        $('input[name="abusive_relationship"]').on('change', function() {
+            if ($(this).val() === 'no') {
+                $('.relationshipAbuseNoFeilds').addClass('hidden hide');
+            } else {
+                $('.relationshipAbuseNoFeilds').removeClass('hidden hide');
             }
         });
 
         // occur Offer section;
         $('input[name="abusive_relationship_occur"]').on('change', function() {
             if ($(this).val() === 'Other') {
-                $('.OccurOthersFields').removeClass('hidden');
+                $('.OccurOthersFields').removeClass('hidden hide');
             } else {
-                $('.OccurOthersFields').addClass('hidden');
+                $('.OccurOthersFields').addClass('hidden hide');
             }
         });
         
@@ -1181,6 +1184,15 @@
                 $('.CustomAdultRapedFields').removeClass('hidden');
             } else {
                 $('.CustomAdultRapedFields').addClass('hidden');
+            }
+        });
+
+        // ReceivingTherapyFields section;
+        $('input[name="receiving_therapy_any_one"]').on('change', function() {
+            if ($(this).val() === 'yes') {
+                $('.ReceivingTherapyFields').removeClass('hidden');
+            } else {
+                $('.ReceivingTherapyFields').addClass('hidden');
             }
         });
         
