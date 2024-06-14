@@ -31,6 +31,7 @@ class CreateTherapyFormTable extends Migration
             $table->string('zip_code', 255)->nullable();
             $table->string('employer', 255)->nullable();
             $table->string('school', 255)->nullable();
+            $table->string('therapy_services', 255)->nullable();
             $table->string('gender', 255)->nullable();
             $table->string('relationship_status', 255)->nullable();
             $table->string('sexual_orientation', 255)->nullable();
@@ -54,13 +55,14 @@ class CreateTherapyFormTable extends Migration
             $table->text('past_relationships_abusive_describe')->nullable();
             $table->text('sexually_violated_assaulted')->nullable();
             $table->text('sexually_violated_assaulted_year')->nullable();
-            $table->text('sexually_violated_assaulted_by_whom')->nullable();
             $table->text('sexually_violated_assaulted_relationship')->nullable();
             $table->text('sexually_assaulted_raped')->nullable();
             $table->text('sexually_assaulted_raped_when')->nullable();
-            $table->text('sexually_assaulted_raped_whom')->nullable();
             $table->text('sexually_assaulted_raped_relation')->nullable();
             $table->text('receiving_therapy_any_one')->nullable();
+            $table->text('receiving_therapy_from_when')->nullable();
+            $table->text('receiving_therapy_phone')->nullable();
+            $table->text('receiving_therapy_email')->nullable();
             $table->text('counseling_services')->nullable();
             $table->text('counseling_services_when')->nullable();
             $table->text('counseling_services_whom')->nullable();
@@ -83,10 +85,6 @@ class CreateTherapyFormTable extends Migration
             $table->text('prescription_medications_doctor')->nullable();
             $table->text('head_injury')->nullable();
             $table->text('consciousness_hallucinations')->nullable();
-            $table->text('symptom_name')->nullable();
-            $table->text('symptom_contact')->nullable();
-            $table->text('symptom_address')->nullable();
-            $table->text('symptom_email')->nullable();
             $table->text('symptom_problems')->nullable();
             $table->text('symptom_noticeable')->nullable();
             $table->text('symptom_negative')->nullable();

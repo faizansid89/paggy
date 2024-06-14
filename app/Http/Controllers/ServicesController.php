@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ClinicalSupervisionForm;
+use App\Models\ConsultationForm;
 use App\Models\Services;
 use App\Models\TherapyForm;
 use Illuminate\Http\Request;
@@ -195,14 +197,12 @@ class ServicesController extends Controller
 
         $request->request->add(['user_id' => auth()->user()->id]);
 
-        dd('therapySubmit', $request->toArray());
+        // dd('therapySubmit', $request->toArray());
         TherapyForm::create($request->all());
 
         $request->session()->flash('alert-success', 'Record has been added successfully.');
         return redirect()->route($section->slug.'.index');
     }
-
-    
 
     public function form_two(Request $request)
     {
@@ -211,9 +211,27 @@ class ServicesController extends Controller
         $section = $this->section;
         $section->title = 'Clinical Supervision';
         $section->method = 'POST';
-        $section->route = $section->slug.'.store';
+        $section->route = $section->slug.'.clinicalSupervisionSubmit';
        
         return view($section->folder.'.form_two',compact('section', 'service'));
+    }
+
+    public function clinicalSupervisionSubmit(Request $request)
+    {
+        // checkPermission('create-user');
+        $service = [];
+        $section = $this->section;
+        $section->title = 'Clinical Supervision';
+        $section->method = 'POST';
+        $section->route = $section->slug.'.store';
+
+        $request->request->add(['user_id' => auth()->user()->id]);
+
+        // dd('Clinical Supervision', $request->toArray());
+        ClinicalSupervisionForm::create($request->all());
+
+        $request->session()->flash('alert-success', 'Record has been added successfully.');
+        return redirect()->route($section->slug.'.index');
     }
 
     public function form_four(Request $request)
@@ -235,8 +253,26 @@ class ServicesController extends Controller
         $section = $this->section;
         $section->title = 'Consultation';
         $section->method = 'POST';
-        $section->route = $section->slug.'.store';
+        $section->route = $section->slug.'.consultationSubmit';
        
         return view($section->folder.'.form_three',compact('section', 'service'));
+    }
+
+    public function consultationSubmit(Request $request)
+    {
+        // checkPermission('create-user');
+        $service = [];
+        $section = $this->section;
+        $section->title = 'Consultation';
+        $section->method = 'POST';
+        $section->route = $section->slug.'.store';
+
+        $request->request->add(['user_id' => auth()->user()->id]);
+
+        // dd('Clinical Supervision', $request->toArray());
+        ConsultationForm::create($request->all());
+
+        $request->session()->flash('alert-success', 'Record has been added successfully.');
+        return redirect()->route($section->slug.'.index');
     }
 }

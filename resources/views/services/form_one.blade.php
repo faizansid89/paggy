@@ -393,7 +393,7 @@
                                <div class="col-md-12 mb-3">
                                   <div class="form-group">
                                      <label class="form-label">Select a Service</label>
-                                        <select class="select" name="TherapyServices" id="TherapyServices">
+                                        <select class="select" name="therapy_services" id="TherapyServices">
                                            <option value="Therapy 45 min" selected="selected">Therapy 45 min</option>
                                            <option value="Therapy 60 min">Therapy 60 min</option>
                                            <option value="Therapy 120 min">Therapy 120 min</option>
@@ -770,15 +770,15 @@
                                  </div>
                                  <div class="col-md-3 mb-3 ReceivingTherapyFields hidden">
                                     <label for="ReceivingTherapyFromWhen" class="form-label">Form whom?</label>
-                                    <textarea class="form-control" placeholder="Please Describe" required="required" id="ReceivingTherapyFromWhen" name="ReceivingTherapyFromWhen" cols="50" rows="1" spellcheck="true"></textarea>
+                                    <textarea class="form-control" placeholder="Please Describe" required="required" id="ReceivingTherapyFromWhen" name="receiving_therapy_from_when" cols="50" rows="1" spellcheck="true"></textarea>
                                  </div>
                                  <div class="col-md-3 mb-3 ReceivingTherapyFields hidden">
                                     <label for="ReceivingTherapyPhone" class="form-label">Phone</label>
-                                    <input type="number" class="form-control" placeholder="Phone Number" name="ReceivingTherapyPhone" value="" onkeypress="return isNumber(event)">
+                                    <input type="number" class="form-control" placeholder="Phone Number" name="receiving_therapy_phone" value="" onkeypress="return isNumber(event)">
                                  </div>
                                  <div class="col-md-3 mb-3 ReceivingTherapyFields hidden">
                                     <label for="ReceivingTherapyEmail" class="form-label">Email</label>
-                                    <input type="email" class="form-control" placeholder="Email Address" name="ReceivingTherapyEmail">
+                                    <input type="email" class="form-control" placeholder="Email Address" name="receiving_therapy_email">
                                  </div>
                             </div>
 

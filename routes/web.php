@@ -163,9 +163,13 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
 
     Route::post('services/therapy_form', [ServicesController::class, 'therapySubmit'])->name('services.therapySubmit');
     Route::get('services/therapy_form', [ServicesController::class, 'form_one'])->name('services.form_one');
-    Route::get('services/form_two', [ServicesController::class, 'form_two'])->name('services.form_two');
-    Route::get('services/form_three', [ServicesController::class, 'form_three'])->name('services.form_three');
-    Route::get('services/form_four', [ServicesController::class, 'form_four'])->name('services.form_four');
+    
+    
+    Route::post('services/clinical_supervision', [ServicesController::class, 'clinicalSupervisionSubmit'])->name('services.clinicalSupervisionSubmit');
+    Route::get('services/clinical_supervision', [ServicesController::class, 'form_two'])->name('services.form_two');
+    Route::post('services/consultation', [ServicesController::class, 'consultationSubmit'])->name('services.consultationSubmit');
+    Route::get('services/consultation', [ServicesController::class, 'form_three'])->name('services.form_three');
+    Route::get('services/expert_testimony', [ServicesController::class, 'form_four'])->name('services.form_four');
     Route::resource('services',ServicesController::class);
     Route::group(['prefix' => 'services/{id}'], function () {
         Route::resource('services_assessments', ServicesAssessmentsController::class);
