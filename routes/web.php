@@ -169,6 +169,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     Route::get('services/clinical_supervision', [ServicesController::class, 'form_two'])->name('services.form_two');
     Route::post('services/consultation', [ServicesController::class, 'consultationSubmit'])->name('services.consultationSubmit');
     Route::get('services/consultation', [ServicesController::class, 'form_three'])->name('services.form_three');
+    Route::post('services/expert_testimony', [ServicesController::class, 'expertTestimonySubmit'])->name('services.expertTestimonySubmit');
     Route::get('services/expert_testimony', [ServicesController::class, 'form_four'])->name('services.form_four');
     Route::resource('services',ServicesController::class);
     Route::group(['prefix' => 'services/{id}'], function () {

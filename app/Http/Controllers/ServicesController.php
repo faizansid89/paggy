@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ClinicalSupervisionForm;
 use App\Models\ConsultationForm;
+use App\Models\ExpertTestimonyForm;
 use App\Models\Services;
 use App\Models\TherapyForm;
 use Illuminate\Http\Request;
@@ -234,18 +235,6 @@ class ServicesController extends Controller
         return redirect()->route($section->slug.'.index');
     }
 
-    public function form_four(Request $request)
-    {
-        // checkPermission('create-user');
-        $service = [];
-        $section = $this->section;
-        $section->title = 'Expert Testimony';
-        $section->method = 'POST';
-        $section->route = $section->slug.'.store';
-       
-        return view($section->folder.'.form_four',compact('section', 'service'));
-    }
-
     public function form_three(Request $request)
     {
         // checkPermission('create-user');
@@ -271,6 +260,36 @@ class ServicesController extends Controller
 
         // dd('Clinical Supervision', $request->toArray());
         ConsultationForm::create($request->all());
+
+        $request->session()->flash('alert-success', 'Record has been added successfully.');
+        return redirect()->route($section->slug.'.index');
+    }
+
+    public function form_four(Request $request)
+    {
+        // checkPermission('create-user');
+        $service = [];
+        $section = $this->section;
+        $section->title = 'Expert Testimony';
+        $section->method = 'POST';
+        $section->route = $section->slug.'.expertTestimonySubmit';
+       
+        return view($section->folder.'.form_four',compact('section', 'service'));
+    }
+
+    public function expertTestimonySubmit(Request $request)
+    {
+        // checkPermission('create-user');
+        $service = [];
+        $section = $this->section;
+        $section->title = 'Consultation';
+        $section->method = 'POST';
+        $section->route = $section->slug.'.store';
+
+        $request->request->add(['user_id' => auth()->user()->id]);
+
+        // dd('expert_testimony', $request->toArray());
+        ExpertTestimonyForm::create($request->all());
 
         $request->session()->flash('alert-success', 'Record has been added successfully.');
         return redirect()->route($section->slug.'.index');

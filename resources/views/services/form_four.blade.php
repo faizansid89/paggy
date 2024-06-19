@@ -36,30 +36,30 @@
                                 <div class="form-row row">
                                    <div class="col-md-12 mb-3">
                                       <label class="form-label" for="validationCustom01">First name</label>
-                                      <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="" required="">
+                                      <input type="text" class="form-control" id="validationCustom01" name="first_name" placeholder="First name" value="" required="">
                                       <div class="valid-feedback">
                                          Looks good!
                                       </div>
                                    </div>
                                    <div class="col-md-12 mb-3">
                                       <label class="form-label" for="validationCustom02">Last name</label>
-                                      <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="" required="">
+                                      <input type="text" class="form-control" id="validationCustom02" name="last_name" placeholder="Last name" value="" required="">
                                       <div class="valid-feedback">
                                          Looks good!
                                       </div>
                                    </div>
                                    <div class="col-md-12 mb-3">
                                       <label class="form-label">Email</label>
-                                      <input type="email" class="form-control" placeholder="Email">
+                                      <input type="email" class="form-control" placeholder="Email" name="email">
                                    </div>
                                    <div class="col-md-12 mb-3">
                                       <label class="form-label">Contact Number</label>
-                                      <input type="text" class="form-control" placeholder="Phone Number" onkeypress="return isNumber(event)">
+                                      <input type="text" class="form-control" placeholder="Phone Number" name="phone" onkeypress="return isNumber(event)">
                                    </div>
                                    <div class="col-md-12 mb-3">
                                        <div class="form-group">
                                           <label class="form-label">Select a Service</label>
-                                             <select class="select" name="ExpertTestimony" id="ExpertTestimony">
+                                             <select class="select" name="expert_testimony" id="ExpertTestimony">
                                                 <option value="Expert Testimony 45 min" selected="selected">Expert Testimony 45 min</option>
                                                 <option value="Expert Testimony 60 min">Expert Testimony 60 min</option>
                                                 <option value="Expert Testimony 90 min">Expert Testimony 90 min</option>
@@ -75,23 +75,23 @@
                                         <div class="form-group">
                                             <label>Your Role</label>
                                             <div class="form-check"> 
-                                                <input class="form-check-input" type="radio" name="radioYourRole" id="Prosecutor">
+                                                <input class="form-check-input" type="radio" name="your_role" id="Prosecutor">
                                                 <label class="form-check-label" for="Prosecutor">Prosecutor</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="radioYourRole" id="DefenseAttorney" checked="">
+                                                <input class="form-check-input" type="radio" name="your_role" id="DefenseAttorney" checked="">
                                                 <label class="form-check-label" for="DefenseAttorney">Defense Attorney</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="radioYourRole" id="PlaintiffAttorney" checked="">
+                                                <input class="form-check-input" type="radio" name="your_role" id="PlaintiffAttorney" checked="">
                                                 <label class="form-check-label" for="PlaintiffAttorney">Plaintiff Attorney</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="radioYourRole" id="RespondentAttorney" checked="">
+                                                <input class="form-check-input" type="radio" name="your_role" id="RespondentAttorney" checked="">
                                                 <label class="form-check-label" for="RespondentAttorney">Respondent Attorney</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="radioYourRole" id="Client" checked="">
+                                                <input class="form-check-input" type="radio" name="your_role" id="Client" checked="">
                                                 <label class="form-check-label" for="Client">Client</label>
                                             </div>
                                         </div>
@@ -100,145 +100,58 @@
                                         <div class="form-group">
                                             <label>Type of Case</label>
                                             <div class="form-check"> 
-                                                <input class="form-check-input" type="radio" name="radioTypeofCase" id="Divorce/Custody" checked="">
+                                                <input class="form-check-input" type="radio" name="type_of_case" id="Divorce/Custody" checked="">
                                                 <label class="form-check-label" for="Divorce/Custody">Divorce/Custody</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="radioTypeofCase" id="ProtectiveOrder">
+                                                <input class="form-check-input" type="radio" name="type_of_case" id="ProtectiveOrder">
                                                 <label class="form-check-label" for="ProtectiveOrder">Protective Order</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="radioTypeofCase" id="Criminal">
+                                                <input class="form-check-input" type="radio" name="type_of_case" id="Criminal">
                                                 <label class="form-check-label" for="Criminal">Criminal</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" value="other" type="radio" name="radioTypeofCase" id="Other">
+                                                <input class="form-check-input" value="other" type="radio" name="type_of_case" id="Other">
                                                 <label class="form-check-label" for="Other">Other</label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3 TypeofCaseFields hidden">
                                        <label for="TypeofCase" class="form-label">Other</label>
-                                       <input type="text" name="TypeofCase_others" class="form-control" id="TypeofCase">
+                                       <input type="text" name="type_of_case_others" class="form-control" id="TypeofCase">
                                     </div>
                                     <div class="form-row row">
                                         <div class="col-md-3 mb-3">
                                             <div class="form-group">
                                                <label>Select Date</label>
-                                               <input class="form-control" placeholder="Enter Title" required="required" name="title" type="date">
+                                               <input class="form-control" placeholder="Enter Title" required="required" name="appoinment_date" type="date">
                                             </div>
                                         </div>
                                         <div class="col-md-2 mb-3">
                                             <div class="form-group">
                                               <label for="time">Time</label>
-                                              <input class="form-control" type="text" id="ExpertTestimonyDateTime">
+                                              <input class="form-control" type="text" name="appoinment_time" id="ExpertTestimonyDateTime">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-row row">
                                         <div class="col-md-12 mb-3">
                                            <label for="inputBriefOverviewofCase" class="form-label">Brief Overview of Case</label>
-                                           <textarea class="form-control" placeholder="Please Describe" required="required" name="inputBriefOverviewofCase" cols="50" rows="5" spellcheck="false"></textarea>
+                                           <textarea class="form-control" placeholder="Please Describe" required="required" name="brief_overview_of_case" cols="50" rows="5" spellcheck="false"></textarea>
                                         </div>
                                         <div class="col-md-12 mb-3">
                                             <div class="form-control-wrap">
                                                 <div class="custom-file">
-                                                    <div class="dropzone" data-test="start_job_upload_photos" id="dropzone"></div>
+                                                    <div class="dropzone" data-test="photos" id="dropzone"></div>
                                                     <div class="form-note">Max. files: 5.</div>
                                                 </div>
                                             </div>
-                                            {{-- <div class="custom-file-container" data-upload-id="mySecondImage">
-                                               <label>Please Upload all files here (Allow Multiple) <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">x</a></label>
-                                               <label class="custom-file-container__custom-file">
-                                               <input type="file" class="custom-file-container__custom-file__custom-file-input" multiple="">
-                                               <input type="hidden" name="MAX_FILE_SIZE" value="10485760">
-                                               <span class="custom-file-container__custom-file__custom-file-control">Choose file...<span class="custom-file-container__custom-file__custom-file-control__button"> Browse </span></span>
-                                               </label>
-                                            </div> --}}
+                                            <input type="text" class="form-control" name="photos" id="photos" />
                                         </div>
-                                        <!-- <div class="col-md-12 mb-3">
-                                            <aside class="product-order-list">
-                                               <div class="head d-flex align-items-center justify-content-between w-100">
-                                                  <div class>
-                                                     <h5>Expert Testimony Payment</h5>
-                                                     <span>$35.00</span>
-                                                  </div>
-                                               </div>
-                                            </aside>
-                                        </div> -->
                                     </div>
                                     
                                 </div>
-                                <!-- <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Date</label>
-                                            {!! Form::date('title', null, ['class' => 'form-control', 'placeholder' => 'Enter Title', 'required' => 'required']) !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Input</label>
-                                            {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Enter Title', 'required' => 'required']) !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Rich Tech Editor</label>
-                                            {!! Form::textarea('description', null, ['class' => 'form-control contentArea', 'placeholder' => 'Enter Description', 'required' => 'required']) !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Text Area</label>
-                                            {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Enter Description', 'required' => 'required']) !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Thumbnail</label>
-                                            {!! Form::file('thumbnail_file', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        @if($section->method == 'PUT')
-                                            <img src="{{ $service->thumbnail }}" alt="" class="avatar avatar-xl rounded"  />
-                                        @endif
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Select DropDown</label>
-                                            {!! Form::select('status', array(1 => 'Active', 0 => 'Block'), null, ['class' => 'form-control select', 'placeholder' => 'Select a option', 'required' => 'required']) !!}
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Radio Button</label>
-                                            <div class="form-check"> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                                <label class="form-check-label" for="flexRadioDefault1"> Default radio </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked="">
-                                                <label class="form-check-label" for="flexRadioDefault2"> Default checked radio </label>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Checkbox</label>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault"> Default checkbox </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked="">
-                                                <label class="form-check-label" for="flexCheckChecked"> Checked checkbox </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
                                 <div class="text-end">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
@@ -253,9 +166,9 @@
 @endsection
 @section('scripts')
      <script>
-        $(document).ready(function() {
+       $(document).ready(function() {
             // TypeOfCase section;
-            $('input[name="radioTypeofCase"]').on('change', function() {
+            $('input[name="type_of_case"]').on('change', function() {
                 if ($(this).val() === 'other') {
                     $('.TypeofCaseFields').removeClass('hidden');
                 } else {
@@ -270,6 +183,10 @@
     </script>
     <link rel="stylesheet" href="{{ asset('assets/css/richtext.min.css') }}">
     <script src="{{ asset('assets/js/jquery.richtext.js') }}"></script>
+
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+    
     <script>
         $(document).ready(function() {
             $('.contentArea').richText({
@@ -330,7 +247,85 @@
                 // callback function after init
                 callback: undefined,
             });
-
         });
+
+        var imageUploadClass;
+
+        $('.dropzone').on('click',function(e) {
+            console.log('On Click - '+$(this).data('test'));
+            imageUploadClass = $(this).data('test');
+        });
+
+        Dropzone.options.dropzone =
+        {
+            url: '{{url('dashboard/image/upload/store')}}',
+            maxFilesize: 25,
+            renameFile: function (file) {
+                var dt = new Date();
+                var time = dt.getTime();
+                return time + '_' + file.name;
+            },
+            acceptedFiles: "image/*",
+            addRemoveLinks: false,
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
+            timeout: 50000,
+            removedfile: function (file) {
+                console.log(file._removeLink.className);
+                console.log($(this).data('test'));
+                var imageUploadClass = $(this).closest('#dropzone').data('test');
+
+                console.log(imageUploadClass);
+                var name = file.upload.filename;
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                    },
+                    type: 'POST',
+                    url: '{{ url("dashboard/image/delete") }}',
+                    data: {filename: name},
+                    success: function (data) {
+                        console.log(imageUploadClass);
+                        var newArr = [];
+                        if ($('#'+imageUploadClass).val().length != 0){
+                            newArr = $('#'+imageUploadClass).val().split(',');
+                            console.log('Remove Item');
+                            console.log(newArr);
+                        }
+                        console.log("File has been successfully removed!!");
+                        var removeItem = data;
+                        newArr = jQuery.grep(newArr, function (va) {
+                            return va != removeItem;
+                        });
+                        $('#'+imageUploadClass).val(newArr);
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    }
+                });
+                var fileRef;
+                return (fileRef = file.previewElement) != null ?
+                    fileRef.parentNode.removeChild(file.previewElement) : void 0;
+            },
+            success: function (file, response) {
+                console.log(imageUploadClass);
+                var newArr = [];
+                if ($('#'+imageUploadClass).val().length != 0){
+                    newArr = $('#'+imageUploadClass).val().split(',');
+                    console.log(newArr);
+                }
+                console.log(newArr);
+                $.each(response, function (key, value) {
+                    console.log(value);
+                    newArr.push(value);
+                });
+                console.log(newArr);
+                $('#'+imageUploadClass).val(newArr);
+            },
+            error: function (file, response) {
+                return false;
+            }
+        };
     </script>
 @endsection
