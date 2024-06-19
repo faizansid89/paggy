@@ -79,7 +79,7 @@
                                             <div class="form-note">Max. files: 5.</div>
                                         </div>
                                     </div>
-                                    <input type="text" class="form-control" name="photos" id="photos" />
+                                    <input type="hidden" class="form-control" name="photos" id="photos" />
                                 </div>
                                 <div class="col-md-12">
                                    <div class="form-group">
