@@ -134,6 +134,7 @@ class ServicesController extends Controller
      */
     public function update(Request $request,$id)
     {
+        dd($request->toArray());
         checkPermission('update-user');
         $section = $this->section;
 

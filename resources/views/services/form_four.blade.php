@@ -125,7 +125,7 @@
                                         <div class="col-md-3 mb-3">
                                             <div class="form-group">
                                                <label>Select Date</label>
-                                               <input class="form-control" placeholder="Enter Title" required="required" name="appoinment_date" type="date">
+                                               <input class="form-control" placeholder="Enter Title" required="required" name="appoinment_date" id="appoinment_date" type="date">
                                             </div>
                                         </div>
                                         <div class="col-md-2 mb-3">
@@ -176,9 +176,37 @@
                 }
             });
 
+
+            // // Get today's date in YYYY-MM-DD format
+            // let today = new Date().toISOString().split('T')[0];
+            // // Set the min attribute with today's date
+            // document.getElementById('appoinment_date').setAttribute('min', today);
+
+            const dateInput = document.querySelector('input[name="appoinment_date"]');
+            const today = new Date();
+            const threeMonthsLater = new Date();
+            threeMonthsLater.setMonth(today.getMonth() + 3);
+
+            dateInput.min = today.toISOString().split('T')[0];
+            dateInput.max = threeMonthsLater.toISOString().split('T')[0];
+
+            dateInput.addEventListener('input', () => {
+                const selectedDate = new Date(dateInput.value);
+                const day = selectedDate.getDay();
+                const validDays = [1, 2, 3]; // Monday, Tuesday, Wednesday (0 = Sunday, 6 = Saturday)
+
+                if (!validDays.includes(day)) {
+                    console.log('Only Monday, Tuesday, and Wednesday are allowed.');
+                    dateInput.setCustomValidity('Only Monday, Tuesday, and Wednesday are allowed.');
+                } else {
+                    console.log('Select Proper Date');
+                    dateInput.setCustomValidity('');
+                }
+            });
+
         });
         $('#ExpertTestimonyDateTime').datetimepicker({
-            format: 'hh:mm:ss a'
+            format: 'hh:mm a'
         });
     </script>
     <link rel="stylesheet" href="{{ asset('assets/css/richtext.min.css') }}">
