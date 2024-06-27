@@ -316,9 +316,18 @@ class ServicesController extends Controller
 
     public function getServiceDays(Request $request)
     {
-        $serviceTiming = ServiceTiming::where('service_id', $request->service_id)->where('service_type', $request->service_type)->get();
-        dd($request->toArray(), $serviceTiming->toArray());
-        
-        // return redirect()->route($section->slug.'.index');
+        // $serviceTiming = ServiceTiming::where('service_id', $request->service_id)->where('service_type', $request->service_type)->get();
+        $serviceDays = ServiceTiming::where('service_id', $request->service_id)
+        ->where('service_type', $request->service_type)
+        ->distinct()
+        ->pluck('service_day');
+        return $serviceDays->toArray();
+    }
+
+    public function getServiceDayTimings(Request $request)
+    {
+        $serviceTiming = ServiceTiming::where('service_id', $request->service_id)->where('service_day', $request->service_day)->pluck('service_time');
+        dd($serviceTiming->toArray());
+        return $serviceTiming->toArray();
     }
 }
