@@ -62,62 +62,127 @@
                                     </div>
                                 </div>
                                 <div id="serviceContainer">
-                                    <div class="row serviceRow">
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Service Type</label>
-                                                <select class="select" name="service[1][type]">
-                                                    <option value="45 min" selected="selected">45 min</option>
-                                                    <option value="60 min">60 min</option>
-                                                    <option value="90 min">90 min</option>
-                                                    <option value="120 min">120 min</option>
-                                                    <option value="half day">Half Day</option>
-                                                    <option value="full day">Full Day</option>
-                                                </select>
+                                    @if(count($service->serviceTiming) > 0)
+                                        @foreach($service->serviceTiming as $key => $serviceTiming)
+                                            {{-- {{ dd($serviceTiming->service_type) }} --}}
+                                            <div class="row serviceRow">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>Service Type</label>
+                                                        <select class="select" name="service[{{$key}}][type]">
+                                                            <option value="45 min" {{ ($serviceTiming->service_type == '45 min') ? 'selected' : '' }}>45 min</option>
+                                                            <option value="60 min" {{ ($serviceTiming->service_type == '60 min') ? 'selected' : '' }}>60 min</option>
+                                                            <option value="90 min" {{ ($serviceTiming->service_type == '90 min') ? 'selected' : '' }}>90 min</option>
+                                                            <option value="120 min" {{ ($serviceTiming->service_type == '120 min') ? 'selected' : '' }}>120 min</option>
+                                                            <option value="half day" {{ ($serviceTiming->service_type == 'half day') ? 'selected' : '' }}>Half Day</option>
+                                                            <option value="full day" {{ ($serviceTiming->service_type == 'full day') ? 'selected' : '' }}>Full Day</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label>Service Day</label>
+                                                        <select class="select" name="service[{{$key}}][day]">
+                                                            <option value="monday" {{ ($serviceTiming->service_day == 'monday') ? 'selected' : '' }}>Monday</option>
+                                                            <option value="tuesday" {{ ($serviceTiming->service_day == 'tuesday') ? 'selected' : '' }}>Tuesday</option>
+                                                            <option value="wednesday" {{ ($serviceTiming->service_day == 'wednesday') ? 'selected' : '' }}>Wednesday</option>
+                                                            <option value="thursday" {{ ($serviceTiming->service_day == 'thursday') ? 'selected' : '' }}>Thursday</option>
+                                                            <option value="friday" {{ ($serviceTiming->service_day == 'friday') ? 'selected' : '' }}>Friday</option>
+                                                            <option value="saturday" {{ ($serviceTiming->service_day == 'saturday') ? 'selected' : '' }}>Saturday</option>
+                                                            <option value="sunday" {{ ($serviceTiming->service_day == 'sunday') ? 'selected' : '' }}>Sunday</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                @php
+                                                    $time = explode(' - ', $serviceTiming->service_time);
+                                                @endphp
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label>Service Start Time</label>
+                                                        <input type="text" value="{{ $time[0] }}" name="service[{{$key}}][time_start]" class="form-control service_time" required="required">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label>Service End Time</label>
+                                                        <input type="text" value="{{ $time[1] }}" name="service[{{$key}}][time_end]" class="form-control service_time" required="required">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label>Service Price</label>
+                                                        <input type="text" value="{{ $serviceTiming->service_price }}" name="service[{{$key}}][price]" class="form-control" placeholder="Enter Price" required="required" onkeypress="return isNumber(event)">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <div class="form-group" style="text-align: right;">
+                                                        <label>&nbsp;</label>
+                                                        <div class="btn-group">
+                                                            <a type="button" class="btn btn-danger deleteRow" href="#" style="color: #ffffff;">-</a>
+                                                            <a type="button" class="btn btn-warning addRow" href="#" style="color: #ffffff;">+</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Service Day</label>
-                                                <select class="select" name="service[1][day]">
-                                                    <option value="monday" selected="selected">Monday</option>
-                                                    <option value="tuesday">Tuesday</option>
-                                                    <option value="wednesday">Wednesday</option>
-                                                    <option value="thursday">Thursday</option>
-                                                    <option value="friday">Friday</option>
-                                                    <option value="saturday">Saturday</option>
-                                                    <option value="sunday">Sunday</option>
-                                                 </select>
+                                        @endforeach
+                                    @else
+                                        <div class="row serviceRow">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Service Type</label>
+                                                    <select class="select" name="service[1][type]">
+                                                        <option value="45 min" selected="selected">45 min</option>
+                                                        <option value="60 min">60 min</option>
+                                                        <option value="90 min">90 min</option>
+                                                        <option value="120 min">120 min</option>
+                                                        <option value="half day">Half Day</option>
+                                                        <option value="full day">Full Day</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Service Start Time</label>
-                                                <input type="text" name="service[1][time_start]" class="form-control service_time" required="required">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Service Day</label>
+                                                    <select class="select" name="service[1][day]">
+                                                        <option value="monday" selected="selected">Monday</option>
+                                                        <option value="tuesday">Tuesday</option>
+                                                        <option value="wednesday">Wednesday</option>
+                                                        <option value="thursday">Thursday</option>
+                                                        <option value="friday">Friday</option>
+                                                        <option value="saturday">Saturday</option>
+                                                        <option value="sunday">Sunday</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Service End Time</label>
-                                                <input type="text" name="service[1][time_end]" class="form-control service_time" required="required">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Service Start Time</label>
+                                                    <input type="text" name="service[1][time_start]" class="form-control service_time" required="required">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Service Price</label>
-                                                <input type="text" name="service[1][price]" class="form-control" placeholder="Enter Price" required="required" onkeypress="return isNumber(event)">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Service End Time</label>
+                                                    <input type="text" name="service[1][time_end]" class="form-control service_time" required="required">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-1">
-                                            <div class="form-group" style="text-align: right;">
-                                                <label>&nbsp;</label>
-                                                <div class="btn-group">
-                                                    <a type="button" class="btn btn-danger deleteRow" href="#" style="color: #ffffff;">-</a>
-                                                    <a type="button" class="btn btn-warning addRow" href="#" style="color: #ffffff;">+</a>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Service Price</label>
+                                                    <input type="text" name="service[1][price]" class="form-control" placeholder="Enter Price" required="required" onkeypress="return isNumber(event)">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="form-group" style="text-align: right;">
+                                                    <label>&nbsp;</label>
+                                                    <div class="btn-group">
+                                                        <a type="button" class="btn btn-danger deleteRow" href="#" style="color: #ffffff;">-</a>
+                                                        <a type="button" class="btn btn-warning addRow" href="#" style="color: #ffffff;">+</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endif
                                 </div>
                                 <div class="text-end">
                                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -212,18 +277,29 @@
             // Function to add a new row
             $(document).on('click', '.addRow', function(e) {
                 e.preventDefault();
-                rowCount++;
-                var newRow = $('.serviceRow:first').clone();
-                newRow.find('select, input').each(function() {
+
+                var rowCount = $('.serviceRow').length+1;
+                console.log(rowCount);
+
+                var min = 1001;
+                var max = 9999;
+                var randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+                console.log(randomNumber);
+
+               /*  var newRow = $('.serviceRow:first').clone();
+                    newRow.find('select, input').each(function() {
                     var name = $(this).attr('name');
                     var newName = name.replace(/\d+/, rowCount);
                     $(this).attr('name', newName);
                     if ($(this).is('input')) {
                         $(this).val('');
                     }
-                });
-                newRow.appendTo('#serviceContainer');
-                initializePlugins(newRow);
+                }); */ 
+
+                var newRow =  '<div class="row serviceRow"><div class="col-md-3"><div class="form-group"><label>Service Type</label><select class="select" name="service['+randomNumber+'_'+rowCount+'][type]"><option value="45 min" selected="selected">45 min</option><option value="60 min">60 min</option><option value="90 min">90 min</option><option value="120 min">120 min</option><option value="half day">Half Day</option><option value="full day">Full Day</option></select></div></div><div class="col-md-2"><div class="form-group"><label>Service Day</label><select class="select" name="service['+randomNumber+'_'+rowCount+'][day]"><option value="monday" selected="selected">Monday</option><option value="tuesday">Tuesday</option><option value="wednesday">Wednesday</option><option value="thursday">Thursday</option><option value="friday">Friday</option><option value="saturday">Saturday</option><option value="sunday">Sunday</option></select></div></div><div class="col-md-2"><div class="form-group"><label>Service Start Time</label><input type="text" name="service['+randomNumber+'_'+rowCount+'][time_start]" class="form-control service_time" required="required"></div></div><div class="col-md-2"><div class="form-group"><label>Service End Time</label><input type="text" name="service['+randomNumber+'_'+rowCount+'][time_end]" class="form-control service_time" required="required"></div></div><div class="col-md-2"><div class="form-group"><label>Service Price</label><input type="text" name="service['+randomNumber+'_'+rowCount+'][price]" class="form-control" placeholder="Enter Price" required="required" onkeypress="return isNumber(event)"></div></div><div class="col-md-1"><div class="form-group" style="text-align:right"><label>&nbsp;</label><div class="btn-group"><a type="button" class="btn btn-danger deleteRow" href="#" style="color:#fff">-</a><a type="button" class="btn btn-warning addRow" href="#" style="color:#fff">+</a></div></div></div></div>';
+                $('#serviceContainer').append(newRow);
+                // newRow.appendTo('#serviceContainer');
+                // initializePlugins(newRow);
             });
 
             // Function to remove a row

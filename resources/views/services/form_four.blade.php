@@ -60,12 +60,12 @@
                                        <div class="form-group">
                                           <label class="form-label">Select a Service</label>
                                              <select class="select" name="expert_testimony" id="ExpertTestimony">
-                                                <option value="Expert Testimony 45 min" selected="selected">Expert Testimony 45 min</option>
-                                                <option value="Expert Testimony 60 min">Expert Testimony 60 min</option>
-                                                <option value="Expert Testimony 90 min">Expert Testimony 90 min</option>
-                                                <option value="Expert Testimony 120 min">Expert Testimony 120 min</option>
-                                                <option value="Expert Testimony half day">Expert Testimony Half Day</option>
-                                                <option value="Expert Testimony full day">Expert Testimony Full Day</option>
+                                                <option value="45 min" selected="selected">Expert Testimony 45 min</option>
+                                                <option value="60 min">Expert Testimony 60 min</option>
+                                                <option value="90 min">Expert Testimony 90 min</option>
+                                                <option value="120 min">Expert Testimony 120 min</option>
+                                                <option value="half day">Expert Testimony Half Day</option>
+                                                <option value="full day">Expert Testimony Full Day</option>
                                              </select>
                                        </div>
                                    </div>
@@ -174,6 +174,30 @@
                 } else {
                     $('.TypeofCaseFields').addClass('hidden');
                 }
+            });
+
+            $('#ExpertTestimony').change(function() {
+                var selectedValue = $(this).val();
+                console.log(selectedValue);
+
+                // Get CSRF token
+                var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+                $.ajax({
+                    url: '{{ route('services.getServiceDays') }}', // Laravel route
+                    type: 'POST',
+                    data: {
+                        _token: csrfToken, // CSRF token for Laravel
+                        service_type: selectedValue,
+                        service_id : 4
+                    },
+                    success: function(response) {
+                        console.log("Response from server:", response);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Error:", error);
+                    }
+                });
             });
 
 

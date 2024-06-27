@@ -15,4 +15,9 @@ class Services extends Authenticatable
    use HasFactory;
 
    public $guarded = [];
+
+   public function serviceTiming()
+   {
+      return $this->hasMany(ServiceTiming::class,'service_id', 'id');
+   }
 }

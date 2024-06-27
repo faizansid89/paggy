@@ -6,6 +6,7 @@ use App\Models\ClinicalSupervisionForm;
 use App\Models\ConsultationForm;
 use App\Models\ExpertTestimonyForm;
 use App\Models\Services;
+use App\Models\ServiceTiming;
 use App\Models\TherapyForm;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -115,7 +116,7 @@ class ServicesController extends Controller
     public function edit(Services $services, $id)
     {
         // checkPermission('update-user');
-        $service = Services::where('id', $id)->first();
+        $service = Services::with('serviceTiming')->where('id', $id)->first();
         
         $section = $this->section;
         $section->title = 'Edit Service';
@@ -133,8 +134,7 @@ class ServicesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request,$id)
-    {
-        dd($request->toArray());
+    { 
         checkPermission('update-user');
         $section = $this->section;
 
@@ -158,7 +158,24 @@ class ServicesController extends Controller
                 $request->request->remove('thumbnail_file');
             }
 
-            Services::where('id',$id)->update($request->except(['thumbnail_file', '_token', '_method']));
+            Services::where('id',$id)->update($request->except(['thumbnail_file', '_token', '_method', 'service']));
+
+            // dd($request->toArray(), 'asdsa', $id);
+
+            ServiceTiming::where('service_id', $id)->delete();
+
+            // dd($request->service);
+
+            foreach($request->service as $service){
+                $serviceTiming = new ServiceTiming();
+                $serviceTiming->service_id = $id;
+                $serviceTiming->service_type = $service['type'];
+                $serviceTiming->service_time = $service['time_start'] .' - '. $service['time_end'];
+                $serviceTiming->service_day = $service['day'];
+                $serviceTiming->service_price = $service['price'];
+                $serviceTiming->save();
+            }            
+           
             $request->session()->flash('alert-success', 'Record has been updated successfully.');
             return redirect()->back();
         }
@@ -294,5 +311,14 @@ class ServicesController extends Controller
 
         $request->session()->flash('alert-success', 'Record has been added successfully.');
         return redirect()->route($section->slug.'.index');
+    }
+
+
+    public function getServiceDays(Request $request)
+    {
+        $serviceTiming = ServiceTiming::where('service_id', $request->service_id)->where('service_type', $request->service_type)->get();
+        dd($request->toArray(), $serviceTiming->toArray());
+        
+        // return redirect()->route($section->slug.'.index');
     }
 }
