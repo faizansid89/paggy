@@ -326,8 +326,23 @@ class ServicesController extends Controller
 
     public function getServiceDayTimings(Request $request)
     {
-        $serviceTiming = ServiceTiming::where('service_id', $request->service_id)->where('service_day', $request->service_day)->pluck('service_time');
-        dd($serviceTiming->toArray());
-        return $serviceTiming->toArray();
+        // dd($request->toArray());
+        $serviceTiming = ServiceTiming::where('service_id', $request->service_id)->where('service_day', $request->service_day)->where('service_type', $request->service_type)->pluck('service_time');
+        // dd($serviceTiming->toArray());
+        
+        $html = '';
+        if($serviceTiming){
+            foreach($serviceTiming as $key => $timing){
+                $html .= '<div class="col-md-3 mb-3">
+                    <div class="form-group">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio'.$key.'" value="'.$timing.'">
+                            <label class="form-check-label" for="inlineRadio'.$key.'">'.$timing.'</label>
+                        </div>
+                    </div>
+                </div>';
+            }
+        }
+        return $html;
     }
 }

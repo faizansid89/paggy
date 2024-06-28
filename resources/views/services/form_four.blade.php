@@ -127,16 +127,23 @@
                                             <div class="form-group">
                                                <label>Select Date</label>
                                                {{-- <input class="form-control" placeholder="Enter Title" required="required" name="appoinment_date" id="appoinment_date" type="date"> --}}
-                                               <input type="text" id="datepicker">
+                                               <div id="selectDate">
+                                                    {{-- <input type="text" id="datepicker"> --}}
+                                               </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-2 mb-3">
+                                        {{-- <div class="col-md-2 mb-3">
                                             <div class="form-group">
                                               <label for="time">Time</label>
                                               <input class="form-control" type="text" name="appoinment_time" id="ExpertTestimonyDateTime">
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
+
+                                    <div class="form-row row" id='serviceTimingFetch'>
+                                        
+                                    </div>
+
                                     <div class="form-row row">
                                         <div class="col-md-12 mb-3">
                                            <label for="inputBriefOverviewofCase" class="form-label">Brief Overview of Case</label>
@@ -178,13 +185,43 @@
                 }
             });
 
-            $('#ExpertTestimony').change(function() {
-                var selectedValue = $(this).val();
-                console.log(selectedValue);
-
+            $(document).on('change', '.hasDatepicker', function() {
+                var dateString = $('#datepicker').val();
+                console.log(dateString);
+                var date = new Date(dateString);
+                var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                var day = daysOfWeek[date.getDay()];
+                console.log(day);
                 // Get CSRF token
                 var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
+                var selectedValue = $('#ExpertTestimony').val();
+                // console.log('Selected value:', selectedValue);
+
+                $.ajax({
+                    url: '{{ route('services.getServiceDayTimings') }}', // Laravel route
+                    type: 'POST',
+                    data: {
+                        _token: csrfToken, // CSRF token for Laravel
+                        service_day : day,
+                        service_type : selectedValue,
+                        service_id : 4
+                    },
+                    success: function(response) {
+                        // console.log("Response from server:", response);
+                        $('#serviceTimingFetch').html(response);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Error:", error);
+                    }
+                });
+            });
+
+            $('#ExpertTestimony').change(function() {
+                var selectedValue = $(this).val();
+                $('#selectDate').html('<input type="text" id="datepicker">');
+                // Get CSRF token
+                var csrfToken = $('meta[name="csrf-token"]').attr('content');
                 $.ajax({
                     url: '{{ route('services.getServiceDays') }}', // Laravel route
                     type: 'POST',
@@ -197,25 +234,13 @@
                         console.log("Response from server:", response);
                         var daysString = '';
                         daysString = JSON.stringify(response);
-                        // daysString = "['" + response.join("', '") + "']";
-                        console.log(typeof daysString); // Output: ["tuesday","monday"]
-                        console.log(daysString); // Output: ["tuesday","monday"]
-
-                        // Ensure response is parsed into an array
-                        // var disabledDays = JSON.parse(response);
-                        // console.log(typeof disabledDays); // Should output 'object' if parsed correctly
-                        // console.log(disabledDays); // Should output the array of days ['tuesday', 'monday']
-
-
                         var today = new Date();
                         var threeMonthsLater = new Date();
                         threeMonthsLater.setMonth(today.getMonth() + 3);
 
                         var disabledDays = null;
                         var disabledDays = JSON.parse(daysString); //['tuesday', 'monday']; // Your dynamic days array
-                        console.log('**************************');
-                        console.log(typeof disabledDays);
-                        console.log('**************************');
+                        
                         var dayMap = {
                             'sunday': 0,
                             'monday': 1,
@@ -225,18 +250,14 @@
                             'friday': 5,
                             'saturday': 6
                         };
-
-                        // var validDays = [1, 2]; // Monday = 1, Tuesday = 2
                         // Convert the day names to numerical values
                         var disabledDaysNumbers = disabledDays.map(day => dayMap[day.toLowerCase()]);
-                        console.log(disabledDaysNumbers);
                         $("#datepicker").datepicker({
                             dateFormat: 'yy-mm-dd',
                             minDate: today,
                             maxDate: threeMonthsLater,
                             beforeShowDay: function(date) {
                                 var day = date.getDay();
-                                // return [!disabledDaysNumbers.includes(day), ''];
                                 return [disabledDaysNumbers.includes(day), ''];
                             }
                         });
@@ -246,75 +267,23 @@
                     }
                 });
             });
-
-
-            $('#ExpertTestimony').change(function() {
-                // var selectedValue = $(this).val();
-                // console.log(selectedValue);
-
-                selectedValue = 'tuesday';
-                // Get CSRF token
-                var csrfToken = $('meta[name="csrf-token"]').attr('content');
-
-                $.ajax({
-                    url: '{{ route('services.getServiceDayTimings') }}', // Laravel route
-                    type: 'POST',
-                    data: {
-                        _token: csrfToken, // CSRF token for Laravel
-                        service_day: selectedValue,
-                        service_id : 4
-                    },
-                    success: function(response) {
-                        console.log("Response from server:", response);
-                    },
-                    error: function(xhr, status, error) {
-                        console.error("Error:", error);
-                    }
-                });
-            });
-
-            // const dateInput = document.querySelector('input[name="appoinment_date"]');
-            // const today = new Date();
-            // const threeMonthsLater = new Date();
-            // threeMonthsLater.setMonth(today.getMonth() + 3);
-
-            // dateInput.min = today.toISOString().split('T')[0];
-            // dateInput.max = threeMonthsLater.toISOString().split('T')[0];
-
-            // dateInput.addEventListener('input', () => {
-            //     const selectedDate = new Date(dateInput.value);
-            //     const day = selectedDate.getDay();
-            //     const validDays = [1, 2, 3]; // Monday, Tuesday, Wednesday (0 = Sunday, 6 = Saturday)
-
-            //     if (!validDays.includes(day)) {
-            //         console.log('Only Monday, Tuesday, and Wednesday are allowed.');
-            //         dateInput.setCustomValidity('Only Monday, Tuesday, and Wednesday are allowed.');
-            //     } else {
-            //         console.log('Select Proper Date');
-            //         dateInput.setCustomValidity('');
-            //     }
-            // });
-
-            // $(function() {
-            //     var today = new Date();
-            //     var threeMonthsLater = new Date();
-            //     threeMonthsLater.setMonth(today.getMonth() + 3);
-
-            //     $("#datepicker").datepicker({
-            //         dateFormat: 'yy-mm-dd',
-            //         minDate: today,
-            //         maxDate: threeMonthsLater,
-            //         beforeShowDay: function(date) {
-            //             var day = date.getDay();
-            //             return [(day != 0 && day != 6 && day != 1), '']; // Disable Sundays (0) and Saturdays (6)
-            //         }
-            //     });
-            // });
-
         });
         $('#ExpertTestimonyDateTime').datetimepicker({
             format: 'hh:mm a'
         });
+
+
+        $(function() {
+            $("#datepicker").datepicker({
+                onSelect: function(dateText, inst) {
+                    var date = $(this).datepicker('getDate');
+                    var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                    var day = daysOfWeek[date.getDay()];
+                    console.log(day);
+                }
+            });
+        });
+        
     </script>
     <link rel="stylesheet" href="{{ asset('assets/css/richtext.min.css') }}">
     <script src="{{ asset('assets/js/jquery.richtext.js') }}"></script>
