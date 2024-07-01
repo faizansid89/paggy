@@ -59,7 +59,7 @@
                                    <div class="col-md-12 mb-3">
                                        <div class="form-group">
                                           <label class="form-label">Select a Service</label>
-                                             <select class="select" name="expert_testimony" id="ExpertTestimony">
+                                             <select class="select"  name="appoinment_type"  id="ExpertTestimony">
                                                 <option value="">Select Expert Testimony Service Timing</option>
                                                 <option value="45 min">Expert Testimony 45 min</option>
                                                 <option value="60 min">Expert Testimony 60 min</option>
@@ -219,7 +219,7 @@
 
             $('#ExpertTestimony').change(function() {
                 var selectedValue = $(this).val();
-                $('#selectDate').html('<input type="text" id="datepicker">');
+                $('#selectDate').html('<input type="text" name="appoinment_date" id="datepicker">');
                 $('#serviceTimingFetch').html('');
                 // Get CSRF token
                 var csrfToken = $('meta[name="csrf-token"]').attr('content');

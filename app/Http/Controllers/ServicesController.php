@@ -336,7 +336,7 @@ class ServicesController extends Controller
                 $html .= '<div class="col-md-3 mb-3">
                     <div class="form-group">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio'.$key.'" value="'.$timing.'">
+                            <input class="form-check-input" type="radio" name="appoinment_time" id="inlineRadio'.$key.'" value="'.$timing.'">
                             <label class="form-check-label" for="inlineRadio'.$key.'">'.$timing.'</label>
                         </div>
                     </div>

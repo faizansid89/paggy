@@ -25,6 +25,7 @@ class CreateClinicalSupervisionFormTable extends Migration
             $table->string('radio_clinicial_schedule', 255)->nullable();
             $table->string('appoinment_date', 255)->nullable();
             $table->string('appoinment_time', 255)->nullable();
+            $table->string('appoinment_type', 255)->nullable();
             $table->timestamps();
         });
     }

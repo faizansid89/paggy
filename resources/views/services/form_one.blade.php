@@ -390,7 +390,7 @@
                                   <input type="text" class="form-control" id="inputSchool" name="school">
                                </div>
 
-                               <div class="col-md-12 mb-3">
+                               {{-- <div class="col-md-12 mb-3">
                                   <div class="form-group">
                                      <label class="form-label">Select a Service</label>
                                         <select class="select" name="therapy_services" id="TherapyServices">
@@ -399,7 +399,7 @@
                                            <option value="Therapy 120 min">Therapy 120 min</option>
                                         </select>
                                   </div>
-                               </div>
+                               </div> --}}
 
                                <div class="col-md-4 mb-3">
                                   <div class="form-group">
@@ -1022,7 +1022,7 @@
                                 <div class="col-md-12 mb-3">
                                     <div class="form-group">
                                        <label class="form-label">Select a Service</label>
-                                          <select class="select" name="theropy" id="theropyServices">
+                                          <select class="select" name="appoinment_type" id="theropyServices">
                                              <option value="">Select Theropy Service Timing</option>
                                              <option value="45 min">Theropy Service 45 min</option>
                                              <option value="60 min">Theropy Service 60 min</option>
@@ -1225,7 +1225,7 @@
 
         $('#theropyServices').change(function() {
             var selectedValue = $(this).val();
-            $('#selectDate').html('<input type="text" id="datepicker">');
+            $('#selectDate').html('<input type="text" id="datepicker" name="appoinment_date">');
             $('#serviceTimingFetch').html('');
             // Get CSRF token
             var csrfToken = $('meta[name="csrf-token"]').attr('content');

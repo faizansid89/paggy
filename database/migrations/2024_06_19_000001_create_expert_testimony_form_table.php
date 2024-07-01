@@ -28,6 +28,7 @@ class CreateExpertTestimonyFormTable extends Migration
             $table->string('brief_overview_of_case', 255)->nullable();
             $table->string('appoinment_date', 255)->nullable();
             $table->string('appoinment_time', 255)->nullable();
+            $table->string('appoinment_type', 255)->nullable();
             $table->timestamps();
         });
     }
