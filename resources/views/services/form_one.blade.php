@@ -1018,7 +1018,31 @@
                                     <input type="hidden" class="form-control" name="photos" id="photos" />
                                 </div>
 
-                                <div class="col-md-3 mb-3">
+
+                                <div class="col-md-12 mb-3">
+                                    <div class="form-group">
+                                       <label class="form-label">Select a Service</label>
+                                          <select class="select" name="theropy" id="theropyServices">
+                                             <option value="">Select Theropy Service Timing</option>
+                                             <option value="45 min">Theropy Service 45 min</option>
+                                             <option value="60 min">Theropy Service 60 min</option>
+                                             <option value="90 min">Theropy Service 90 min</option>
+                                             <option value="120 min">Theropy Service 120 min</option>
+                                             <option value="half day">Theropy Service Half Day</option>
+                                             <option value="full day">Theropy Service Full Day</option>
+                                          </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group">
+                                       <label>Select Date</label>
+                                       <div id="selectDate"></div>
+                                       {{-- <input class="form-control" placeholder="Enter Title" required="required" name="appoinment_date" type="date"> --}}
+                                    </div>
+                                </div>
+
+                                {{-- <div class="col-md-3 mb-3">
                                     <div class="form-group">
                                        <label>Select Date</label>
                                        <input class="form-control" placeholder="Enter Title" required="required" name="appoinment_date" type="date">
@@ -1030,88 +1054,14 @@
                                       <input class="form-control" type="text" name="appoinment_time" id="datetime">
                                     </div>
                                 </div>
-                                
-
-
+                                 --}}
                             </div>
-                            <!-- Symptom History Started -->
 
+                            <div class="form-row row" id='serviceTimingFetch'></div>
 
-
-
-                                <!-- <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Date</label>
-                                            {!! Form::date('title', null, ['class' => 'form-control', 'placeholder' => 'Enter Title', 'required' => 'required']) !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Input</label>
-                                            {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Enter Title', 'required' => 'required']) !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Rich Tech Editor</label>
-                                            {!! Form::textarea('description', null, ['class' => 'form-control contentArea', 'placeholder' => 'Enter Description', 'required' => 'required']) !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Text Area</label>
-                                            {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Enter Description', 'required' => 'required']) !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Thumbnail</label>
-                                            {!! Form::file('thumbnail_file', null, ['class' => 'form-control', 'required' => 'required', 'multiple']) !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        @if($section->method == 'PUT')
-                                            <img src="{{ $service->thumbnail }}" alt="" class="avatar avatar-xl rounded"  />
-                                        @endif
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Select DropDown</label>
-                                            {!! Form::select('status', array(1 => 'Active', 0 => 'Block'), null, ['class' => 'form-control select', 'placeholder' => 'Select a option', 'required' => 'required']) !!}
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Radio Button</label>
-                                            <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                                <label class="form-check-label" for="flexRadioDefault1"> Default radio </label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked="">
-                                                <label class="form-check-label" for="flexRadioDefault2"> Default checked radio </label>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Checkbox</label>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault"> Default checkbox </label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked="">
-                                                <label class="form-check-label" for="flexCheckChecked"> Checked checkbox </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
-                                <div class="text-end">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
+                            <div class="text-end">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
                             {!! Form::close() !!}
                         </div>
                     </div>
@@ -1241,6 +1191,90 @@
             }
         });
 
+        $(document).on('change', '.hasDatepicker', function() {
+            var dateString = $('#datepicker').val();
+            console.log(dateString);
+            var date = new Date(dateString);
+            var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            var day = daysOfWeek[date.getDay()];
+            console.log(day);
+            // Get CSRF token
+            var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+            var selectedValue = $('#theropyServices').val();
+            // console.log('Selected value:', selectedValue);
+
+            $.ajax({
+                url: '{{ route('services.getServiceDayTimings') }}', // Laravel route
+                type: 'POST',
+                data: {
+                    _token: csrfToken, // CSRF token for Laravel
+                    service_day : day,
+                    service_type : selectedValue,
+                    service_id : 1
+                },
+                success: function(response) {
+                    // console.log("Response from server:", response);
+                    $('#serviceTimingFetch').html(response);
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error:", error);
+                }
+            });
+        });
+
+        $('#theropyServices').change(function() {
+            var selectedValue = $(this).val();
+            $('#selectDate').html('<input type="text" id="datepicker">');
+            $('#serviceTimingFetch').html('');
+            // Get CSRF token
+            var csrfToken = $('meta[name="csrf-token"]').attr('content');
+            $.ajax({
+                url: '{{ route('services.getServiceDays') }}', // Laravel route
+                type: 'POST',
+                data: {
+                    _token: csrfToken, // CSRF token for Laravel
+                    service_type: selectedValue,
+                    service_id : 1
+                },
+                success: function(response) {
+                    console.log("Response from server:", response);
+                    var daysString = '';
+                    daysString = JSON.stringify(response);
+                    var today = new Date();
+                    var threeMonthsLater = new Date();
+                    threeMonthsLater.setMonth(today.getMonth() + 3);
+
+                    var disabledDays = null;
+                    var disabledDays = JSON.parse(daysString); //['tuesday', 'monday']; // Your dynamic days array
+                    
+                    var dayMap = {
+                        'sunday': 0,
+                        'monday': 1,
+                        'tuesday': 2,
+                        'wednesday': 3,
+                        'thursday': 4,
+                        'friday': 5,
+                        'saturday': 6
+                    };
+                    // Convert the day names to numerical values
+                    var disabledDaysNumbers = disabledDays.map(day => dayMap[day.toLowerCase()]);
+                    $("#datepicker").datepicker({
+                        dateFormat: 'yy-mm-dd',
+                        minDate: today,
+                        maxDate: threeMonthsLater,
+                        beforeShowDay: function(date) {
+                            var day = date.getDay();
+                            return [disabledDaysNumbers.includes(day), ''];
+                        }
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error:", error);
+                }
+            });
+        });
+
     });
 
        // Below code sets format to the 
@@ -1256,6 +1290,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
     <link rel="stylesheet" href="{{ asset('assets/css/richtext.min.css') }}">
     <script src="{{ asset('assets/js/jquery.richtext.js') }}"></script>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
     <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />

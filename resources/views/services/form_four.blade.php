@@ -220,6 +220,7 @@
             $('#ExpertTestimony').change(function() {
                 var selectedValue = $(this).val();
                 $('#selectDate').html('<input type="text" id="datepicker">');
+                $('#serviceTimingFetch').html('');
                 // Get CSRF token
                 var csrfToken = $('meta[name="csrf-token"]').attr('content');
                 $.ajax({

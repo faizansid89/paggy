@@ -63,13 +63,34 @@
                                    <div class="form-group">
                                       <label class="form-label">Select a Service</label>
                                          <select class="select" name="clinical_supervision" id="ClinicalSupervision">
-                                            <option value="Clinical Supervision 60 min" selected="selected">Clinical Supervision 60 min</option>
-                                            <option value="Clinical Supervision 90 min">Clinical Supervision 90 min</option>
-                                            <option value="Clinical Supervision 120 min">Clinical Supervision 120 min</option>
+                                            <option value="">Select Clinical Supervision Service Timing</option>
+                                            <option value="45 min">Clinical Supervision 45 min</option>
+                                            <option value="60 min">Clinical Supervision 60 min</option>
+                                            <option value="90 min">Clinical Supervision 90 min</option>
+                                            <option value="120 min">Clinical Supervision 120 min</option>
+                                            <option value="half day">Clinical Supervision Half Day</option>
+                                            <option value="full day">Clinical Supervision Full Day</option>
                                          </select>
                                    </div>
                                 </div>
+
+
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group">
+                                       <label>Select Date</label>
+                                       <div id="selectDate"></div>
+                                       {{-- <input class="form-control" placeholder="Enter Title" required="required" name="appoinment_date" type="date"> --}}
+                                    </div>
+                                </div>
+                                {{-- <div class="col-md-4 mb-3">
+                                    <div class="form-group col-md-6">
+                                      <label for="time">Time</label>
+                                      <input class="form-control" type="text" name="appoinment_time" id="clinicialdatetime">
+                                    </div>
+                                </div> --}}
                             </div>
+
+                            <div class="form-row row" id='serviceTimingFetch'></div>
 
                             <div class="form-row row">
                                 <div class="col-md-12 mb-3">
@@ -98,18 +119,6 @@
                                       </div>
                                    </div>
                                 </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="form-group">
-                                       <label>Select Date</label>
-                                       <input class="form-control" placeholder="Enter Title" required="required" name="appoinment_date" type="date">
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="form-group col-md-6">
-                                      <label for="time">Time</label>
-                                      <input class="form-control" type="text" name="appoinment_time" id="clinicialdatetime">
-                                    </div>
-                                </div>
                             </div>
                             <div class="text-end">
                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -125,12 +134,100 @@
 @endsection
 @section('scripts')
     <script>
-       $('#clinicialdatetime').datetimepicker({
-           format: 'hh:mm:ss a'
-       });
+        $(document).ready(function() {
+            $(document).on('change', '.hasDatepicker', function() {
+                var dateString = $('#datepicker').val();
+                console.log(dateString);
+                var date = new Date(dateString);
+                var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                var day = daysOfWeek[date.getDay()];
+                console.log(day);
+                // Get CSRF token
+                var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+                var selectedValue = $('#ClinicalSupervision').val();
+                // console.log('Selected value:', selectedValue);
+
+                $.ajax({
+                    url: '{{ route('services.getServiceDayTimings') }}', // Laravel route
+                    type: 'POST',
+                    data: {
+                        _token: csrfToken, // CSRF token for Laravel
+                        service_day : day,
+                        service_type : selectedValue,
+                        service_id : 2
+                    },
+                    success: function(response) {
+                        // console.log("Response from server:", response);
+                        $('#serviceTimingFetch').html(response);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Error:", error);
+                    }
+                });
+            });
+
+            $('#ClinicalSupervision').change(function() {
+                var selectedValue = $(this).val();
+                $('#selectDate').html('<input type="text" id="datepicker">');
+                $('#serviceTimingFetch').html('');
+                // Get CSRF token
+                var csrfToken = $('meta[name="csrf-token"]').attr('content');
+                $.ajax({
+                    url: '{{ route('services.getServiceDays') }}', // Laravel route
+                    type: 'POST',
+                    data: {
+                        _token: csrfToken, // CSRF token for Laravel
+                        service_type: selectedValue,
+                        service_id : 2
+                    },
+                    success: function(response) {
+                        console.log("Response from server:", response);
+                        var daysString = '';
+                        daysString = JSON.stringify(response);
+                        var today = new Date();
+                        var threeMonthsLater = new Date();
+                        threeMonthsLater.setMonth(today.getMonth() + 3);
+
+                        var disabledDays = null;
+                        var disabledDays = JSON.parse(daysString); //['tuesday', 'monday']; // Your dynamic days array
+                        
+                        var dayMap = {
+                            'sunday': 0,
+                            'monday': 1,
+                            'tuesday': 2,
+                            'wednesday': 3,
+                            'thursday': 4,
+                            'friday': 5,
+                            'saturday': 6
+                        };
+                        // Convert the day names to numerical values
+                        var disabledDaysNumbers = disabledDays.map(day => dayMap[day.toLowerCase()]);
+                        $("#datepicker").datepicker({
+                            dateFormat: 'yy-mm-dd',
+                            minDate: today,
+                            maxDate: threeMonthsLater,
+                            beforeShowDay: function(date) {
+                                var day = date.getDay();
+                                return [disabledDaysNumbers.includes(day), ''];
+                            }
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Error:", error);
+                    }
+                });
+            });
+        });
+        $('#clinicialdatetime').datetimepicker({
+            format: 'hh:mm:ss a'
+        });
    </script>
     <link rel="stylesheet" href="{{ asset('assets/css/richtext.min.css') }}">
     <script src="{{ asset('assets/js/jquery.richtext.js') }}"></script>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
     <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
