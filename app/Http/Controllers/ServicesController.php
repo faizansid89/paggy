@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appoinment;
 use App\Models\ClinicalSupervisionForm;
 use App\Models\ConsultationForm;
 use App\Models\ExpertTestimonyForm;
 use App\Models\Services;
 use App\Models\ServiceTiming;
 use App\Models\TherapyForm;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
@@ -306,11 +308,41 @@ class ServicesController extends Controller
 
         $request->request->add(['user_id' => auth()->user()->id]);
 
-        // dd('expert_testimony', $request->toArray());
-        ExpertTestimonyForm::create($request->all());
+        // ExpertTestimonyForm::create($request->all());
 
+        $request->request->add(['service_id' => 4]);
+
+        $carbonDate = Carbon::parse($request->appoinment_date);
+        $dayOfWeek = $carbonDate->format('l');
+        
+        $serviceTiming = ServiceTiming::where('service_id', $request->service_id)->where('service_type', $request->appoinment_type)->where('service_day', $dayOfWeek)->first();
+        if(isset($serviceTiming)){
+            $appointment = new Appoinment();
+            $appointment->service_id = $serviceTiming->service_id;
+            $appointment->user_id =  auth()->user()->id;
+            $appointment->service_type =  $serviceTiming->service_type;
+            $appointment->service_time =  $serviceTiming->service_time;
+            $appointment->service_day =  $serviceTiming->service_day;
+            $appointment->service_price =  $serviceTiming->service_price;
+            $appointment->save();
+        }        
         $request->session()->flash('alert-success', 'Record has been added successfully.');
-        return redirect()->route($section->slug.'.index');
+        return redirect()->route($section->slug.'.servicePaymentID', ['id' => encrypt($appointment->id)]);
+    }
+
+    public function servicePayment(Request $request, $id)
+    {
+        $appoinment = Appoinment::where('id', decrypt($id))->first();
+        $service = Services::where('id', $appoinment->service_id)->first();
+        
+        // checkPermission('create-user');
+        $section = $this->section;
+        $section->title = $service->title . " Payment";
+        $section->method = 'POST';
+        $section->route = $section->slug.'.servicePayment';
+       
+        // dd($appoinment->service_id, $service->toArray());
+        return view($section->folder.'.service_payment',compact('section', 'service', 'appoinment'));
     }
 
 

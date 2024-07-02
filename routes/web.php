@@ -165,6 +165,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     Route::get('services/therapy_form', [ServicesController::class, 'form_one'])->name('services.form_one');
     
     
+    Route::post('services/service_payment', [ServicesController::class, 'servicePayment'])->name('services.servicePayment');
+    Route::get('services/service_payment/{id}', [ServicesController::class, 'servicePayment'])->name('services.servicePaymentID');
     Route::post('services/getServiceDayTimings', [ServicesController::class, 'getServiceDayTimings'])->name('services.getServiceDayTimings');
     Route::post('services/getServiceDays', [ServicesController::class, 'getServiceDays'])->name('services.getServiceDays');
     Route::post('services/clinical_supervision', [ServicesController::class, 'clinicalSupervisionSubmit'])->name('services.clinicalSupervisionSubmit');
