@@ -19,6 +19,7 @@ class CreateAppoinmentsTable extends Migration
             $table->integer('user_id');
             $table->string('service_type');
             $table->string('service_time');
+            $table->string('service_date');
             $table->string('service_day');
             $table->string('service_price');
             $table->integer('payment_id')->nullable();

@@ -28,14 +28,14 @@
                     <div class="card">
                         <div class="card-header">
                             <h5 class="card-title">{{ $section->title }}</h5>
-                            {{ dd($appoinment->toArray()) }}
                         </div>
                         <div class="card-body">
-                            {!! Form::model($service, ['route' => $section->route, 'class' => 'form-validate', 'files' => true, 'enctype' => 'multipart/form-data', 'autocomplete' => 'off']) !!}
+                            {!! Form::model($service, ['route' => $section->route, 'class' => 'form-validate require-validation', 'files' => true, 'enctype' => 'multipart/form-data', 'autocomplete' => 'off', 'data-cc-on-file' => 'false', 'data-stripe-publishable-key' => env('STRIPE_SECRET_KEY')]) !!}
                             @method($section->method)
                                 {!! Form::text('niche', 'service', ['class' => 'mb-2 form-control']) !!}
-                                {!! Form::text('amount', $appoinment->service_price, ['class' => 'mb-2 form-control webinarPrices']) !!}
-                                {!! Form::text('id', $appoinment->service_id, ['class' => 'form-control webinarIds']) !!}
+                                {!! Form::text('amount', $appoinment->service_price, ['class' => 'mb-2 form-control']) !!}
+                                {!! Form::text('appoinment_id', $appoinment->id, ['class' => 'mb-2 form-control']) !!}
+                                {!! Form::text('id', $appoinment->service_id, ['class' => 'form-control']) !!}
                                 <div class="form-row row">
                                    <div class="col-md-12 mb-3">
                                       <label class="form-label" for="validationCustom01">Card Number</label>
@@ -57,7 +57,6 @@
                                     <label class="form-label">Card CVV</label>
                                     {!! Form::text('card_cvv', '231', ['class' => 'form-control card-cvc', "onkeypress" => "return isNumber(event)", 'max' => '4', 'required' => 'required']) !!}
                                  </div>
-                                    
                                 </div>
                                 <div class="text-end">
                                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -72,14 +71,78 @@
 
 @endsection
 @section('scripts')
-     <script>
-       $(document).ready(function() {
-            
-        });
-        
-    </script>
-   
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script type="text/javascript">
+        $(function() {
+            /*------------------------------------------
+            --------------------------------------------
+            Stripe Payment Code
+            --------------------------------------------
+            --------------------------------------------*/
+            var $form = $(".require-validation");
+
+            $('form.require-validation').bind('submit', function(e) {
+                var $form = $(".require-validation"),
+                    inputSelector = ['input[type=email]', 'input[type=password]',
+                        'input[type=text]', 'input[type=file]',
+                        'textarea'].join(', '),
+                    $inputs = $form.find('.required').find(inputSelector),
+                    $errorMessage = $form.find('div.error'),
+                    valid = true;
+                $errorMessage.addClass('hide');
+
+                console.log('1');
+
+                $('.has-error').removeClass('has-error');
+                $inputs.each(function(i, el) {
+                    var $input = $(el);
+                    if ($input.val() === '') {
+                        $input.parent().addClass('has-error');
+                        $errorMessage.removeClass('hide');
+                        e.preventDefault();
+                    }
+                });
+                console.log('2');
+
+                if (!$form.data('cc-on-file')) {
+                    e.preventDefault();
+                    Stripe.setPublishableKey($form.data('stripe-publishable-key'));
+                    Stripe.createToken({
+                        number: $('.card-number').val(),
+                        cvc: $('.card-cvc').val(),
+                        exp_month: $('.card-expiry-month').val(),
+                        exp_year: $('.card-expiry-year').val()
+                    }, stripeResponseHandler);
+                }
+                console.log('3');
+
+            });
+
+            /*------------------------------------------
+            --------------------------------------------
+            Stripe Response Handler
+            --------------------------------------------
+            --------------------------------------------*/
+            function stripeResponseHandler(status, response) {
+                console.log('4');
+                if (response.error) {
+                    $('.error')
+                        .removeClass('hide')
+                        .find('.alert')
+                        .text(response.error.message);
+                } else {
+                    /* token contains id, last4, and card type */
+                    var token = response['id'];
+
+                    $form.find('input[type=text]').empty();
+                    $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+                    $form.get(0).submit();
+                }
+            }
+
+        });
+    </script>
 @endsection

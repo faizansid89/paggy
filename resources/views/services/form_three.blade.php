@@ -37,7 +37,7 @@
                                  <div class="form-row row">
                                     <div class="col-md-12 mb-3">
                                        <label class="form-label" for="validationCustom01">First name</label>
-                                       <input type="text" class="form-control" id="validationCustom01" placeholder="First name" name="first_name" value="" required="">
+                                       <input type="text" class="form-control" id="validationCustom01" placeholder="First name" name="first_name" value="{{ auth()->user()->name }}" required="">
                                        <div class="valid-feedback">
                                           Looks good!
                                        </div>
@@ -51,11 +51,11 @@
                                     </div>
                                     <div class="col-md-12 mb-3">
                                        <label class="form-label">Email</label>
-                                       <input type="email" class="form-control" placeholder="Email" name="email">
+                                       <input type="email" class="form-control" placeholder="Email" value="{{ auth()->user()->email }}" name="email">
                                     </div>
                                     <div class="col-md-12 mb-3">
                                        <label class="form-label">Contact Number</label>
-                                       <input type="text" class="form-control" placeholder="Phone Number" name="phone" onkeypress="return isNumber(event)">
+                                       <input type="text" class="form-control" placeholder="Phone Number" value="{{ auth()->user()->phone }}" name="phone" onkeypress="return isNumber(event)">
                                     </div>
                                     <div class="col-md-12 mb-3">
                                        <div class="form-group">
