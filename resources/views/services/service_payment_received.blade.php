@@ -29,39 +29,8 @@
                         <div class="card-header">
                             <h5 class="card-title">{{ $section->title }}</h5>
                         </div>
-                        <div class="card-body">
-                            {!! Form::model($service, ['route' => $section->route, 'class' => 'form-validate require-validation', 'files' => true, 'enctype' => 'multipart/form-data', 'autocomplete' => 'off', 'data-cc-on-file' => 'false', 'data-stripe-publishable-key' => env('STRIPE_SECRET_KEY')]) !!}
-                            @method($section->method)
-                                {!! Form::hidden('niche', 'service', ['class' => 'mb-2 form-control']) !!}
-                                {!! Form::hidden('amount', $appoinment->service_price, ['class' => 'mb-2 form-control']) !!}
-                                {!! Form::hidden('appoinment_id', $appoinment->id, ['class' => 'mb-2 form-control']) !!}
-                                {!! Form::hidden('id', $appoinment->service_id, ['class' => 'form-control']) !!}
-                                <div class="form-row row">
-                                   <div class="col-md-12 mb-3">
-                                      <label class="form-label" for="validationCustom01">Card Number</label>
-                                      {!! Form::text('card_number', '4111111111111111', ['class' => 'form-control card-number', "onkeypress" => "return isNumber(event)", 'max' => '16', 'min' => '16', 'required' => 'required']) !!}
-                                   </div>
-                                   <div class="col-md-12 mb-3">
-                                      <label class="form-label" for="validationCustom02">Card Name</label>
-                                      {!! Form::text('card_name', 'Faizan', ['class' => 'form-control', 'required' => 'required']) !!}
-                                   </div>
-                                   <div class="col-md-12 mb-3">
-                                      <label class="form-label">Card Month</label>
-                                      {!! Form::select('card_month', array('01' => '01', '02' => '02', '03' => '03', '04' => '04', '05' => '05', '06' => '06', '07' => '07', '08' => '08', '09' => '09', '10' => '10', '11' => '11', '12' => '12'), 12, ['class' => 'form-control select2 card-expiry-month', 'placeholder' => 'Select Month', 'required' => 'required']) !!}
-                                   </div>
-                                   <div class="col-md-12 mb-3">
-                                      <label class="form-label">Card Year</label>
-                                      {!! Form::select('card_year', array('24' => '24', '25' => '25', '26' => '26', '27' => '27', '28' => '28', '29' => '29', '30' => '30', '31' => '31', '32' => '32', '33' => '33', '34' => '34', '35' => '35'), 28, ['class' => 'form-control select2 card-expiry-year', 'placeholder' => 'Select Year', 'required' => 'required']) !!}
-                                   </div>
-                                   <div class="col-md-12 mb-3">
-                                    <label class="form-label">Card CVV</label>
-                                    {!! Form::text('card_cvv', '231', ['class' => 'form-control card-cvc', "onkeypress" => "return isNumber(event)", 'max' => '4', 'required' => 'required']) !!}
-                                 </div>
-                                </div>
-                                <div class="text-end">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            {!! Form::close() !!}
+                        <div class="card-body text-center">
+                            <h1>Payment Recevied Successfully <br/>Transection ID: {{ $stripePayment->id }}</h1>
                         </div>
                     </div>
                 </div>

@@ -166,6 +166,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     
     
     Route::post('services/service_payment', [ServicesController::class, 'servicePaymentPost'])->name('services.servicePayment');
+    Route::get('services/service_payment_recevied', [ServicesController::class, 'servicePaymentRecevied'])->name('services.servicePaymentRecevied');
     Route::get('services/service_payment/{id}', [ServicesController::class, 'servicePayment'])->name('services.servicePaymentID');
     Route::post('services/getServiceDayTimings', [ServicesController::class, 'getServiceDayTimings'])->name('services.getServiceDayTimings');
     Route::post('services/getServiceDays', [ServicesController::class, 'getServiceDays'])->name('services.getServiceDays');

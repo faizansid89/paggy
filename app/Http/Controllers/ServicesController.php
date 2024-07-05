@@ -410,8 +410,9 @@ class ServicesController extends Controller
 
     public function servicePaymentPost(Request $request)
     {
-        // dd($request->toArray());
-
+        $section = $this->section;
+        $section->title = 'Payment Recevied Status';
+       
         $card['card_number'] = $request->card_number;
         $card['card_name'] = $request->card_name;
         $card['card_month'] = $request->card_month;
@@ -444,7 +445,7 @@ class ServicesController extends Controller
             "description" => $description,
         ]);
         /**************** Stripe Work End ****************/
-
+        
         $payment = new Payment();
         $payment->service_id = $request->id;
         $payment->amount = $request->amount;
@@ -460,10 +461,10 @@ class ServicesController extends Controller
         $appoinment->payment_id = $payment->id;
         $appoinment->save();
 
-        return true;
+        // return true;
 
         // dd($appoinment->service_id, $service->toArray());
-        return view($section->folder.'.service_payment',compact('section', 'service', 'appoinment'));
+        return view($section->folder.'.service_payment_received',compact('section', 'appoinment', 'stripePayment'));
     }
 
 
