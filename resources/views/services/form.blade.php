@@ -58,6 +58,12 @@
                                         @endif
                                     </div>
                                     <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Service Form Link</label>
+                                            {!! Form::text('service_link', null, ['class' => 'form-control', 'placeholder' => 'Enter Service Link']) !!}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
                                         <h3>Service Pricing</h3>
                                     </div>
                                 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appoinment;
 use App\Models\Customer;
 use App\Models\Payment;
 use App\Models\Products;
@@ -23,7 +24,13 @@ class DashboardController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth');    
+    
+        $this->section = new \stdClass();
+        $this->section->title = 'Dashboard';
+        $this->section->heading = 'Dashboard';
+        $this->section->slug = 'dashboard';
+        $this->section->folder = 'dashboard';
     }
 
     /**
@@ -33,6 +40,15 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $section = $this->section;
+
+        $checkAppoinment = Appoinment::where('user_id', auth()->user()->id)->get();
+        // dd(auth()->user()->id, count($checkAppoinment));
+
+        if(count($checkAppoinment) == 0){
+            return redirect()->route('services.selectService');
+        }
+
         $streams = Payment::where('stream_id', '!=', null)->get();
         $webinars = Payment::where('webinar_id', '!=', null)->get();
         $users = User::where('role_id', '!=', 0)->get();

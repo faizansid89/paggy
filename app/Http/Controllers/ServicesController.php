@@ -408,6 +408,14 @@ class ServicesController extends Controller
     }
 
 
+    public function selectService(Request $request)
+    {
+        $services = Services::get();
+        $section = $this->section;
+        return view($section->folder.'.services',compact('section', 'services'));
+    }
+    
+
     public function servicePaymentPost(Request $request)
     {
         $section = $this->section;
