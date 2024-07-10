@@ -9,8 +9,12 @@
                     @include('partials.alerts')
                     <!-- main alert @e -->
 
+                    <div class="col-md-12 text-center mb-4">
+                        <h1 style="text-transform: uppercase;">Select Any Service then fill the form</h1>
+                    </div>
+
                     @foreach($services as $key => $service)
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <div class="card">
                                 <div class="card-header">
                                     <a href="{{ $service->service_link }}"><h3>{{ $service->title }}</h3></a>
