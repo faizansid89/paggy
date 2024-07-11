@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppoinmentController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\AttachmentController;
 use App\Http\Controllers\CertificateController;
@@ -158,6 +159,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     // Route::resource('supplier', SupplierController::class);
     // Route::post('uploadsupplair',[SupplierController::class,'uploadsupplair'])->name('uploadsupplair');
 
+    Route::resource('appoinments',AppoinmentController::class);
 
     Route::resource('rolepermission', RolePermissionController::class);
 
