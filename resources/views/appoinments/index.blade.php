@@ -2,8 +2,9 @@
 
 @section('content')
 <style>
-    .fc-direction-ltr .fc-daygrid-event .fc-event-time { color: #000000; }
-    .fc-daygrid-dot-event .fc-event-title { color: #000000; text-align: left; }
+    /* .fc-direction-ltr .fc-daygrid-event .fc-event-time { color: #000000; } */
+    .fc-daygrid-dot-event .fc-event-title { text-align: left; }
+    .fc-event { background: #6a6a6a; text-align: left !important; }
 </style>
 <div class="page-wrapper">
     <div class="content container-fluid">
