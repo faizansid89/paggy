@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appoinment;
+use App\Models\ClinicalSupervisionForm;
+use App\Models\ConsultationForm;
 use App\Models\Evaluation;
+use App\Models\ExpertTestimonyForm;
 use App\Models\Livestream;
 use App\Models\Payment;
+use App\Models\TherapyForm;
 use App\Models\Webinar;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -38,8 +42,9 @@ class AppoinmentController extends Controller
             $time = str_replace(' PM', '', $appoinment->service_time);
             $time = str_replace(' AM', '', $time);
             $time = explode(' - ', $time);
-
-            $html .= "{title: '".$appoinment->user->name." - ".$appoinment->service->title." - ".$appoinment->service_type."',start: '".$appoinment->service_date."T".$time[0]."',end: '".$appoinment->service_date."T".$time[1]."'},";
+            
+            $url = route('appoinments.show', $appoinment->id);
+            $html .= "{title: '".$appoinment->user->name." - ".$appoinment->service->title." - ".$appoinment->service_type."',url: '".$url."', start: '".$appoinment->service_date."T".$time[0]."',end: '".$appoinment->service_date."T".$time[1]."'},";
         }
 
         $todayDate = Carbon::now()->format('Y-m-d');
@@ -102,7 +107,28 @@ class AppoinmentController extends Controller
      */
     public function show($id)
     {
+        $appoinment = Appoinment::where('id', $id)->first();
 
+        if(isset($appoinment)){
+            if($appoinment->service_id == 1){
+                $formData = TherapyForm::where('user_id', $appoinment->user_id)->first();
+            }
+            elseif($appoinment->service_id == 2){
+                $formData = ClinicalSupervisionForm::where('user_id', $appoinment->user_id)->first();
+            }
+            elseif($appoinment->service_id == 3){
+                $formData = ConsultationForm::where('user_id', $appoinment->user_id)->first();
+            }
+            elseif($appoinment->service_id == 4){
+                $formData = ExpertTestimonyForm::where('user_id', $appoinment->user_id)->first();
+            }
+        }
+        else {
+            abort('404');
+        }
+        
+
+        dd($id, $appoinment->toArray(), 'Single View', $formData->toArray());
     }
 
     /**
