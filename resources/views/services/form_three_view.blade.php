@@ -18,7 +18,13 @@
                 </div>
             </div>
 
-
+<style>
+    label.form-label {
+    font-size: 18px;
+    font-weight: 500;
+    padding-right: 20px;
+}
+</style>
             <div class="row">
                 <div class="col-md-12">
 
@@ -31,140 +37,119 @@
                             <h5 class="card-title">{{ $section->title }}</h5>
                         </div>
                         <div class="card-body">
-                            {!! Form::model($service, ['route' => $section->route, 'class' => 'form-validate', 'files' => true, 'enctype' => 'multipart/form-data', 'autocomplete' => 'off']) !!}
-                            @method($section->method)
-                                <div class="form-row row">
-                                   <div class="col-md-12 mb-3">
-                                      <label class="form-label" for="validationCustom01">First name</label>
-                                      <input type="text" class="form-control" id="validationCustom01" name="first_name" placeholder="First name" value="{{ auth()->user()->name }}" required="">
-                                      <div class="valid-feedback">
-                                         Looks good!
-                                      </div>
-                                   </div>
-                                   <div class="col-md-12 mb-3">
-                                      <label class="form-label" for="validationCustom02">Last name</label>
-                                      <input type="text" class="form-control" id="validationCustom02" name="last_name" placeholder="Last name" value="" required="">
-                                      <div class="valid-feedback">
-                                         Looks good!
-                                      </div>
-                                   </div>
-                                   <div class="col-md-12 mb-3">
-                                      <label class="form-label">Email</label>
-                                      <input type="email" class="form-control" placeholder="Email" value="{{ auth()->user()->email }}" name="email">
-                                   </div>
-                                   <div class="col-md-12 mb-3">
-                                      <label class="form-label">Contact Number</label>
-                                      <input type="text" class="form-control" placeholder="Phone Number" name="phone" value="{{ auth()->user()->phone }}" onkeypress="return isNumber(event)">
-                                   </div>
-                                   <div class="col-md-12 mb-3">
-                                       <div class="form-group">
-                                          <label class="form-label">Select a Service</label>
-                                             <select class="select"  name="appoinment_type"  id="ExpertTestimony">
-                                                <option value="">Select Expert Testimony Service Timing</option>
-                                                <option value="45 min">Expert Testimony 45 min</option>
-                                                <option value="60 min">Expert Testimony 60 min</option>
-                                                <option value="90 min">Expert Testimony 90 min</option>
-                                                <option value="120 min">Expert Testimony 120 min</option>
-                                                <option value="half day">Expert Testimony Half Day</option>
-                                                <option value="full day">Expert Testimony Full Day</option>
-                                             </select>
+                          
+
+                                 <div class="form-row row">
+                                    <div class="col-md-12 mb-3">
+                                       <label class="form-label" for="validationCustom01">First name:</label>
+                                       <label class="form">{{ $formData->first_name }}</label>
+                                       <!--<input type="text" class="form-control" id="validationCustom01" placeholder="First name" name="first_name" value="{{ auth()->user()->name }}" required="">-->
+                                       <div class="valid-feedback">
+                                          Looks good!
                                        </div>
-                                   </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                       <label class="form-label" for="validationCustom02">Last name:</label>
+                                       <label class="form">{{ $formData->last_name }}</label>
+                                       <!--<input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="" name="last_name" required="">-->
+                                       <div class="valid-feedback">
+                                          Looks good!
+                                       </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                       <label class="form-label">Email:</label>
+                                     <label class="form">{{ $formData->email }}</label>
+
+                                       <!--<input type="email" class="form-control" placeholder="Email" value="{{ auth()->user()->email }}" name="email">-->
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                       <label class="form-label">Contact Number:</label>
+                                         <label class="form">{{ $formData->phone }}</label>
+                                       <!--<input type="text" class="form-control" placeholder="Phone Number" value="{{ auth()->user()->phone }}" name="phone" onkeypress="return isNumber(event)">-->
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                       <div class="form-group">
+                                          <label class="form-label">Select a Service:</label>
+                                          <label class="form">Consultation Services</label>
+                                             <!--<select class="select" name="appoinment_type" id="ConsultationServices">-->
+                                             <!--   <option value="">Select Consultation Service Timing</option>-->
+                                             <!--   <option value="45 min">Consultation Service 45 min</option>-->
+                                             <!--   <option value="60 min">Consultation Service 60 min</option>-->
+                                             <!--   <option value="90 min">Consultation Service 90 min</option>-->
+                                             <!--   <option value="120 min">Consultation Service 120 min</option>-->
+                                             <!--   <option value="half day">Consultation Service Half Day</option>-->
+                                             <!--   <option value="full day">Consultation Service Full Day</option>-->
+                                             <!--</select>-->
+                                       </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="form-group">
+                                            <label>Your Role:</label>
+                                            <div class="form-check"> 
+                                                <input class="form-check-input" type="radio" name="your_role" id="Prosecutor" checked="">
+                                                 <label class="form-check-label" for="Prosecutor">{{ $formData->your_role }}</label>
+                                            </div>
+        
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="form-group">
+                                            <label>Type of Case:</label>
+                                            <div class="form-check"> 
+                                                <input class="form-check-input" type="radio" name="type_of_case" id="Divorce/Custody" checked="">
+                                                 <label class="form-check-label" for="Prosecutor">{{ $formData->type_of_case }}</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                     <div class="col-md-4 mb-3 TypeofCaseFields hidden">
+                                       <label for="TypeofCase" class="form-label">Other:</label>
+                                       <input type="text" name="type_of_case_others" class="form-control" id="TypeofCase" value="{{ $formData->type_of_case_others }}>
+                                    </div>
+                                 </div>
+                                 <div class="form-row row">
+                                     <div class="col-md-12">
+                                         <h3 class="mb-3">Court Date:</h3>
+                                     </div>
+                                 </div>
+                                 <div class="form-row row">
+                                     <div class="col-md-4 mb-3">
+                                         <div class="form-group">
+                                            <label>Appoinment Date</label>
+                                             <label>{{ $formData->appoinment_date }}</label>
+                                            {{-- <input class="form-control" placeholder="Enter Title" name="appoinment_date" type="date"> --}}
+                                            <div id="selectDate"></div>
+                                         </div>
+                                     </div>
                                 </div>
+
+                                <div class="form-row row" id='serviceTimingFetch'></div>
+
                                 <div class="form-row row">
-                                    <div class="col-md-4 mb-3">
-                                        <div class="form-group">
-                                            <label>Your Role</label>
-                                            <div class="form-check"> 
-                                                <input class="form-check-input" type="radio" name="your_role" id="Prosecutor" value="Prosecutor">
-                                                <label class="form-check-label" for="Prosecutor">Prosecutor</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="your_role" id="DefenseAttorney" checked="" value="Defense Attorney">
-                                                <label class="form-check-label" for="DefenseAttorney">Defense Attorney</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="your_role" id="PlaintiffAttorney" checked="" value="Plaintiff Attorney">
-                                                <label class="form-check-label" for="PlaintiffAttorney">Plaintiff Attorney</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="your_role" id="RespondentAttorney" checked="" value="Respondent Attorney">
-                                                <label class="form-check-label" for="RespondentAttorney">Respondent Attorney</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="your_role" id="Client" checked="" value="Client">
-                                                <label class="form-check-label" for="Client">Client</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <div class="form-group">
-                                            <label>Type of Case</label>
-                                            <div class="form-check"> 
-                                                <input class="form-check-input" type="radio" name="type_of_case" id="Divorce/Custody" checked="" value="Divorce/Custody">
-                                                <label class="form-check-label" for="Divorce/Custody">Divorce/Custody</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="type_of_case" id="ProtectiveOrder" value="Protective Order">
-                                                <label class="form-check-label" for="ProtectiveOrder">Protective Order</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="type_of_case" id="Criminal" value="Criminal">
-                                                <label class="form-check-label" for="Criminal">Criminal</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" value="other" type="radio" name="type_of_case" id="Other" value="Other">
-                                                <label class="form-check-label" for="Other">Other</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 mb-3 TypeofCaseFields hidden">
-                                       <label for="TypeofCase" class="form-label">Other</label>
-                                       <input type="text" name="type_of_case_others" class="form-control" id="TypeofCase">
-                                    </div>
-                                    <div class="form-row row">
-                                        <div class="col-md-3 mb-3">
-                                            <div class="form-group">
-                                               <label>Select Date</label>
-                                               {{-- <input class="form-control" placeholder="Enter Title" required="required" name="appoinment_date" id="appoinment_date" type="date"> --}}
-                                               <div id="selectDate">
-                                                    {{-- <input type="text" id="datepicker"> --}}
-                                               </div>
-                                            </div>
-                                        </div>
-                                        {{-- <div class="col-md-2 mb-3">
-                                            <div class="form-group">
-                                              <label for="time">Time</label>
-                                              <input class="form-control" type="text" name="appoinment_time" id="ExpertTestimonyDateTime">
-                                            </div>
-                                        </div> --}}
-                                    </div>
-
-                                    <div class="form-row row" id='serviceTimingFetch'>
-                                        
-                                    </div>
-
-                                    <div class="form-row row">
-                                        <div class="col-md-12 mb-3">
-                                           <label for="inputBriefOverviewofCase" class="form-label">Brief Overview of Case</label>
-                                           <textarea class="form-control" placeholder="Please Describe" required="required" name="brief_overview_of_case" cols="50" rows="5" spellcheck="false"></textarea>
-                                        </div>
-                                        <div class="col-md-12 mb-3">
-                                            <div class="form-control-wrap">
-                                                <div class="custom-file">
-                                                    <div class="dropzone" data-test="photos" id="dropzone"></div>
-                                                    <div class="form-note">Max. files: 5.</div>
-                                                </div>
-                                            </div>
-                                            <input type="hidden" class="form-control" name="photos" id="photos" />
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                                <div class="text-end">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            {!! Form::close() !!}
+                                     <div class="col-md-4 mb-3">
+                                         <div class="form-group col-md-6">
+                                           <label for="time">Appoinment Time</label>
+                                            <label for="time">{{ $formData->appoinment_time }} </label>
+                                         </div>
+                                     </div> 
+                                     <div class="col-md-12 mb-3">
+                                        <label for="inputBriefOverviewofCase" class="form-label">Brief Overview of Case</label>
+                                        <textarea class="form-control" placeholder="Please Describe" required="required" name="brief_overview_of_case" cols="50" rows="5" spellcheck="false">{{ $formData->brief_overview_of_case}}</textarea>
+                                     </div>
+                                    <!-- <div class="col-md-12 mb-3">-->
+                                    <!--    <div class="form-control-wrap">-->
+                                    <!--        <div class="custom-file">-->
+                                    <!--            <div class="dropzone" data-test="photos" id="dropzone"></div>-->
+                                    <!--            <div class="form-note">Max. files: 5.</div>-->
+                                    <!--        </div>-->
+                                    <!--    </div>-->
+                                    <!--    <input type="hidden" class="form-control" name="photos" id="photos" />-->
+                                    <!--</div>-->
+                                 </div>
+                                <!--<div class="text-end">-->
+                                <!--    <button type="submit" class="btn btn-primary">Submit</button>-->
+                                <!--</div>-->
+                          
                         </div>
                     </div>
                 </div>
@@ -175,7 +160,7 @@
 @endsection
 @section('scripts')
      <script>
-       $(document).ready(function() {
+        $(document).ready(function() {
             // TypeOfCase section;
             $('input[name="type_of_case"]').on('change', function() {
                 if ($(this).val() === 'other') {
@@ -195,7 +180,7 @@
                 // Get CSRF token
                 var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
-                var selectedValue = $('#ExpertTestimony').val();
+                var selectedValue = $('#ConsultationServices').val();
                 // console.log('Selected value:', selectedValue);
 
                 $.ajax({
@@ -205,7 +190,7 @@
                         _token: csrfToken, // CSRF token for Laravel
                         service_day : day,
                         service_type : selectedValue,
-                        service_id : 4
+                        service_id : 3
                     },
                     success: function(response) {
                         // console.log("Response from server:", response);
@@ -217,7 +202,7 @@
                 });
             });
 
-            $('#ExpertTestimony').change(function() {
+            $('#ConsultationServices').change(function() {
                 var selectedValue = $(this).val();
                 $('#selectDate').html('<input type="text" name="appoinment_date" id="datepicker">');
                 $('#serviceTimingFetch').html('');
@@ -229,7 +214,7 @@
                     data: {
                         _token: csrfToken, // CSRF token for Laravel
                         service_type: selectedValue,
-                        service_id : 4
+                        service_id : 3
                     },
                     success: function(response) {
                         console.log("Response from server:", response);
@@ -268,23 +253,11 @@
                     }
                 });
             });
-        });
-        $('#ExpertTestimonyDateTime').datetimepicker({
-            format: 'hh:mm a'
-        });
 
-
-        $(function() {
-            $("#datepicker").datepicker({
-                onSelect: function(dateText, inst) {
-                    var date = $(this).datepicker('getDate');
-                    var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-                    var day = daysOfWeek[date.getDay()];
-                    console.log(day);
-                }
-            });
         });
-        
+        $('#consultationDateTime').datetimepicker({
+            format: 'hh:mm:ss a'
+        });
     </script>
     <link rel="stylesheet" href="{{ asset('assets/css/richtext.min.css') }}">
     <script src="{{ asset('assets/js/jquery.richtext.js') }}"></script>
@@ -355,7 +328,9 @@
                 // callback function after init
                 callback: undefined,
             });
+
         });
+
 
         var imageUploadClass;
 

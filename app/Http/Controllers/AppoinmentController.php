@@ -107,20 +107,31 @@ class AppoinmentController extends Controller
      */
     public function show($id)
     {
+        
+        $section = $this->section;
+        
         $appoinment = Appoinment::where('id', $id)->first();
 
         if(isset($appoinment)){
             if($appoinment->service_id == 1){
                 $formData = TherapyForm::where('user_id', $appoinment->user_id)->first();
+            //   dump($formData->toArray(), $appoinment->toArray());
+                return view('services.form_one_view', compact('appoinment','formData', 'section'));
             }
             elseif($appoinment->service_id == 2){
-                $formData = ClinicalSupervisionForm::where('user_id', $appoinment->user_id)->first();
+               $formData = ClinicalSupervisionForm::where('user_id', $appoinment->user_id)->first();
+            //   dump($formData->toArray());
+                return view('services.form_two_view', compact('appoinment','formData', 'section'));
             }
             elseif($appoinment->service_id == 3){
                 $formData = ConsultationForm::where('user_id', $appoinment->user_id)->first();
+                // dump($formData->toArray(), $appoinment->toArray());
+                return view('services.form_three_view', compact('appoinment','formData', 'section'));
             }
             elseif($appoinment->service_id == 4){
                 $formData = ExpertTestimonyForm::where('user_id', $appoinment->user_id)->first();
+                //  dump($formData->toArray());
+                return view('services.form_four_view', compact('appoinment','formData', 'section'));
             }
         }
         else {

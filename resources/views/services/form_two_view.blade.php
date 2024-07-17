@@ -18,7 +18,13 @@
                 </div>
             </div>
 
-
+<style>
+    label.form-label {
+    font-size: 18px;
+    font-weight: 500;
+    padding-right: 20px;
+}
+</style>
             <div class="row">
                 <div class="col-md-12">
 
@@ -31,99 +37,88 @@
                             <h5 class="card-title">{{ $section->title }}</h5>
                         </div>
                         <div class="card-body">
-                            {!! Form::model($service, ['route' => $section->route, 'class' => 'form-validate', 'files' => true, 'enctype' => 'multipart/form-data', 'autocomplete' => 'off']) !!}
-                            @method($section->method)
-
                              <div class="form-row row">
                                 <div class="col-md-12 mb-3">
                                    <label class="form-label" for="validationCustom01">First name</label>
-                                   <input type="text" class="form-control" id="validationCustom01" placeholder="First name" name="first_name" value="{{ auth()->user()->name }}" required>
+                                 <label class="form">{{ $formData->first_name }}</label>
+
+                                   <!--<input type="text" class="form-control" id="validationCustom01" placeholder="First name" name="first_name" value="{{ auth()->user()->name }}" required>-->
                                    <div class="valid-feedback">
                                       Looks good!
                                    </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                    <label class="form-label" for="validationCustom02">Last name</label>
-                                   <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" name="last_name" value="" required="">
+                                   <label class="form">{{ $formData->last_name }}</label>
+                                   <!--<input type="text" class="form-control" id="validationCustom02" placeholder="Last name" name="last_name" value="" required="">-->
                                    <div class="valid-feedback">
                                       Looks good!
                                    </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                    <label class="form-label">Email</label>
-                                   <input type="email" class="form-control" name="email" placeholder="Email" value="{{ auth()->user()->email }}">
+                                   <label class="form">{{ $formData->email }}</label>
+                                   <!--<input type="email" class="form-control" name="email" placeholder="Email" value="{{ auth()->user()->email }}">-->
                                 </div>
-                                
                                 <div class="col-md-12 mb-3">
                                    <label class="form-label">Contact Number</label>
-                                   <input type="text" class="form-control" placeholder="Phone Number" value="{{ auth()->user()->phone }}" name="phone" onkeypress="return isNumber(event)">
+                                   <label class="form">{{ $formData->phone }}</label>
+                                   <!--<input type="text" class="form-control" placeholder="Phone Number" value="{{ auth()->user()->phone }}" name="phone" onkeypress="return isNumber(event)">-->
                                 </div>
-                           
                                 <div class="col-md-12 mb-3">
                                    <div class="form-group">
                                       <label class="form-label">Select a Service</label>
-                                         <select class="select" name="appoinment_type" id="ClinicalSupervision">
-                                            <option value="">Select Clinical Supervision Service Timing</option>
-                                            <option value="45 min">Clinical Supervision 45 min</option>
-                                            <option value="60 min">Clinical Supervision 60 min</option>
-                                            <option value="90 min">Clinical Supervision 90 min</option>
-                                            <option value="120 min">Clinical Supervision 120 min</option>
-                                            <option value="half day">Clinical Supervision Half Day</option>
-                                            <option value="full day">Clinical Supervision Full Day</option>
-                                         </select>
+                                      <label class="form">Clinical Supervision</label>
                                    </div>
                                 </div>
-
-
                                 <div class="col-md-4 mb-3">
                                     <div class="form-group">
-                                       <label>Select Date</label>
+                                       <label>Appoinment Date</label>
+                                        <label>{{ $formData->appoinment_date }}</label>
                                        <div id="selectDate"></div>
                                        {{-- <input class="form-control" placeholder="Enter Title" required="required" name="appoinment_date" type="date"> --}}
                                     </div>
                                 </div>
-                                {{-- <div class="col-md-4 mb-3">
+                                <div class="col-md-4 mb-3">
                                     <div class="form-group col-md-6">
-                                      <label for="time">Time</label>
-                                      <input class="form-control" type="text" name="appoinment_time" id="clinicialdatetime">
+                                      <label for="time">Appoinment Time</label>
+                                      <label>{{ $formData->appoinment_time }}</label>
+                                      <!--<input class="form-control" type="text" name="appoinment_time" id="clinicialdatetime">-->
                                     </div>
-                                </div> --}}
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group col-md-6">
+                                      <label for="time">Appoinment Type</label>
+                                      <label>{{ $formData->appoinment_type }}</label>
+                                      <!--<input class="form-control" type="text" name="appoinment_time" id="clinicialdatetime">-->
+                                    </div>
+                                </div>
                             </div>
-
                             <div class="form-row row" id='serviceTimingFetch'></div>
 
                             <div class="form-row row">
-                                <div class="col-md-12 mb-3">
-                                    <div class="form-control-wrap">
-                                        <div class="custom-file">
-                                            <div class="dropzone" data-test="photos" id="dropzone"></div>
-                                            <div class="form-note">Max. files: 5.</div>
-                                        </div>
-                                    </div>
-                                    <input type="hidden" class="form-control" name="photos" id="photos" />
-                                </div>
+                                <!--<div class="col-md-12 mb-3">-->
+                                <!--    <div class="form-control-wrap">-->
+                                <!--        <div class="custom-file">-->
+                                <!--            <div class="dropzone" data-test="photos" id="dropzone"></div>-->
+                                <!--            <div class="form-note">Max. files: 5.</div>-->
+                                <!--        </div>-->
+                                <!--    </div>-->
+                                <!--    <input type="hidden" class="form-control" name="photos" id="photos" />-->
+                                <!--</div>-->
                                 <div class="col-md-12">
                                    <div class="form-group">
                                       <label>Schedule</label>
                                       <div class="form-check"> 
-                                        <input class="form-check-input" type="radio" name="radio_clinicial_schedule" id="Interview1hr" checked="" value="radio_clinicial_schedule">
-                                         <label class="form-check-label" for="Interview1hr">Interview (1 hr)</label>
-                                      </div>
-                                      <div class="form-check">
-                                         <input class="form-check-input" type="radio" name="radio_clinicial_schedule" id="Supervision1hr" checked="" value="radio_clinicial_schedule">
-                                         <label class="form-check-label" for="Supervision1hr">Supervision (1 hr)</label>
-                                      </div>
-                                      <div class="form-check">
-                                         <input class="form-check-input" type="radio" name="radio_clinicial_schedule" id="Supervision2hr" checked="" value="radio_clinicial_schedule">
-                                         <label class="form-check-label" for="Supervision2hr">Supervision (2 hrs)</label>
+                                        <input class="form-check-input" type="radio" name="radio_clinicial_schedule" id="Interview1hr"  checked="">
+                                        <label class="form-check-label" for="Interview1hr">{{ $formData->radio_clinicial_schedule }}</label>
                                       </div>
                                    </div>
                                 </div>
                             </div>
-                            <div class="text-end">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </div>
-                            {!! Form::close() !!}
+                            <!--<div class="text-end">-->
+                            <!--    <button type="submit" class="btn btn-primary">Submit</button>-->
+                            <!--</div>-->
                         </div>
                     </div>
                 </div>

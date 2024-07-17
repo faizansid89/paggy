@@ -75,23 +75,23 @@
                                         <div class="form-group">
                                             <label>Your Role</label>
                                             <div class="form-check"> 
-                                                <input class="form-check-input" type="radio" name="your_role" id="Prosecutor" checked="">
+                                                <input class="form-check-input" type="radio" name="your_role" id="Prosecutor" checked="" value="Prosecutor">
                                                 <label class="form-check-label" for="Prosecutor">Prosecutor</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="your_role" id="DefenseAttorney">
+                                                <input class="form-check-input" type="radio" name="your_role" id="DefenseAttorney" value="Defense Attorney">
                                                 <label class="form-check-label" for="DefenseAttorney">Defense Attorney</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="your_role" id="PlaintiffAttorney">
+                                                <input class="form-check-input" type="radio" name="your_role" id="PlaintiffAttorney" value="Plaintiff Attorney">
                                                 <label class="form-check-label" for="PlaintiffAttorney">Plaintiff Attorney</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="your_role" id="RespondentAttorney">
+                                                <input class="form-check-input" type="radio" name="your_role" id="RespondentAttorney" value="Respondent Attorney">
                                                 <label class="form-check-label" for="RespondentAttorney">Respondent Attorney</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="your_role" id="Client">
+                                                <input class="form-check-input" type="radio" name="your_role" id="Client" value="Client">
                                                 <label class="form-check-label" for="Client">Client</label>
                                             </div>
                                         </div>
@@ -100,26 +100,26 @@
                                         <div class="form-group">
                                             <label>Type of Case</label>
                                             <div class="form-check"> 
-                                                <input class="form-check-input" type="radio" name="type_of_case" id="Divorce/Custody" checked="">
+                                                <input class="form-check-input" type="radio" name="type_of_case" id="Divorce/Custody" checked="" value="Divorce/Custody">
                                                 <label class="form-check-label" for="Divorce/Custody">Divorce/Custody</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="type_of_case" id="ProtectiveOrder">
+                                                <input class="form-check-input" type="radio" name="type_of_case" id="ProtectiveOrder" value="Protective Order">
                                                 <label class="form-check-label" for="ProtectiveOrder">Protective Order</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="type_of_case" id="Criminal">
+                                                <input class="form-check-input" type="radio" name="type_of_case" id="Criminal" value="Criminal">
                                                 <label class="form-check-label" for="Criminal">Criminal</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" value="other" type="radio" name="type_of_case" id="Other" >
+                                                <input class="form-check-input" value="other" type="radio" name="type_of_case" id="Other" value="Other">
                                                 <label class="form-check-label" for="Other">Other</label>
                                             </div>
                                         </div>
                                     </div>
                                      <div class="col-md-4 mb-3 TypeofCaseFields hidden">
                                        <label for="TypeofCase" class="form-label">Other</label>
-                                       <input type="text" name="type_of_case_others" class="form-control" id="TypeofCase">
+                                       <input type="text" name="type_of_case_others" class="form-control" id="TypeofCase" value="Other">
                                     </div>
                                  </div>
                                  <div class="form-row row">
