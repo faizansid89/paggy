@@ -57,20 +57,12 @@
                                        <label class="form-label">Contact Number</label>
                                        <input type="text" class="form-control" placeholder="Phone Number" value="{{ auth()->user()->phone }}" name="phone" onkeypress="return isNumber(event)">
                                     </div>
+
                                     <div class="col-md-12 mb-3">
-                                       <div class="form-group">
-                                          <label class="form-label">Select a Service</label>
-                                             <select class="select" name="appoinment_type" id="ConsultationServices">
-                                                <option value="">Select Consultation Service Timing</option>
-                                                <option value="45 min">Consultation Service 45 min</option>
-                                                <option value="60 min">Consultation Service 60 min</option>
-                                                <option value="90 min">Consultation Service 90 min</option>
-                                                <option value="120 min">Consultation Service 120 min</option>
-                                                <option value="half day">Consultation Service Half Day</option>
-                                                <option value="full day">Consultation Service Full Day</option>
-                                             </select>
-                                       </div>
-                                    </div>
+                                        <label for="inputBriefOverviewofCase" class="form-label">Brief Overview of Case</label>
+                                        <textarea class="form-control" placeholder="Please Describe" required="required" name="brief_overview_of_case" cols="50" rows="5" spellcheck="false"></textarea>
+                                     </div>
+                                    
                                     <div class="col-md-4 mb-3">
                                         <div class="form-group">
                                             <label>Your Role</label>
@@ -122,12 +114,54 @@
                                        <input type="text" name="type_of_case_others" class="form-control" id="TypeofCase" value="Other">
                                     </div>
                                  </div>
+
+
+                                 <div class="form-row row">
+                                    <div class="col-md-12 mb-3">
+                                        <h6 class="mb-5" style="text-transform: uppercase;"><strong>Note: Kindly download all these forms, fill them out, and then upload them again.</strong></h6>
+                                        @if($downloadFiles)
+                                            <div class="attach-files">
+                                                <ul class="attach-list">
+                                                    @foreach($downloadFiles as $key => $downloadFile)
+                                                        <li style="text-align: center; width:200px; float:left;" class="attach-item" data-toggle="tooltip" data-placement="top" title="{{ $downloadFile->title }}"><a class="download" target="_blank" href="{{ $downloadFile->file_path }}"><img src="{{ asset('assets/img/DOC.png') }}" width="35px"><span><br/>{{ $downloadFile->title }}</span></a></></li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-md-12 mb-3">
+                                        <div class="form-control-wrap">
+                                            <div class="custom-file">
+                                                <div class="dropzone" data-test="photos" id="dropzone"></div>
+                                                {{-- <div class="form-note">Max. files: 5.</div> --}}
+                                            </div>
+                                        </div>
+                                        <input type="hidden" class="form-control" name="photos" id="photos" />
+                                    </div>
+                                </div>
+                                
                                  <div class="form-row row">
                                      <div class="col-md-12">
                                          <h3 class="mb-3">Court Date:</h3>
                                      </div>
                                  </div>
-                                 <div class="form-row row">
+                                <div class="form-row row">
+                                    <div class="col-md-12 mb-3">
+                                        <div class="form-group">
+                                           <label class="form-label">Select a Service</label>
+                                              <select class="select" name="appoinment_type" id="ConsultationServices">
+                                                 <option value="">Select Consultation Service Timing</option>
+                                                 <option value="45 min">Consultation Service 45 min</option>
+                                                 <option value="60 min">Consultation Service 60 min</option>
+                                                 <option value="90 min">Consultation Service 90 min</option>
+                                                 <option value="120 min">Consultation Service 120 min</option>
+                                                 <option value="half day">Consultation Service Half Day</option>
+                                                 <option value="full day">Consultation Service Full Day</option>
+                                              </select>
+                                        </div>
+                                     </div>
+
                                      <div class="col-md-4 mb-3">
                                          <div class="form-group">
                                             <label>Select Date</label>
@@ -139,27 +173,6 @@
 
                                 <div class="form-row row" id='serviceTimingFetch'></div>
 
-                                <div class="form-row row">
-                                     {{-- <div class="col-md-4 mb-3">
-                                         <div class="form-group col-md-6">
-                                           <label for="time">Time</label>
-                                           <input class="form-control" type="text" id="consultationDateTime" name="appoinment_time">
-                                         </div>
-                                     </div> --}}
-                                     <div class="col-md-12 mb-3">
-                                        <label for="inputBriefOverviewofCase" class="form-label">Brief Overview of Case</label>
-                                        <textarea class="form-control" placeholder="Please Describe" required="required" name="brief_overview_of_case" cols="50" rows="5" spellcheck="false"></textarea>
-                                     </div>
-                                     <div class="col-md-12 mb-3">
-                                        <div class="form-control-wrap">
-                                            <div class="custom-file">
-                                                <div class="dropzone" data-test="photos" id="dropzone"></div>
-                                                <div class="form-note">Max. files: 5.</div>
-                                            </div>
-                                        </div>
-                                        <input type="hidden" class="form-control" name="photos" id="photos" />
-                                    </div>
-                                 </div>
                                 <div class="text-end">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>

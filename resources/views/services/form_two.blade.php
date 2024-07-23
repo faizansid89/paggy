@@ -58,6 +58,47 @@
                                    <label class="form-label">Contact Number</label>
                                    <input type="text" class="form-control" placeholder="Phone Number" value="{{ auth()->user()->phone }}" name="phone" onkeypress="return isNumber(event)">
                                 </div>
+
+                                <div class="form-row row">
+                                    <div class="col-md-12 mb-3">
+                                        <h6 class="mb-5" style="text-transform: uppercase;"><strong>Note: Kindly download all these forms, fill them out, and then upload them again.</strong></h6>
+                                        @if($downloadFiles)
+                                            <div class="attach-files">
+                                                <ul class="attach-list">
+                                                    @foreach($downloadFiles as $key => $downloadFile)
+                                                        <li style="text-align: center; width:200px; float:left;" class="attach-item" data-toggle="tooltip" data-placement="top" title="{{ $downloadFile->title }}"><a class="download" target="_blank" href="{{ $downloadFile->file_path }}"><img src="{{ asset('assets/img/DOC.png') }}" width="35px"><span><br/>{{ $downloadFile->title }}</span></a></></li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <div class="form-control-wrap">
+                                            <div class="custom-file">
+                                                <div class="dropzone" data-test="photos" id="dropzone"></div>
+                                                {{-- <div class="form-note">Max. files: 5.</div> --}}
+                                            </div>
+                                        </div>
+                                        <input type="hidden" class="form-control" name="photos" id="photos" />
+                                    </div>
+                                    <div class="col-md-12">
+                                       <div class="form-group">
+                                          <label>Schedule</label>
+                                          <div class="form-check"> 
+                                            <input class="form-check-input" type="radio" name="radio_clinicial_schedule" id="Interview1hr" checked="" value="radio_clinicial_schedule">
+                                             <label class="form-check-label" for="Interview1hr">Interview (1 hr)</label>
+                                          </div>
+                                          <div class="form-check">
+                                             <input class="form-check-input" type="radio" name="radio_clinicial_schedule" id="Supervision1hr" checked="" value="radio_clinicial_schedule">
+                                             <label class="form-check-label" for="Supervision1hr">Supervision (1 hr)</label>
+                                          </div>
+                                          <div class="form-check">
+                                             <input class="form-check-input" type="radio" name="radio_clinicial_schedule" id="Supervision2hr" checked="" value="radio_clinicial_schedule">
+                                             <label class="form-check-label" for="Supervision2hr">Supervision (2 hrs)</label>
+                                          </div>
+                                       </div>
+                                    </div>
+                                </div>
                            
                                 <div class="col-md-12 mb-3">
                                    <div class="form-group">
@@ -92,34 +133,7 @@
 
                             <div class="form-row row" id='serviceTimingFetch'></div>
 
-                            <div class="form-row row">
-                                <div class="col-md-12 mb-3">
-                                    <div class="form-control-wrap">
-                                        <div class="custom-file">
-                                            <div class="dropzone" data-test="photos" id="dropzone"></div>
-                                            <div class="form-note">Max. files: 5.</div>
-                                        </div>
-                                    </div>
-                                    <input type="hidden" class="form-control" name="photos" id="photos" />
-                                </div>
-                                <div class="col-md-12">
-                                   <div class="form-group">
-                                      <label>Schedule</label>
-                                      <div class="form-check"> 
-                                        <input class="form-check-input" type="radio" name="radio_clinicial_schedule" id="Interview1hr" checked="" value="radio_clinicial_schedule">
-                                         <label class="form-check-label" for="Interview1hr">Interview (1 hr)</label>
-                                      </div>
-                                      <div class="form-check">
-                                         <input class="form-check-input" type="radio" name="radio_clinicial_schedule" id="Supervision1hr" checked="" value="radio_clinicial_schedule">
-                                         <label class="form-check-label" for="Supervision1hr">Supervision (1 hr)</label>
-                                      </div>
-                                      <div class="form-check">
-                                         <input class="form-check-input" type="radio" name="radio_clinicial_schedule" id="Supervision2hr" checked="" value="radio_clinicial_schedule">
-                                         <label class="form-check-label" for="Supervision2hr">Supervision (2 hrs)</label>
-                                      </div>
-                                   </div>
-                                </div>
-                            </div>
+                            
                             <div class="text-end">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>

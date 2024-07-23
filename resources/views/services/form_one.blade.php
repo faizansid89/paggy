@@ -991,11 +991,23 @@
                             <div class="steps" id="content2">
                                 <div class="form-row row">
                                     <div class="col-md-12 mb-3">
+                                        <h6 class="mb-5" style="text-transform: uppercase;"><strong>Note: Kindly download all these forms, fill them out, and then upload them again.</strong></h6>
+                                        @if($downloadFiles)
+                                            <div class="attach-files">
+                                                <ul class="attach-list">
+                                                    @foreach($downloadFiles as $key => $downloadFile)
+                                                        <li style="text-align: center; width:200px; float:left;" class="attach-item" data-toggle="tooltip" data-placement="top" title="{{ $downloadFile->title }}"><a class="download" target="_blank" href="{{ $downloadFile->file_path }}"><img src="{{ asset('assets/img/DOC.png') }}" width="35px"><span><br/>{{ $downloadFile->title }}</span></a></></li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="col-md-12 mb-3">
                                         <div class="form-control-wrap">
-                                            <label for="dropzone" class="form-label">Upload Files</label>
+                                            {{-- <label for="dropzone" class="form-label">Upload Files</label> --}}
                                             <div class="custom-file">
                                                 <div class="dropzone" data-test="photos" id="dropzone"></div>
-                                                <div class="form-note">Max. file size: 15 GB, Max. files: 5.</div>
+                                                {{-- <div class="form-note">Max. file size: 15 GB, Max. files: 5.</div> --}}
                                             </div>
                                         </div>
                                         <input type="hidden" class="form-control" name="photos" id="photos" />

@@ -8,6 +8,7 @@ use App\Models\ConsultationForm;
 use App\Models\ExpertTestimonyForm;
 use App\Models\Payment;
 use App\Models\Services;
+use App\Models\ServicesDownloadFile;
 use App\Models\ServiceTiming;
 use App\Models\TherapyForm;
 use Carbon\Carbon;
@@ -207,8 +208,10 @@ class ServicesController extends Controller
         $section->title = 'Therapy';
         $section->method = 'POST';
         $section->route = $section->slug.'.therapySubmit';
+
+        $downloadFiles = ServicesDownloadFile::where('service_id', 1)->get();
        
-        return view($section->folder.'.form_one',compact('section', 'service'));
+        return view($section->folder.'.form_one',compact('section', 'service', 'downloadFiles'));
     }
 
     public function therapySubmit(Request $request)
@@ -256,8 +259,11 @@ class ServicesController extends Controller
         $section->title = 'Clinical Supervision';
         $section->method = 'POST';
         $section->route = $section->slug.'.clinicalSupervisionSubmit';
+
+
+        $downloadFiles = ServicesDownloadFile::where('service_id', 2)->get();
        
-        return view($section->folder.'.form_two',compact('section', 'service'));
+        return view($section->folder.'.form_two',compact('section', 'service', 'downloadFiles'));
     }
 
     public function clinicalSupervisionSubmit(Request $request)
@@ -305,8 +311,10 @@ class ServicesController extends Controller
         $section->title = 'Consultation';
         $section->method = 'POST';
         $section->route = $section->slug.'.consultationSubmit';
+
+        $downloadFiles = ServicesDownloadFile::where('service_id', 3)->get();
        
-        return view($section->folder.'.form_three',compact('section', 'service'));
+        return view($section->folder.'.form_three',compact('section', 'service', 'downloadFiles'));
     }
 
     public function consultationSubmit(Request $request)
@@ -354,8 +362,10 @@ class ServicesController extends Controller
         $section->title = 'Expert Testimony';
         $section->method = 'POST';
         $section->route = $section->slug.'.expertTestimonySubmit';
+
+        $downloadFiles = ServicesDownloadFile::where('service_id', 4)->get();
        
-        return view($section->folder.'.form_four',compact('section', 'service'));
+        return view($section->folder.'.form_four',compact('section', 'service', 'downloadFiles'));
     }
 
     public function expertTestimonySubmit(Request $request)

@@ -56,20 +56,6 @@
                                       <label class="form-label">Contact Number</label>
                                       <input type="text" class="form-control" placeholder="Phone Number" name="phone" value="{{ auth()->user()->phone }}" onkeypress="return isNumber(event)">
                                    </div>
-                                   <div class="col-md-12 mb-3">
-                                       <div class="form-group">
-                                          <label class="form-label">Select a Service</label>
-                                             <select class="select"  name="appoinment_type"  id="ExpertTestimony">
-                                                <option value="">Select Expert Testimony Service Timing</option>
-                                                <option value="45 min">Expert Testimony 45 min</option>
-                                                <option value="60 min">Expert Testimony 60 min</option>
-                                                <option value="90 min">Expert Testimony 90 min</option>
-                                                <option value="120 min">Expert Testimony 120 min</option>
-                                                <option value="half day">Expert Testimony Half Day</option>
-                                                <option value="full day">Expert Testimony Full Day</option>
-                                             </select>
-                                       </div>
-                                   </div>
                                 </div>
                                 <div class="form-row row">
                                     <div class="col-md-4 mb-3">
@@ -122,38 +108,33 @@
                                        <label for="TypeofCase" class="form-label">Other</label>
                                        <input type="text" name="type_of_case_others" class="form-control" id="TypeofCase">
                                     </div>
-                                    <div class="form-row row">
-                                        <div class="col-md-3 mb-3">
-                                            <div class="form-group">
-                                               <label>Select Date</label>
-                                               {{-- <input class="form-control" placeholder="Enter Title" required="required" name="appoinment_date" id="appoinment_date" type="date"> --}}
-                                               <div id="selectDate">
-                                                    {{-- <input type="text" id="datepicker"> --}}
-                                               </div>
-                                            </div>
-                                        </div>
-                                        {{-- <div class="col-md-2 mb-3">
-                                            <div class="form-group">
-                                              <label for="time">Time</label>
-                                              <input class="form-control" type="text" name="appoinment_time" id="ExpertTestimonyDateTime">
-                                            </div>
-                                        </div> --}}
-                                    </div>
-
-                                    <div class="form-row row" id='serviceTimingFetch'>
-                                        
-                                    </div>
 
                                     <div class="form-row row">
                                         <div class="col-md-12 mb-3">
                                            <label for="inputBriefOverviewofCase" class="form-label">Brief Overview of Case</label>
                                            <textarea class="form-control" placeholder="Please Describe" required="required" name="brief_overview_of_case" cols="50" rows="5" spellcheck="false"></textarea>
                                         </div>
+                                    </div>
+
+                                    <div class="form-row row">
+                                        <div class="col-md-12 mb-3">
+                                            <h6 class="mb-5" style="text-transform: uppercase;"><strong>Note: Kindly download all these forms, fill them out, and then upload them again.</strong></h6>
+                                            @if($downloadFiles)
+                                                <div class="attach-files">
+                                                    <ul class="attach-list">
+                                                        @foreach($downloadFiles as $key => $downloadFile)
+                                                            <li style="text-align: center; width:200px; float:left;" class="attach-item" data-toggle="tooltip" data-placement="top" title="{{ $downloadFile->title }}"><a class="download" target="_blank" href="{{ $downloadFile->file_path }}"><img src="{{ asset('assets/img/DOC.png') }}" width="35px"><span><br/>{{ $downloadFile->title }}</span></a></></li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            @endif
+                                        </div>
+                                        
                                         <div class="col-md-12 mb-3">
                                             <div class="form-control-wrap">
                                                 <div class="custom-file">
                                                     <div class="dropzone" data-test="photos" id="dropzone"></div>
-                                                    <div class="form-note">Max. files: 5.</div>
+                                                    {{-- <div class="form-note">Max. files: 5.</div> --}}
                                                 </div>
                                             </div>
                                             <input type="hidden" class="form-control" name="photos" id="photos" />
@@ -161,6 +142,45 @@
                                     </div>
                                     
                                 </div>
+
+
+                                <div class="col-md-12 mb-3">
+                                    <div class="form-group">
+                                       <label class="form-label">Select a Service</label>
+                                          <select class="select"  name="appoinment_type"  id="ExpertTestimony">
+                                             <option value="">Select Expert Testimony Service Timing</option>
+                                             <option value="45 min">Expert Testimony 45 min</option>
+                                             <option value="60 min">Expert Testimony 60 min</option>
+                                             <option value="90 min">Expert Testimony 90 min</option>
+                                             <option value="120 min">Expert Testimony 120 min</option>
+                                             <option value="half day">Expert Testimony Half Day</option>
+                                             <option value="full day">Expert Testimony Full Day</option>
+                                          </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-row row">
+                                    <div class="col-md-3 mb-3">
+                                        <div class="form-group">
+                                           <label>Select Date</label>
+                                           {{-- <input class="form-control" placeholder="Enter Title" required="required" name="appoinment_date" id="appoinment_date" type="date"> --}}
+                                           <div id="selectDate">
+                                                {{-- <input type="text" id="datepicker"> --}}
+                                           </div>
+                                        </div>
+                                    </div>
+                                    {{-- <div class="col-md-2 mb-3">
+                                        <div class="form-group">
+                                          <label for="time">Time</label>
+                                          <input class="form-control" type="text" name="appoinment_time" id="ExpertTestimonyDateTime">
+                                        </div>
+                                    </div> --}}
+                                </div>
+
+                                <div class="form-row row" id='serviceTimingFetch'>
+                                    
+                                </div>
+                                
                                 <div class="text-end">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
