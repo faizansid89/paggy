@@ -31,22 +31,23 @@
                             <h5 class="card-title">{{ $section->title }}</h5>
                         </div>
                         <div class="card-body">
-                            {!! Form::model($service, ['route' => $section->route, 'class' => 'form-validate', 'files' => true, 'enctype' => 'multipart/form-data', 'autocomplete' => 'off']) !!}
+
+                            {!! Form::model($service, ['route' => $section->route, 'class' => 'form-validate', 'id' => 'form-validate', 'files' => true, 'enctype' => 'multipart/form-data', 'autocomplete' => 'off']) !!}
                             @method($section->method)
+                            <!-- <div class="error-message">Please fill all required fields.</div> -->
 
-
-                            <div class="contentHidden Customactive" id="content1">
+                            <div class="steps active" id="content1">
                                 <div class="form-row row">
                                     <div class="col-md-4 mb-3">
                                        <label class="form-label" for="validationCustom01">First name</label>
-                                       <input type="text" class="form-control" id="validationCustom01" name="first_name" placeholder="First name" value="{{ auth()->user()->name }}" required="">
+                                       <input type="text" class="form-control" id="validationCustom01" name="first_name" placeholder="First name" value="{{ auth()->user()->name }}" required="" class="required">
                                        <div class="valid-feedback">
                                           Looks good!
                                        </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                        <label class="form-label" for="validationCustom02">Last name</label>
-                                       <input type="text" class="form-control" id="validationCustom02" name="last_name" placeholder="Last name" value="" required="">
+                                       <input type="text" class="form-control" id="validationCustom02" name="last_name" placeholder="Last name" value="" required="" class="required">
                                        <div class="valid-feedback">
                                           Looks good!
                                        </div>
@@ -970,24 +971,24 @@
                                      <div class="col-md-4 mb-3">
                                          <div class="input-group mb-3">
                                              <span class="input-group-text">1</span>
-                                             <input type="text" class="form-control" name="primary_goal_one" id="inputThreePrimaryGoals1" placeholder="" value="" required="">
+                                             <input type="text" class="form-control" name="primary_goal_one" id="inputThreePrimaryGoals1" placeholder="" value="" required="" class="required">
                                          </div>
                                      </div>
                                      <div class="col-md-4 mb-3">
                                          <div class="input-group mb-3">
                                              <span class="input-group-text">2</span>
-                                             <input type="text" class="form-control" name="primary_goal_two" id="inputThreePrimaryGoals2" placeholder="" value="" required="">
+                                             <input type="text" class="form-control" name="primary_goal_two" id="inputThreePrimaryGoals2" placeholder="" value="" required="" class="required">
                                          </div>                                   
                                      </div>
                                      <div class="col-md-4 mb-3">
                                          <div class="input-group mb-3">
                                              <span class="input-group-text">3</span>
-                                             <input type="text" class="form-control" name="primary_goal_three" id="inputThreePrimaryGoals3" placeholder="" value="" required="">
+                                             <input type="text" class="form-control" name="primary_goal_three" id="inputThreePrimaryGoals3" placeholder="" value="" required="" class="required">
                                          </div>
                                      </div>
                                  </div>
                             </div>
-                            <div class="contentHidden" id="content2">
+                            <div class="steps" id="content2">
                                 <div class="form-row row">
                                     <div class="col-md-12 mb-3">
                                         <div class="form-control-wrap">
@@ -1001,7 +1002,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="contentHidden" id="content3">
+                            <div class="steps" id="content3">
                                 <div class="form-row row">
                                     <div class="col-md-12 mb-3">
                                         <div class="form-group">
@@ -1042,45 +1043,25 @@
                                 </div>
                                 <div class="form-row row" id='serviceTimingFetch'></div>
                             </div>
-
+                            
 
                             <div class="form-row row">
                                 <div class="col-6">
                                     <div class="text-start">
-                                        <button id="prev" class="btn btn-lg btn-primary">Previous</button>
+                                        <a id="prev" class="btn btn-lg btn-dark">Previous</a>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="text-end">
-                                        <button id="next" class="btn btn-lg btn-dark">Next</button>
+                                        <a id="next" class="btn btn-lg btn-dark">Next</a>
+                                        <button id="lastSubmit" type="submit" class="btn btn-lg btn-primary">Submit</button>
                                     </div>
                                 </div>
                             </div>
                             
-
-                            
-                            
-
-
-                           
-
-
-
-
-
-
-
-
-                            
-
-
-                                
-
-                            
-
-                            <div class="d-grid gap-2 col-4 mx-auto">
+                            <!-- <div class="d-grid gap-2 col-4 mx-auto">
                                 <button type="submit" class="col-12 btn btn-primary">Submit</button>
-                            </div>
+                            </div> -->
 
                             {!! Form::close() !!}
                         </div>
@@ -1094,35 +1075,15 @@
 @section('scripts')
 <!-- PLEASE MOVE INTO CSS FILE -->
 <style>
-    .contentHidden { display: none; }
-    .contentHidden.Customactive { display: block; }
+    .steps { display: none; }
+    .steps.active { display: block; }
+    button { display: inline-block; margin: 5px; }
+    /*.error { border: 2px solid red; }
+    .error-message { color: red; display: none; }*/
 </style>
 <!-- PLEASE MOVE INTO CSS FILE -->
 
 <script>
-    //NEXT AND PREVIOUS CONDITION;
-    $(document).ready(function(){
-        var currentIndex = 0;
-        var contents = $('.contentHidden');
-        var contentCount = contents.length;
-
-        $('#next').click(function(){
-            if (currentIndex < contentCount - 1) {
-                $(contents[currentIndex]).removeClass('Customactive');
-                currentIndex++;
-                $(contents[currentIndex]).addClass('Customactive');
-            }
-        });
-
-        $('#prev').click(function(){
-            if (currentIndex > 0) {
-                $(contents[currentIndex]).removeClass('Customactive');
-                currentIndex--;
-                $(contents[currentIndex]).addClass('Customactive');
-            }
-        });
-    });
-
     $(document).ready(function() {
         // previous marriage section;
         $('input[name="previous_marriages"]').on('change', function() {
@@ -1347,6 +1308,60 @@
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
     
     <script>
+        // CUSTOM VALIDATION CHECK BEFORE SUBMITING;
+        $('#form-validate').submit(function(event) {
+            var isValid = true;
+
+            // Iterate over each input with the required class
+            $('.required').each(function() {
+              if ($(this).val() === '') {
+                isValid = false;
+                // Highlight the empty required field if needed
+                $(this).css('border', '1px solid red');
+              } else {
+                // Reset the border if the field is not empty
+                $(this).css('border', '');
+              }
+            });
+
+            // If any required field is empty, show alert and prevent form submission
+            if (!isValid) {
+              alert('All required fields must be filled.');
+              event.preventDefault();
+            }
+          });
+        //NEXT AND PREVIOUS CONDITION;
+        $(document).ready(function(){
+            var currentIndex = 0;
+            var contents = $('.steps');
+            var contentCount = contents.length;
+
+            function updateButtons() {
+                $('#prev').toggle(currentIndex > 0);
+                $('#next').toggle(currentIndex < contentCount - 1);
+                $('#lastSubmit').toggle(currentIndex === contentCount - 1);
+            }
+
+            $('#next').click(function(){
+                if (currentIndex < contentCount - 1) {
+                    $(contents[currentIndex]).removeClass('active');
+                    currentIndex++;
+                    $(contents[currentIndex]).addClass('active');
+                    updateButtons();
+                }
+            });
+
+            $('#prev').click(function(){
+                if (currentIndex > 0) {
+                    $(contents[currentIndex]).removeClass('active');
+                    currentIndex--;
+                    $(contents[currentIndex]).addClass('active');
+                    updateButtons();
+                }
+            });
+
+            updateButtons();
+        });
         $(document).ready(function() {
             $('.contentArea').richText({
                 // text formatting
