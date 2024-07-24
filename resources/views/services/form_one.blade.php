@@ -555,15 +555,15 @@
                                     </div>
                                      <div class="col-md-3 mb-3 PreviousMarriageFields hidden">
                                        <label for="yearsmarried" class="form-label"># of years married</label>
-                                       <textarea class="form-control" placeholder="Please Describe" required="required" id="yearsmarried" name="year_previous_marriages" onkeypress="return isNumber(event)" cols="50" rows="1" spellcheck="true"></textarea>
+                                       <textarea class="form-control" placeholder="Please Describe"  id="yearsmarried" name="year_previous_marriages" onkeypress="return isNumber(event)" cols="50" rows="1" spellcheck="true"></textarea>
                                     </div>
                                     <div class="col-md-3 mb-3 PreviousMarriageFields hidden">
                                        <label for="yearsdivorce" class="form-label">years of divorce</label>
-                                       <textarea class="form-control" placeholder="Please Describe" required="required" id="yearsdivorce" name="divorce_previous_marriages" onkeypress="return isNumber(event)" cols="50" rows="1" spellcheck="true"></textarea>
+                                       <textarea class="form-control" placeholder="Please Describe" id="yearsdivorce" name="divorce_previous_marriages" onkeypress="return isNumber(event)" cols="50" rows="1" spellcheck="true"></textarea>
                                     </div>
                                     <div class="col-md-3 mb-3 PreviousMarriageFields hidden">
                                        <label for="reasonfordivorce" class="form-label">reason for divorce</label>
-                                       <textarea class="form-control" placeholder="Please Describe" required="required" name="reason_previous_marriages" id="reasonfordivorce" cols="50" rows="1" spellcheck="true"></textarea>
+                                       <textarea class="form-control" placeholder="Please Describe" name="reason_previous_marriages" id="reasonfordivorce" cols="50" rows="1" spellcheck="true"></textarea>
                                     </div>
 
                                  </div>
@@ -695,7 +695,7 @@
                                       </div>
                                       <div class="col-md-8 mb-3 relationshipsAbusiveFields hidden">
                                        <label for="Abusivedescribe" class="form-label">If “Yes”, please describe</label>
-                                       <textarea class="form-control" placeholder="Please Describe" required="required" name="past_relationships_abusive_describe" cols="50" rows="1" spellcheck="true"></textarea>
+                                       <textarea class="form-control" placeholder="Please Describe"  name="past_relationships_abusive_describe" cols="50" rows="1" spellcheck="true"></textarea>
                                     </div>
                                  </div>
                                  <!-- relationshipAbusiveCustom end -->
@@ -716,11 +716,11 @@
                                           </div>
                                           <div class="col-md-4 mb-3 SexuallyViolatedAssaultedFields hidden">
                                              <label for="SexuallyOldWere" class="form-label">If “Yes”, how old were you?</label>
-                                             <textarea class="form-control" placeholder="Please Describe" required="required" id="SexuallyOldWere" name="sexually_violated_assaulted_year" cols="50" rows="1" spellcheck="true"></textarea>
+                                             <textarea class="form-control" placeholder="Please Describe"  id="SexuallyOldWere" name="sexually_violated_assaulted_year" cols="50" rows="1" spellcheck="true"></textarea>
                                           </div>
                                           <div class="col-md-4 mb-3 SexuallyViolatedAssaultedFields hidden">
                                              <label for="SexuallyRelationship" class="form-label">Relationship</label>
-                                             <textarea class="form-control" placeholder="Please Describe" required="required" name="sexually_violated_assaulted_relationship" id="SexuallyRelationship" cols="50" rows="1" spellcheck="true"></textarea>
+                                             <textarea class="form-control" placeholder="Please Describe"  name="sexually_violated_assaulted_relationship" id="SexuallyRelationship" cols="50" rows="1" spellcheck="true"></textarea>
                                           </div>
                                      </div>
                                  <!-- sexually/violated/assaulted End -->
@@ -742,11 +742,11 @@
                                           </div>
                                           <div class="col-md-4 mb-3 CustomAdultRapedFields hidden">
                                              <label for="RapeYesWhen" class="form-label">“Yes”, when?</label>
-                                             <textarea class="form-control" placeholder="Please Describe" required="required" name="sexually_assaulted_raped_when" id="RapeYesWhen" cols="50" rows="1" spellcheck="true"></textarea>
+                                             <textarea class="form-control" placeholder="Please Describe"  name="sexually_assaulted_raped_when" id="RapeYesWhen" cols="50" rows="1" spellcheck="true"></textarea>
                                           </div>
                                           <div class="col-md-4 mb-3 CustomAdultRapedFields hidden">
                                              <label for="RapeRelationship" class="form-label">Relationship</label>
-                                             <textarea class="form-control" placeholder="Please Describe" required="required" id="RapeRelationship" name="sexually_assaulted_raped_relation" id="RapeYesWhen" cols="50" rows="1" spellcheck="true"></textarea>
+                                             <textarea class="form-control" placeholder="Please Describe"  id="RapeRelationship" name="sexually_assaulted_raped_relation" id="RapeYesWhen" cols="50" rows="1" spellcheck="true"></textarea>
                                           </div>
                                      </div>
                                  <!-- CustomAdultRaped End -->
@@ -789,15 +789,15 @@
                                       </div>
                                       <div class="col-md-3 mb-3 CounselingServicesFields hidden">
                                          <label for="CounselingServicesWhen" class="form-label">When?</label>
-                                         <textarea class="form-control" placeholder="Please Describe" required="required" id="CounselingServicesWhen" name="counseling_services_when" cols="50" rows="1" spellcheck="true"></textarea>
+                                         <textarea class="form-control" placeholder="Please Describe" id="CounselingServicesWhen" name="counseling_services_when" cols="50" rows="1" spellcheck="true"></textarea>
                                       </div>
                                       <div class="col-md-3 mb-3 CounselingServicesFields hidden">
                                          <label for="CounselingServicesFromwhom" class="form-label">Form whom?</label>
-                                         <textarea class="form-control" placeholder="Please Describe" required="required" id="CounselingServicesFromwhom" name="counseling_services_whom" cols="50" rows="1" spellcheck="true"></textarea>
+                                         <textarea class="form-control" placeholder="Please Describe" id="CounselingServicesFromwhom" name="counseling_services_whom" cols="50" rows="1" spellcheck="true"></textarea>
                                       </div>
                                       <div class="col-md-3 mb-3 CounselingServicesFields hidden">
                                          <label for="CounselingServicesForWhat" class="form-label">For what?</label>
-                                         <textarea class="form-control" placeholder="Please Describe" required="required" id="CounselingServicesForWhat" name="counseling_services_what" cols="50" rows="1" spellcheck="true"></textarea>
+                                         <textarea class="form-control" placeholder="Please Describe"  id="CounselingServicesForWhat" name="counseling_services_what" cols="50" rows="1" spellcheck="true"></textarea>
 
                                       </div>
                                  </div>
@@ -990,6 +990,89 @@
                             </div>
                             <div class="steps" id="content2">
                                 <div class="form-row row">
+                                    <div class="col-md-12 mb-3">
+                                        <h6 class="mb-5" style="text-transform: uppercase;"><strong>Note: Kindly download all these forms, fill them out, and then upload them again.</strong></h6>
+                                        
+                                        <div class="accordions-items-seperate" id="accordionSpacingExample">
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="headingSpacingOne">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#SpacingOne" aria-expanded="false" aria-controls="SpacingOne">
+                                                        <strong>Severity of Posttraumatic Stress Symptoms - Adult* <br/>*Nationnal Stressful Events Survey PTSD Short Scale (NSESSS)</strong>
+                                                    </button>
+                                                </h2>
+                                                <div id="SpacingOne" class="accordion-collapse collapse" aria-labelledby="headingSpacingOne" data-bs-parent="#accordionSpacingExample">
+                                                    <div class="accordion-body">
+
+                                                        <div class="form-row row">
+                                                            <div class="col-md-12 mb-3">
+                                                                <label name="assessment_form_one[]"  class="form-label">Please list the traumatic event that you experienced:*</label>
+                                                                <input type="text" class="form-control" name="assessment_form_one[]" required="" class="required">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row row">
+                                                            <div class="col-md-12 mb-3">
+                                                                <label name="assessment_form_one[]"  class="form-label">Date of the traumatic event.  (If you don't know, your best guess is sufficient.)*</label>
+                                                                <input type="text" class="form-control" name="assessment_form_one[]" required="" class="required">
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="form-row row">
+                                                            <div class="col-md-12 mb-3">
+                                                                <label name="assessment_form_one[]"  class="form-label"><u>Instructions:</u></label>
+                                                                <label name="assessment_form_one[]"  class="form-label">People sometimes have problems after extremely stressful events or experiences.  How much have you been bothered during the PAST SEVEN (7) DAYS by each of the following problems that occurred or became worse after an extremely stressful event/experience?  Please respond to each item by marking one circle per row.       0 = Not at all     1 = A little bit     2 = Moderately     3 = Quite a bit     4 = Extremely</label>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="headingSpacingTwo">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#SpacingTwo" aria-expanded="false" aria-controls="SpacingTwo">
+                                                        Accordion Item #2
+                                                    </button>
+                                                </h2>
+                                                <div id="SpacingTwo" class="accordion-collapse collapse" aria-labelledby="headingSpacingTwo" data-bs-parent="#accordionSpacingExample">
+                                                    <div class="accordion-body">
+                                                        <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as
+                                                        well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the
+                                                        <code>.accordion-body</code>, though the transition does limit overflow.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="headingSpacingThree">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#SpacingThree" aria-expanded="false" aria-controls="SpacingThree">
+                                                        Accordion Item #3
+                                                    </button>
+                                                </h2>
+                                                <div id="SpacingThree" class="accordion-collapse collapse" aria-labelledby="headingSpacingThree" data-bs-parent="#accordionSpacingExample">
+                                                    <div class="accordion-body">
+                                                        <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as
+                                                        well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the
+                                                        <code>.accordion-body</code>, though the transition does limit overflow.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="headingSpacingFour">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#SpacingFour" aria-expanded="false" aria-controls="SpacingFour">
+                                                        Accordion Item #4
+                                                    </button>
+                                                </h2>
+                                                <div id="SpacingFour" class="accordion-collapse collapse" aria-labelledby="headingSpacingFour" data-bs-parent="#accordionSpacingExample">
+                                                    <div class="accordion-body">
+                                                        <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as
+                                                        well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the
+                                                        <code>.accordion-body</code>, though the transition does limit overflow.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+
                                     <div class="col-md-12 mb-3">
                                         <h6 class="mb-5" style="text-transform: uppercase;"><strong>Note: Kindly download all these forms, fill them out, and then upload them again.</strong></h6>
                                         @if($downloadFiles)

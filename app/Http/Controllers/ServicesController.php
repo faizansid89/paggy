@@ -225,7 +225,7 @@ class ServicesController extends Controller
 
         $request->request->add(['user_id' => auth()->user()->id]);
 
-        // dd('therapySubmit', $request->toArray());
+        dd('therapySubmit', $request->toArray());
         TherapyForm::create($request->all());
 
         // $request->session()->flash('alert-success', 'Record has been added successfully.');
