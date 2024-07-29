@@ -34,31 +34,36 @@
                             {!! Form::model($service, ['route' => $section->route, 'class' => 'form-validate', 'files' => true, 'enctype' => 'multipart/form-data', 'autocomplete' => 'off']) !!}
                             @method($section->method)
 
-                             <div class="form-row row">
-                                <div class="col-md-12 mb-3">
-                                   <label class="form-label" for="validationCustom01">First name</label>
-                                   <input type="text" class="form-control" id="validationCustom01" placeholder="First name" name="first_name" value="{{ auth()->user()->name }}" required>
-                                   <div class="valid-feedback">
-                                      Looks good!
-                                   </div>
+                            <div class="steps active" id="content1">
+                                 <div class="form-row row">
+                                    <div class="col-md-12 mb-3">
+                                       <label class="form-label" for="validationCustom01">First name</label>
+                                       <input type="text" class="form-control" id="validationCustom01" placeholder="First name" name="first_name" value="{{ auth()->user()->name }}" required>
+                                       <div class="valid-feedback">
+                                          Looks good!
+                                       </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                       <label class="form-label" for="validationCustom02">Last name</label>
+                                       <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" name="last_name" value="" required="">
+                                       <div class="valid-feedback">
+                                          Looks good!
+                                       </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                       <label class="form-label">Email</label>
+                                       <input type="email" class="form-control" name="email" placeholder="Email" value="{{ auth()->user()->email }}">
+                                    </div>
+                                    
+                                    <div class="col-md-12 mb-3">
+                                       <label class="form-label">Contact Number</label>
+                                       <input type="text" class="form-control" placeholder="Phone Number" value="{{ auth()->user()->phone }}" name="phone" onkeypress="return isNumber(event)">
+                                    </div>
                                 </div>
-                                <div class="col-md-12 mb-3">
-                                   <label class="form-label" for="validationCustom02">Last name</label>
-                                   <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" name="last_name" value="" required="">
-                                   <div class="valid-feedback">
-                                      Looks good!
-                                   </div>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                   <label class="form-label">Email</label>
-                                   <input type="email" class="form-control" name="email" placeholder="Email" value="{{ auth()->user()->email }}">
-                                </div>
-                                
-                                <div class="col-md-12 mb-3">
-                                   <label class="form-label">Contact Number</label>
-                                   <input type="text" class="form-control" placeholder="Phone Number" value="{{ auth()->user()->phone }}" name="phone" onkeypress="return isNumber(event)">
-                                </div>
+                            </div>
+                            <!-- STEP 1 END -->
 
+                            <div class="steps" id="content2">
                                 <div class="form-row row">
                                     <div class="col-md-12 mb-3">
                                         <h6 class="mb-5" style="text-transform: uppercase;"><strong>Note: Kindly download all these forms, fill them out, and then upload them again.</strong></h6>
@@ -81,64 +86,90 @@
                                         </div>
                                         <input type="hidden" class="form-control" name="photos" id="photos" />
                                     </div>
-                                    <div class="col-md-12">
-                                       <div class="form-group">
-                                          <label>Schedule</label>
-                                          <div class="form-check"> 
-                                            <input class="form-check-input" type="radio" name="radio_clinicial_schedule" id="Interview1hr" checked="" value="radio_clinicial_schedule">
-                                             <label class="form-check-label" for="Interview1hr">Interview (1 hr)</label>
-                                          </div>
-                                          <div class="form-check">
-                                             <input class="form-check-input" type="radio" name="radio_clinicial_schedule" id="Supervision1hr" checked="" value="radio_clinicial_schedule">
-                                             <label class="form-check-label" for="Supervision1hr">Supervision (1 hr)</label>
-                                          </div>
-                                          <div class="form-check">
-                                             <input class="form-check-input" type="radio" name="radio_clinicial_schedule" id="Supervision2hr" checked="" value="radio_clinicial_schedule">
-                                             <label class="form-check-label" for="Supervision2hr">Supervision (2 hrs)</label>
-                                          </div>
-                                       </div>
-                                    </div>
                                 </div>
-                           
-                                <div class="col-md-12 mb-3">
-                                   <div class="form-group">
-                                      <label class="form-label">Select a Service</label>
-                                         <select class="select" name="appoinment_type" id="ClinicalSupervision">
-                                            <option value="">Select Clinical Supervision Service Timing</option>
-                                            <option value="45 min">Clinical Supervision 45 min</option>
-                                            <option value="60 min">Clinical Supervision 60 min</option>
-                                            <option value="90 min">Clinical Supervision 90 min</option>
-                                            <option value="120 min">Clinical Supervision 120 min</option>
-                                            <option value="half day">Clinical Supervision Half Day</option>
-                                            <option value="full day">Clinical Supervision Full Day</option>
-                                         </select>
-                                   </div>
-                                </div>
-
-
-                                <div class="col-md-4 mb-3">
-                                    <div class="form-group">
-                                       <label>Select Date</label>
-                                       <div id="selectDate"></div>
-                                       {{-- <input class="form-control" placeholder="Enter Title" required="required" name="appoinment_date" type="date"> --}}
-                                    </div>
-                                </div>
-                                {{-- <div class="col-md-4 mb-3">
-                                    <div class="form-group col-md-6">
-                                      <label for="time">Time</label>
-                                      <input class="form-control" type="text" name="appoinment_time" id="clinicialdatetime">
-                                    </div>
-                                </div> --}}
                             </div>
+                            <!-- STEP 2 END -->
 
-                            <div class="form-row row" id='serviceTimingFetch'></div>
+                            <div class="steps" id="content3">
+                                    <div class="form-row row">
+                                        <div class="col-md-12">
+                                           <div class="form-group">
+                                              <label>Schedule</label>
+                                              <div class="form-check"> 
+                                                <input class="form-check-input" type="radio" name="radio_clinicial_schedule" id="Interview1hr" checked="" value="radio_clinicial_schedule">
+                                                 <label class="form-check-label" for="Interview1hr">Interview (1 hr)</label>
+                                              </div>
+                                              <div class="form-check">
+                                                 <input class="form-check-input" type="radio" name="radio_clinicial_schedule" id="Supervision1hr" checked="" value="radio_clinicial_schedule">
+                                                 <label class="form-check-label" for="Supervision1hr">Supervision (1 hr)</label>
+                                              </div>
+                                              <div class="form-check">
+                                                 <input class="form-check-input" type="radio" name="radio_clinicial_schedule" id="Supervision2hr" checked="" value="radio_clinicial_schedule">
+                                                 <label class="form-check-label" for="Supervision2hr">Supervision (2 hrs)</label>
+                                              </div>
+                                           </div>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="form-row row">
+                                        <div class="col-md-12 mb-3">
+                                           <div class="form-group">
+                                              <label class="form-label">Select a Service</label>
+                                                 <select class="select" name="appoinment_type" id="ClinicalSupervision">
+                                                    <option value="">Select Clinical Supervision Service Timing</option>
+                                                    <option value="45 min">Clinical Supervision 45 min</option>
+                                                    <option value="60 min">Clinical Supervision 60 min</option>
+                                                    <option value="90 min">Clinical Supervision 90 min</option>
+                                                    <option value="120 min">Clinical Supervision 120 min</option>
+                                                    <option value="half day">Clinical Supervision Half Day</option>
+                                                    <option value="full day">Clinical Supervision Full Day</option>
+                                                 </select>
+                                           </div>
+                                        </div>
+                                    </div>
 
-                            
-                            <div class="text-end">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+
+                                    <div class="form-row row">
+                                        <div class="col-md-4 mb-3">
+                                            <div class="form-group">
+                                               <label>Select Date</label>
+                                               <div id="selectDate"></div>
+                                               {{-- <input class="form-control" placeholder="Enter Title" required="required" name="appoinment_date" type="date"> --}}
+                                            </div>
+                                        </div>
+                                        {{-- <div class="col-md-4 mb-3">
+                                            <div class="form-group col-md-6">
+                                              <label for="time">Time</label>
+                                              <input class="form-control" type="text" name="appoinment_time" id="clinicialdatetime">
+                                            </div>
+                                        </div> --}}
+                                    </div>
+
+                                    <div class="form-row row" id='serviceTimingFetch'></div>
+                                </div>
+
+                                <!-- NEXT PREV BUTTON LOGIC -->
+                                <div class="form-row row">
+                                    <div class="col-6">
+                                        <div class="text-start">
+                                            <a id="prev" class="btn btn-lg btn-dark">Previous</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-end">
+                                            <a id="next" class="btn btn-lg btn-dark">Next</a>
+                                            <button id="lastSubmit" type="submit" class="btn btn-lg btn-primary">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- NEXT PREV BUTTON LOGIC -->
+
                             </div>
+                            <!-- STEP 3 END -->
+
                             {!! Form::close() !!}
                         </div>
+                        <!-- CARD BODY END -->
                     </div>
                 </div>
             </div>
@@ -147,6 +178,11 @@
 
 @endsection
 @section('scripts')
+<style>
+    .steps { display: none; }
+    .steps.active { display: block; }
+    button { display: inline-block; margin: 5px; }
+</style>
     <script>
         $(document).ready(function() {
             $(document).on('change', '.hasDatepicker', function() {
@@ -247,6 +283,39 @@
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
     
     <script>
+        //NEXT AND PREVIOUS CONDITION;
+        $(document).ready(function(){
+            var currentIndex = 0;
+            var contents = $('.steps');
+            var contentCount = contents.length;
+
+            function updateButtons() {
+                $('#prev').toggle(currentIndex > 0);
+                $('#next').toggle(currentIndex < contentCount - 1);
+                $('#lastSubmit').toggle(currentIndex === contentCount - 1);
+            }
+
+            $('#next').click(function(){
+                if (currentIndex < contentCount - 1) {
+                    $(contents[currentIndex]).removeClass('active');
+                    currentIndex++;
+                    $(contents[currentIndex]).addClass('active');
+                    updateButtons();
+                }
+            });
+
+            $('#prev').click(function(){
+                if (currentIndex > 0) {
+                    $(contents[currentIndex]).removeClass('active');
+                    currentIndex--;
+                    $(contents[currentIndex]).addClass('active');
+                    updateButtons();
+                }
+            });
+
+            updateButtons();
+        });
+
         $(document).ready(function() {
             $('.contentArea').richText({
                 // text formatting

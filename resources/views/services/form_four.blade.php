@@ -33,6 +33,8 @@
                         <div class="card-body">
                             {!! Form::model($service, ['route' => $section->route, 'class' => 'form-validate', 'files' => true, 'enctype' => 'multipart/form-data', 'autocomplete' => 'off']) !!}
                             @method($section->method)
+
+                            <div class="steps active" id="content1">
                                 <div class="form-row row">
                                    <div class="col-md-12 mb-3">
                                       <label class="form-label" for="validationCustom01">First name</label>
@@ -57,6 +59,7 @@
                                       <input type="text" class="form-control" placeholder="Phone Number" name="phone" value="{{ auth()->user()->phone }}" onkeypress="return isNumber(event)">
                                    </div>
                                 </div>
+
                                 <div class="form-row row">
                                     <div class="col-md-4 mb-3">
                                         <div class="form-group">
@@ -108,84 +111,115 @@
                                        <label for="TypeofCase" class="form-label">Other</label>
                                        <input type="text" name="type_of_case_others" class="form-control" id="TypeofCase">
                                     </div>
-
-                                    <div class="form-row row">
-                                        <div class="col-md-12 mb-3">
-                                           <label for="inputBriefOverviewofCase" class="form-label">Brief Overview of Case</label>
-                                           <textarea class="form-control" placeholder="Please Describe" required="required" name="brief_overview_of_case" cols="50" rows="5" spellcheck="false"></textarea>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-row row">
-                                        <div class="col-md-12 mb-3">
-                                            <h6 class="mb-5" style="text-transform: uppercase;"><strong>Note: Kindly download all these forms, fill them out, and then upload them again.</strong></h6>
-                                            @if($downloadFiles)
-                                                <div class="attach-files">
-                                                    <ul class="attach-list">
-                                                        @foreach($downloadFiles as $key => $downloadFile)
-                                                            <li style="text-align: center; width:200px; float:left;" class="attach-item" data-toggle="tooltip" data-placement="top" title="{{ $downloadFile->title }}"><a class="download" target="_blank" href="{{ $downloadFile->file_path }}"><img src="{{ asset('assets/img/DOC.png') }}" width="35px"><span><br/>{{ $downloadFile->title }}</span></a></></li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                            @endif
-                                        </div>
-                                        
-                                        <div class="col-md-12 mb-3">
-                                            <div class="form-control-wrap">
-                                                <div class="custom-file">
-                                                    <div class="dropzone" data-test="photos" id="dropzone"></div>
-                                                    {{-- <div class="form-note">Max. files: 5.</div> --}}
-                                                </div>
-                                            </div>
-                                            <input type="hidden" class="form-control" name="photos" id="photos" />
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-
-
-                                <div class="col-md-12 mb-3">
-                                    <div class="form-group">
-                                       <label class="form-label">Select a Service</label>
-                                          <select class="select"  name="appoinment_type"  id="ExpertTestimony">
-                                             <option value="">Select Expert Testimony Service Timing</option>
-                                             <option value="45 min">Expert Testimony 45 min</option>
-                                             <option value="60 min">Expert Testimony 60 min</option>
-                                             <option value="90 min">Expert Testimony 90 min</option>
-                                             <option value="120 min">Expert Testimony 120 min</option>
-                                             <option value="half day">Expert Testimony Half Day</option>
-                                             <option value="full day">Expert Testimony Full Day</option>
-                                          </select>
-                                    </div>
                                 </div>
 
                                 <div class="form-row row">
-                                    <div class="col-md-3 mb-3">
-                                        <div class="form-group">
-                                           <label>Select Date</label>
-                                           {{-- <input class="form-control" placeholder="Enter Title" required="required" name="appoinment_date" id="appoinment_date" type="date"> --}}
-                                           <div id="selectDate">
-                                                {{-- <input type="text" id="datepicker"> --}}
-                                           </div>
-                                        </div>
+                                    <div class="col-md-12 mb-3">
+                                       <label for="inputBriefOverviewofCase" class="form-label">Brief Overview of Case</label>
+                                       <textarea class="form-control" placeholder="Please Describe" required="required" name="brief_overview_of_case" cols="50" rows="5" spellcheck="false"></textarea>
                                     </div>
-                                    {{-- <div class="col-md-2 mb-3">
-                                        <div class="form-group">
-                                          <label for="time">Time</label>
-                                          <input class="form-control" type="text" name="appoinment_time" id="ExpertTestimonyDateTime">
-                                        </div>
-                                    </div> --}}
                                 </div>
 
+                            </div>
+                            <!-- STEP 1 END -->
+
+                            <div class="steps" id="content2">
+                                <div class="form-row row">
+                                   <div class="col-md-12 mb-3">
+                                      <h6 class="mb-5" style="text-transform: uppercase;"><strong>Note: Kindly download all these forms, fill them out, and then upload them again.</strong></h6>
+                                      @if($downloadFiles)
+                                      <div class="attach-files">
+                                         <ul class="attach-list">
+                                            @foreach($downloadFiles as $key => $downloadFile)
+                                            <li style="text-align: center; width:200px; float:left;" class="attach-item" data-toggle="tooltip" data-placement="top" title="{{ $downloadFile->title }}"><a class="download" target="_blank" href="{{ $downloadFile->file_path }}"><img src="{{ asset('assets/img/DOC.png') }}" width="35px"><span><br/>{{ $downloadFile->title }}</span></a></></li>
+                                            @endforeach
+                                         </ul>
+                                      </div>
+                                      @endif
+                                   </div>
+                                   <div class="col-md-12 mb-3">
+                                      <div class="form-control-wrap">
+                                         <div class="custom-file">
+                                            <div class="dropzone" data-test="photos" id="dropzone"></div>
+                                            {{-- 
+                                            <div class="form-note">Max. files: 5.</div>
+                                            --}}
+                                         </div>
+                                      </div>
+                                      <input type="hidden" class="form-control" name="photos" id="photos" />
+                                   </div>
+                                </div>
+                            
+                            </div>
+                            <!-- STEP 2 END -->
+
+                            <div class="steps" id="content3">
+                                <div class="form-row row">
+                                   <div class="col-md-12 mb-3">
+                                      <div class="form-group">
+                                         <label class="form-label">Select a Service</label>
+                                         <select class="select"  name="appoinment_type"  id="ExpertTestimony">
+                                            <option value="">Select Expert Testimony Service Timing</option>
+                                            <option value="45 min">Expert Testimony 45 min</option>
+                                            <option value="60 min">Expert Testimony 60 min</option>
+                                            <option value="90 min">Expert Testimony 90 min</option>
+                                            <option value="120 min">Expert Testimony 120 min</option>
+                                            <option value="half day">Expert Testimony Half Day</option>
+                                            <option value="full day">Expert Testimony Full Day</option>
+                                         </select>
+                                      </div>
+                                   </div>
+                                </div>
+                                <div class="form-row row">
+                                   <div class="col-md-3 mb-3">
+                                      <div class="form-group">
+                                         <label>Select Date</label>
+                                         {{-- <input class="form-control" placeholder="Enter Title" required="required" name="appoinment_date" id="appoinment_date" type="date"> --}}
+                                         <div id="selectDate">
+                                            {{-- <input type="text" id="datepicker"> --}}
+                                         </div>
+                                      </div>
+                                   </div>
+                                   {{-- 
+                                   <div class="col-md-2 mb-3">
+                                      <div class="form-group">
+                                         <label for="time">Time</label>
+                                         <input class="form-control" type="text" name="appoinment_time" id="ExpertTestimonyDateTime">
+                                      </div>
+                                   </div>
+                                   --}}
+                                </div>
                                 <div class="form-row row" id='serviceTimingFetch'>
-                                    
                                 </div>
-                                
-                                <div class="text-end">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                            <!-- STEP 3 END -->
+
+                            <!-- NEXT PREV BUTTON LOGIC -->
+                            <div class="form-row row">
+                                <div class="col-6">
+                                    <div class="text-start">
+                                        <a id="prev" class="btn btn-lg btn-dark">Previous</a>
+                                    </div>
                                 </div>
+                                <div class="col-6">
+                                    <div class="text-end">
+                                        <a id="next" class="btn btn-lg btn-dark">Next</a>
+                                        <button id="lastSubmit" type="submit" class="btn btn-lg btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- NEXT PREV BUTTON LOGIC -->
+
+                            </div>
+                            
+
+                            
+
+                            
+
                             {!! Form::close() !!}
                         </div>
+                        <!-- CARD BODY END -->
                     </div>
                 </div>
             </div>
@@ -194,6 +228,11 @@
 
 @endsection
 @section('scripts')
+<style>
+    .steps { display: none; }
+    .steps.active { display: block; }
+    button { display: inline-block; margin: 5px; }
+</style>
      <script>
        $(document).ready(function() {
             // TypeOfCase section;
@@ -316,6 +355,39 @@
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
     
     <script>
+        //NEXT AND PREVIOUS CONDITION;
+    $(document).ready(function(){
+        var currentIndex = 0;
+        var contents = $('.steps');
+        var contentCount = contents.length;
+
+        function updateButtons() {
+            $('#prev').toggle(currentIndex > 0);
+            $('#next').toggle(currentIndex < contentCount - 1);
+            $('#lastSubmit').toggle(currentIndex === contentCount - 1);
+        }
+
+        $('#next').click(function(){
+            if (currentIndex < contentCount - 1) {
+                $(contents[currentIndex]).removeClass('active');
+                currentIndex++;
+                $(contents[currentIndex]).addClass('active');
+                updateButtons();
+            }
+        });
+
+        $('#prev').click(function(){
+            if (currentIndex > 0) {
+                $(contents[currentIndex]).removeClass('active');
+                currentIndex--;
+                $(contents[currentIndex]).addClass('active');
+                updateButtons();
+            }
+        });
+
+        updateButtons();
+    });
+
         $(document).ready(function() {
             $('.contentArea').richText({
                 // text formatting
